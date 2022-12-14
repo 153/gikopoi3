@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "admin_st"
+        return urlSearchParams.get("roomid") || "bar"
     }
     catch
     {
-        return "admin_st"
+        return "bar"
     }
 }
 
@@ -173,7 +173,7 @@ window.vueApp = new Vue({
         isMoveSectionVisible: localStorage.getItem("isMoveSectionVisible") != "false",
         isBubbleSectionVisible: localStorage.getItem("isBubbleSectionVisible") != "false",
         isLogoutButtonVisible: localStorage.getItem("isLogoutButtonVisible") != "false",
-        isDarkMode: localStorage.getItem("isDarkMode") == "true",
+        uiTheme: localStorage.getItem("uiTheme") || (localStorage.getItem("isDarkMode") == "true" ? "shaddox" : "gikopoi"),
         showNotifications: localStorage.getItem("showNotifications") != "false",
         enableTextToSpeech: localStorage.getItem("enableTextToSpeech") == "true",
         ttsVoiceURI: localStorage.getItem("ttsVoiceURI") || "automatic",
@@ -188,6 +188,7 @@ window.vueApp = new Vue({
         isStreamAutoResumeEnabled: localStorage.getItem("isStreamAutoResumeEnabled") != "false",
         isStreamInboundVuMeterEnabled: localStorage.getItem("isStreamInboundVuMeterEnabled") != "false",
         showLogAboveToolbar: localStorage.getItem("showLogAboveToolbar") == "true",
+        showLogDividers: localStorage.getItem("showLogDividers") == "true",
 
         // streaming
         streams: [],
@@ -346,6 +347,10 @@ window.vueApp = new Vue({
         login: async function (ev)
         {
             try {
+                // Workaround for making TTS work on iphone, since it needs to be activated on a user interaction
+                if (window.speechSynthesis)
+                    speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+
                 ev.preventDefault();
                 this.isLoggingIn = true;
 
@@ -1515,11 +1520,16 @@ window.vueApp = new Vue({
         paintBackground: function ()
         {
             const context = this.canvasContext;
-
             if (this.currentRoom.backgroundColor)
+            {
                 context.fillStyle = this.currentRoom.backgroundColor;
+            }
             else
-                context.fillStyle = this.isDarkMode ? "#354F52" : "#b0b0b0";
+            {
+                const backgroundColor = getComputedStyle(this.$el).getPropertyValue("background-color").match(/\d+/g).slice(0, 3).map(c => parseInt(c));
+                const isDark = Math.round(backgroundColor.reduce((p, c) => p + c) / backgroundColor.length) <= 127
+                context.fillStyle = "rgb(" + backgroundColor.map(c => Math.max(Math.min(isDark ? c+16 : c-16, 255), 0)).join(", ") + ")";
+            }
             context.fillRect(0, 0, this.canvasDimensions.w, this.canvasDimensions.h);
 
             this.drawImage(
@@ -1914,14 +1924,8 @@ window.vueApp = new Vue({
             {
                 message = ""
             }
-            
-            if (message.match(/sageru/gi))
-            {
-                this.appState = "poop";
-                return
-            }
 
-            if (message.trim() == "#rula" || message.trim() == "#ﾙｰﾗ")
+            if (message.trim() == "#rula" || message.trim() == "#ﾙｰﾗ" || message.trim() == "#warp")
                 this.requestRoomList();
             else if (message.trim() == '#ﾘｽﾄ' || message.trim() == '#list')
                 this.openUserListPopup();
@@ -2993,7 +2997,7 @@ window.vueApp = new Vue({
         {
             this.passwordInputVisible = true;
         },
-        handleDarkMode: async function ()
+        handleUiTheme: async function ()
         {
             this.isRedrawRequired = true
             
@@ -3008,10 +3012,10 @@ window.vueApp = new Vue({
                 observer.observe(chatLog.lastChild);
             }
 
-            this.storeSet("isDarkMode");
+            this.storeSet("uiTheme");
 
             // Need to wait for the next tick so that knobElement.refresh() is called
-            // with isDarkMode already updated to its new value.
+            // with uiTheme already updated to its new value.
             await Vue.nextTick()
             for (const knobElement of document.getElementsByClassName("input-knob"))
             {
@@ -3192,6 +3196,7 @@ window.vueApp = new Vue({
         {
             const output = Object.values(this.users)
                 .filter(u => u.id != this.myUserID)
+                .sort((a, b) => a.name.localeCompare(b.name))
                 .map(u => ({
                     id: u.id,
                     name: u.name,

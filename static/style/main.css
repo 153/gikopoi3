@@ -86,7 +86,6 @@ input[type='range']
     background-color: white;
     height: 150px;
     overflow-y: auto;
-    padding-left: 5px;
     resize: vertical;
 }
 
@@ -100,6 +99,7 @@ input[type='range']
 {
     overflow: hidden;
     line-height: 20px;
+    padding-left: 5px;
 }
 
 .message span
@@ -110,6 +110,17 @@ input[type='range']
 .timestamps-in-copied-log .message .message-timestamp
 {
     display: inline-block;
+}
+
+.log-dividers .message
+{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.log-dividers .message:not(:first-child)
+{
+    border-top: 1px solid #c0c0c0;
 }
 
 .message .message-timestamp
@@ -667,8 +678,8 @@ video {
 
 #character-selection
 {
-    display: flex;
-    width: 100%;
+    display: block;
+    width: 80%;
     overflow-x: auto;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -676,18 +687,19 @@ video {
 }
 
 #character-selection img {
+//    display: inline-block;
+    object-fit: contain;
     height: 70px;
     width: 60px;
     padding-top: 10px;
     min-width: 10px;
-    margin: 2px;
     object-fit: contain;
 }
 
-#character-selection .character-selected {
-    border: solid 2px blue;
-    margin: 0;
-}
+ .character-selected img {
+    border: solid 1px blue;
+    outline: solid 1px blue;
+ }
 
 #character-selection input {
     display: none;

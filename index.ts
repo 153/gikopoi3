@@ -27,7 +27,7 @@ const persistInterval = 5 * 1000
 const maxGhostRetention = 30 * 60 * 1000
 const inactivityTimeout = 30 * 60 * 1000
 const maxWaitForChessMove = 1000 * 60 * 5
-const maximumUsersPerIpPerArea = 2
+const maximumUsersPerIpPerArea = 3
 const maximumAbuseConfidenceScore = 50
 
 const appVersion = Number.parseInt(readFileSync("version").toString())
@@ -59,7 +59,7 @@ function initializeRoomStates()
     let areaNumberId = 0;
     roomStates = {}
 
-    for (const areaId of ["for", "gen"])
+    for (const areaId of ["for", "gen", "vip"])
     {
         let roomNumberId = 0;
         roomStates[areaId] = {}
@@ -211,7 +211,7 @@ const sendRoomState = (socket: Socket, user: Player, currentRoom: Room) =>
 io.on("connection", function (socket: Socket)
 {
     let user: Player;
-    let currentRoom = rooms.admin_st;
+    let currentRoom = rooms.densha;
     
     const sendCurrentRoomState = () => sendRoomState(socket, user, currentRoom);
 
@@ -341,29 +341,83 @@ io.on("connection", function (socket: Socket)
                         return
                     }
                 }
-                
+
+		if (msg == "#die")
+		{
+		    clearStream(user)
+		    clearRoomListener(user)
+		    const targetRoomId = "badend"
+		    const targetDoorId = "rip"
+		    currentRoom = rooms[targetRoomId]
+            
+		    stopChessGame(roomStates, user)
+		    userRoomEmit(user, user.areaId, user.roomId,
+				 "server-user-left-room", user.id)
+		    socket.leave(user.areaId + user.roomId)
+		    const door = rooms[targetRoomId].doors[targetDoorId]
+
+		    user.position = { x: door.x, y: door.y }
+		    if (door.direction !== null) user.direction = door.direction
+		    user.roomId = targetRoomId
+		    setUserAsActive(user)
+		    user.lastRoomMessage = "";
+
+		    sendCurrentRoomState()
+
+		    socket.join(user.areaId + targetRoomId)
+		    sendNewUserInfo()
+		    return
+		   }
+
+		if (msg == "#afk" || msg == "#ghost")
+		{
+		    userRoomEmit(user, user.areaId, user.roomId,
+				 "server-user-inactive", user.id);
+		    user.isInactive = true
+		    return
+		}
+										
+		if (msg == "#train")
+		{
+		    clearStream(user)
+		    clearRoomListener(user)
+		    const targetRoomId = "densha"
+		    const targetDoorId = "top"
+		    currentRoom = rooms[targetRoomId]
+            
+		    stopChessGame(roomStates, user)
+		    userRoomEmit(user, user.areaId, user.roomId,
+				 "server-user-left-room", user.id)
+		    socket.leave(user.areaId + user.roomId)
+		    const door = rooms[targetRoomId].doors[targetDoorId]
+
+		    user.position = { x: door.x, y: door.y }
+		    if (door.direction !== null) user.direction = door.direction
+		    user.roomId = targetRoomId
+		    setUserAsActive(user)
+		    user.lastRoomMessage = "";
+
+		    sendCurrentRoomState()
+
+		    socket.join(user.areaId + targetRoomId)
+		    sendNewUserInfo()
+		   return;
+		   }
                 if (msg == "#ika")
                 {
                     changeCharacter(user, "ika", false)
                     return;
                 }
+
+		if (msg == "#bee")
+		{
+			changeCharacter(user, "mitsugiko", false)
+			return;
+		}
                 
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
-                
-                // no TIGER TIGER pls
-                if (msg.length > "TIGER".length && "TIGER".startsWith(msg.replace(/TIGER/gi, "").replace(/\s/g, "")))
-                    msg = "(´・ω・`)"
-
-                // msg = msg.replace(/(BOKUDEN)|(ＢＯＫＵＤＥＮ)|(ボクデン)|(ぼくでん)|(卜伝)|(ﾎﾞｸﾃﾞﾝ)|(ボクデソ)/gi,
-                //     "$&o(≧▽≦)o")
-
-                // if (msg.match(/(合言葉)|(あいことば)|(アイコトバ)|aikotoba/gi))
-                //     msg = "٩(ˊᗜˋ*)و"
-
-                // and for the love of god no moonwalking
-                if (msg.toLowerCase().includes("moonwalk") || msg.toLowerCase().includes("moon-walk"))
-                    msg = "(^Д^)"
-
+                msg = msg.replace(/bon/g, "fag")
+		msg = msg.replace(/maf/g, "faggot")
                 msg = msg.replace(/◆/g, "◇")
                 
                 msg = msg.substr(0, 500)
@@ -381,7 +435,13 @@ io.on("connection", function (socket: Socket)
                 socket.emit("server-msg", user.id, msg) // if there's a bad word, show the message only to the guy who wrote it
             else
                 userRoomEmit(user, user.areaId, user.roomId,
-                    "server-msg", user.id, msg);
+			     "server-msg", user.id, msg);
+	    if (msg == "afk")
+	    {
+		userRoomEmit(user, user.areaId, user.roomId,
+				 "server-user-inactive", user.id);
+		user.isInactive = true
+	    }			    
         }
         catch (e)
         {
@@ -1184,9 +1244,6 @@ function emitServerStats(areaId: string)
 
 function changeCharacter(user: Player, characterId: string, isAlternateCharacter: boolean)
 {
-    if (user.characterId == "ika")
-        return // The curse of being a squid can never be lifted.
-
     user.characterId = characterId
     user.isAlternateCharacter = isAlternateCharacter
     user.lastAction = Date.now()
@@ -1300,7 +1357,7 @@ app.get("/", async (req, res) =>
 
         try {
             const { statusCode: loginFooterStatusCode, body: loginFooterBody } = await got(
-                'https://raw.githubusercontent.com/iccanobif/gikopoi2/master/external/login_footer.html')
+                'https://play.gikopoi.com/login_footer.html')
 
             // const loginFooterStatusCode = 200
             // const loginFooterBody = ""
@@ -1442,7 +1499,17 @@ async function getCharacterImages(crisp: boolean)
     const output: { [characterId: string]: CharacterSvgDto} = {}
     for (const characterId of characterIds)
     {
-        const extension = characterId == "funkynaito" || characterId == "molgiko" ? "png" : "svg"
+        const extension = (
+	characterId == "funkynaito"
+	|| characterId == "molgiko"
+	|| characterId == "shii_islam"
+	|| characterId == "giko_cop"
+	|| characterId == "giko_batman"
+	|| characterId == "giko_hungover"
+	|| characterId == "giko_islam"
+	|| characterId == "mitsugiko"
+	|| characterId == "blankchan"
+	) ? "png" : "svg"
 
         const getCharacterImage = async (path: string, crisp: boolean) => {
             const completePath = "static/characters/" + path

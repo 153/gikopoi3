@@ -4,7 +4,7 @@ import { ChessInstance } from "chess.js"
 const JanusClient = require('janus-videoroom-client').Janus;
 
 export type Direction = 'up' | 'down' | 'left' | 'right'
-export type Area = 'for' | 'gen'
+export type Area = 'for' | 'gen' | 'vip'
 
 export interface Coordinates
 {
@@ -51,6 +51,7 @@ export interface Room
 {
     id: string;
     group: "bar_giko" | "gikopoi" | "gikopoipoi";
+    variant?: string;
     scale: number;
     size: Coordinates;
     originCoordinates: Coordinates;
@@ -202,4 +203,21 @@ export interface CharacterSvgDto
     backStandingAlt: string | null
     backWalking1Alt: string | null
     backWalking2Alt: string | null
+}
+
+export interface AnnualEventObject
+{
+    from: string;
+    to: string;
+}
+
+export type AnnualEventCallback = (currentEvents: string[], addedEvents: string[], removedEvents: string[]) => void
+
+export type DynamicRoomBuildFunction = (currentAnnualEvents: string[], addedEvents: string[], removedEvents: string[]) => Room
+
+export interface DynamicRoom
+{
+    roomId: string
+    subscribedAnnualEvents: string[]
+    build: DynamicRoomBuildFunction
 }

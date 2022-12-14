@@ -88,7 +88,7 @@ export const rooms: { [roomId: string]: Room } = {
             ladder: { x: 0, y: 0, direction: "right", target: { roomId: "bar_st", doorId: "bar_roof" } },
             hatch: { x: 3, y: 7, direction: "down", target: { roomId: "basement", doorId: "left" } }
         },
-        streamSlotCount: 2,
+        streamSlotCount: 4
     },
     admin_st: {
         id: "admin_st",
@@ -212,6 +212,7 @@ export const rooms: { [roomId: string]: Room } = {
             down_right: { x: 8, y: 0, direction: "up", target: { roomId: "cafe_st", doorId: "manhole" } },
         },
         streamSlotCount: 0,
+        forcedAnonymous: true,	
     },
     admin: {
         id: "admin",
@@ -264,7 +265,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 10, y: 0, direction: "up", target: { roomId: "admin_st", doorId: "admin" } }
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     admin_old: {
         id: "admin_old",
@@ -299,8 +300,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 6, y: 0, direction: "up", target: { roomId: "admin_st", doorId: "admin" } }
         },
-        streamSlotCount: 1,
-        secret: true,
+        streamSlotCount: 0,
     },
     radio_backstage: {
         id: "radio_backstage",
@@ -550,7 +550,7 @@ export const rooms: { [roomId: string]: Room } = {
             left: { x: 1, y: 0, direction: "up", target: { roomId: "kaidan", doorId: "top_left" } },
             right: { x: 5, y: 0, direction: "up", target: { roomId: "silo", doorId: "right" } },
         },
-        streamSlotCount: 2,
+        streamSlotCount: 0,
     },
     silo: {
         id: "silo",
@@ -600,7 +600,7 @@ export const rooms: { [roomId: string]: Room } = {
             down: { x: 6, y: 0, direction: "up", target: { roomId: "badend", doorId: "rip" } },
             right: { x: 11, y: 5, direction: "left", target: { roomId: "takadai", doorId: "right" } }
         },
-        streamSlotCount: 2,
+        streamSlotCount: 0,
     },
     badend: {
         id: "badend",
@@ -608,7 +608,7 @@ export const rooms: { [roomId: string]: Room } = {
         scale: 0.59,
         size: { x: 50, y: 50 },
         originCoordinates: { x: 0, y: 0 },
-        spawnPoint: "spawn",
+        spawnPoint: "rip",
         backgroundImageUrl: "rooms/badend/badend.jpg",
         backgroundColor: "#000000",
         backgroundOffset: { x: 0, y: -320 },
@@ -621,8 +621,10 @@ export const rooms: { [roomId: string]: Room } = {
             spawn: { x: 6, y: 7, direction: "left", target: null },
             rip: { x: -100, y: -100, direction: "left", target: null }
         },
-        streamSlotCount: 0,
-        secret: true
+        streamSlotCount: 5,
+        secret: true,
+	forcedAnonymous: true,
+		
     },
     yoshinoya: {
         id: "yoshinoya",
@@ -770,7 +772,7 @@ export const rooms: { [roomId: string]: Room } = {
             spawn: { x: 6, y: 7, direction: "up", target: null },
             door: { x: 11, y: 7, direction: "left", target: { roomId: "bar_giko_square", doorId: "yoshinoya" } }
         },
-        streamSlotCount: 1,
+        streamSlotCount: 0,
     },
     long_st: {
         id: "long_st",
@@ -1063,7 +1065,7 @@ export const rooms: { [roomId: string]: Room } = {
             stairs: { x: 7, y: 19, direction: "right", target: { roomId: "bar_giko_square", doorId: "bar_giko" } },
             right: { x: 13, y: 19, direction: "left", target: { roomId: "bar_giko2", doorId: "stairs" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     jinja: {
         id: "jinja",
@@ -1153,7 +1155,7 @@ export const rooms: { [roomId: string]: Room } = {
             { name: 'donation-text', x: 2, y: 7 },
             { name: 'donation-box', x: 3, y: 5, value: 0 },
         ],
-        streamSlotCount: 4,
+        streamSlotCount: 0,
         hasChessboard: true,
     },
     cafe_st: {
@@ -1297,7 +1299,7 @@ export const rooms: { [roomId: string]: Room } = {
             cafe: { x: 4, y: 2, direction: "right", target: { roomId: "enkai", doorId: "right" } },
             manhole: { x: 3, y: 5, direction: "down", target: { roomId: "basement", doorId: "down_right" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 5,
     },
     busstop: {
         id: "busstop",
@@ -1373,7 +1375,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 5, y: 0, direction: "up", target: { roomId: "basement", doorId: "secret_bar" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
         forcedAnonymous: true,
     },
     bar_giko_square: {
@@ -1500,7 +1502,7 @@ export const rooms: { [roomId: string]: Room } = {
             right: { x: 23, y: 11, direction: "left", target: { roomId: "konbini", doorId: "door" } },
             office: { x: 5, y: 17, direction: "down", target: { roomId: "nerd_office", doorId: "door"} },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     bar_giko2: {
         id: "bar_giko2",
@@ -1703,7 +1705,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             stairs: { x: 0, y: 15, direction: "right", target: { roomId: "bar_giko", doorId: "right" } },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 0,
     },
     radio_room1: {
         id: "radio_room1",
@@ -1754,7 +1756,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             right: { x: 6, y: 6, direction: "left", target: { roomId: "radio", doorId: "door1" } },
         },
-        streamSlotCount: 2,
+        streamSlotCount: 0,
     },
     radio_room2: {
         id: "radio_room2",
@@ -1846,7 +1848,7 @@ export const rooms: { [roomId: string]: Room } = {
             stage_door: { x: 0, y: 1, direction: "right", target: { roomId: "radio_backstage", doorId: "center" } },
             right: { x: 10, y: 4, direction: "left", target: { roomId: "radio", doorId: "door2" } },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 0,
     },
     radio_room3: {
         id: "radio_room3",
@@ -1932,7 +1934,7 @@ export const rooms: { [roomId: string]: Room } = {
             down: { x: 10, y: 0, direction: "up", target: { roomId: "radio", doorId: "door3" } },
             stage_door: { x: 0, y: 1, direction: "right", target: { roomId: "radio_backstage", doorId: "top" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     radio: {
         id: "radio",
@@ -2422,7 +2424,7 @@ export const rooms: { [roomId: string]: Room } = {
             right_warp_bottom: { x: 19, y: 15, direction: "down", target: { roomId: "enkai", doorId: "right_warp_top" } },
             right_warp_top: { x: 14, y: 18, direction: "left", target: { roomId: "enkai", doorId: "right_warp_bottom" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     idoA: {
         id: "idoA",
@@ -2487,7 +2489,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             left: { x: 0, y: 0, direction: "right", target: { roomId: "cafe_st", doorId: "water" } },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 0,
     },
     idoB: {
         id: "idoB",
@@ -2642,7 +2644,7 @@ export const rooms: { [roomId: string]: Room } = {
             spawn: { x: 6, y: 0, direction: "up", target: null },
             down: { x: 11, y: 0, direction: "up", target: { roomId: "admin_st", doorId: "admin" } },
         },
-        streamSlotCount: 2,
+        streamSlotCount: 0,
     },
     bar774: {
         id: "bar774",
@@ -2950,7 +2952,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             right: { x: 8, y: 1, direction: "left", target: { roomId: "school_rouka", doorId: "door_left" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     school_pc: {
         id: "school_pc",
@@ -3018,7 +3020,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             door: { x: 0, y: 1, direction: "right", target: { roomId: "school_rouka", doorId: "right_bottom" } },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 0,
     },
     school_ground: {
         id: "school_ground",
@@ -3193,7 +3195,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             right: { x: 8, y: 9, direction: "left", target: { roomId: "busstop", doorId: "left" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 5,
     },
     densha: {
         id: "densha",
@@ -3206,6 +3208,9 @@ export const rooms: { [roomId: string]: Room } = {
         spawnPoint: "left_top",
         backgroundImageUrl: "rooms/densha/background.svg",
         backgroundColor: "#414141",
+	worldSpawns: [
+	{x: 1, y: 9, direction: "down", target: null},
+	],
         objects: [
             { x:  0, y: -1, offset: { x:    0, y:  390 }, url: 'bench_cover.svg' },
             
@@ -3286,7 +3291,8 @@ export const rooms: { [roomId: string]: Room } = {
             bottom: { x: 1, y: 0, direction: "up", target: { roomId: "densha", doorId: "top" } },
             left_bottom: { x: 0, y: 2, direction: "right", target: { roomId: "river", doorId: "right"} },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 10,
+	        hasChessboard: true,
     },
     monachat: {
         id: "monachat",
@@ -3326,7 +3332,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             door: { x: 6, y: 6, direction: "left", target: { roomId: "bar_giko_square", doorId: "left" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 0,
     },
     labyrinth: {
         id: "labyrinth",
@@ -3833,7 +3839,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             door: { x: 9, y: 0, direction: "up", target: { roomId: "bar_giko_square", doorId: "office" } },
         },
-        streamSlotCount: 1,
+        streamSlotCount: 5,
     },
 };
 
@@ -3890,7 +3896,7 @@ const regularKonbini: Room = {
     doors: {
         door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square", doorId: "right" } },
     },
-    streamSlotCount: 1,
+    streamSlotCount: 0,
 }
 
 const summerKonbini: Room = {
@@ -3945,7 +3951,7 @@ const summerKonbini: Room = {
     doors: {
         door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square", doorId: "right" } },
     },
-    streamSlotCount: 1,
+    streamSlotCount: 0,
 }
 
 rooms["konbini"] = isSummer ? summerKonbini : regularKonbini
@@ -3997,7 +4003,7 @@ rooms["irori"] = {
     doors: {
         door: { x: 0, y: 10, direction: "down", target: { roomId: "river", doorId: "left" } },
     },
-    streamSlotCount: 1,
+    streamSlotCount: 0,
 }
 
 export function calculateCurrentRiverType(): number

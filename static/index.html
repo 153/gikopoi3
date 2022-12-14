@@ -12,22 +12,23 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#414141">
-    <meta name="apple-mobile-web-app-title" content="Gikopoipoi">
-    <meta name="application-name" content="Gikopoipoi">
+    <meta name="apple-mobile-web-app-title" content="play.gikopoi.com">
+    <meta name="application-name" content="play.gikopoi.com">
     <meta name="msapplication-TileColor" content="#c0c0c0">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
     <meta name="theme-color" content="#c0c0c0">
     <meta name="description" content="ギコっぽいぽい">
 
     <link rel='stylesheet' href='style/main.css' />
-    <link rel='stylesheet' href='style/dark-mode.css' />
+    <link rel='stylesheet' href='style/theme-dark.css' />
+    <link rel='stylesheet' href='style/theme-shaddox.css' />    
     <link rel='stylesheet' href='chess/css/chessboard-1.0.0.min.css' />
     <link href="font-awesome/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="libraries/jquery-ui/jquery-ui.css">
     <style id="highlighted-user-style"></style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>ギコっぽいぽい</title>
+    <title>gikopoi.com</title>
     <script>
         window.EXPECTED_SERVER_VERSION = Number.parseInt("@EXPECTED_SERVER_VERSION@");
     </script>
@@ -35,7 +36,7 @@
 </head>
 
 <body>
-    <div id="vue-app" v-cloak v-bind:class="{'dark-mode': isDarkMode}" v-bind:lang="$i18n.locale">
+<div id="vue-app" v-cloak :class="['theme-' + uiTheme]" v-bind:lang="$i18n.locale">  
         <div id="login-page" v-if="appState == 'login'">
             <header>
                 <div>
@@ -44,32 +45,36 @@
                 </div>
             </header>
             <form id="login-form">
-
                 <input v-if="passwordInputVisible" type="text" v-model="password"></input>
                 <div id="area-selection">
+		  <!--
                     <label for="gen-selection"><input type="radio" id="gen-selection" value="gen" v-model="areaId"
                             v-on:click="setLanguage('ja')" :disabled="isLoggingIn">
                         一般 (_gen) [{{ $t("ui.login_user_count") }}@USER_COUNT_GEN@
                         {{ $t("ui.login_streamer_count") }}@STREAMER_COUNT_GEN@]</label>
+-->
                     <label for="for-selection"><input type="radio" id="for-selection" value="for" v-model="areaId"
+						      checked
                             v-on:click="setLanguage(language)" :disabled="isLoggingIn">
                         International (_for) [{{ $t("ui.login_user_count") }}@USER_COUNT_FOR@
                         {{ $t("ui.login_streamer_count") }}@STREAMER_COUNT_FOR@]</label>
-                </div>
+                </div><br>
                 <div>
                     <label>{{ $t("ui.label_username") }}</label>
                     <input id="username-textbox" type="text" v-model="username" maxlength="20" v-bind:placeholder="$t('default_user_name')" :disabled="isLoggingIn" />
                 </div>
                 <div id="character-selection">
                     <label v-for="character in allCharacters" :for="character.characterName + '-selection'"
-                        v-show="!character.isHidden">
-                        <template v-if="character.isHidden">
+                           v-show="!character.isHidden"
+			   v-bind:class="{'character-selected': character.characterName == characterId}">
+
+                      <template v-if="character.isHidden">
                             This is a secret, please don't tell anyone. これは秘密です、誰にも言わないでください。
                         </template>
                         <input type="radio" :id="character.characterName + '-selection'" :disabled="isLoggingIn"
-                            :value="character.characterName" v-model="characterId">
-                        <img :src="'characters/' + character.characterName + '/front-standing.' + character.format"
-                            v-bind:class="{'character-selected': character.characterName == characterId}"/>
+                               :value="character.characterName" v-model="characterId">
+			<img :src="'characters/' + character.characterName + '/front-standing.' + character.format"
+			                                 v-bind:class="{'character-selected': character.characterName == characterId}"/>
                     </label>
                 </div>
                 <button id="login-button" v-on:click="login" :disabled="isLoggingIn">Login</button>
@@ -207,8 +212,8 @@
                     </div>
                 </div>
                 <div id='chat-log-container'>
-                    <div id='chat-log-label'>{{ $t("ui.label_log") }}</div>
-                    <div id="chatLog" tabindex="-1" v-bind:class="{'underlined-usernames': underlinedUsernames, 'timestamps-in-copied-log': timestampsInCopiedLog, 'ignore-indicators-in-log': showIgnoreIndicatorInLog}" v-on:keydown="handlechatLogKeydown($event)">
+                  <div id='chat-log-label'>{{ $t("ui.label_log") }}</div>
+<div id="chatLog" tabindex="-1" v-bind:class="{'underlined-usernames': underlinedUsernames, 'timestamps-in-copied-log': timestampsInCopiedLog, 'ignore-indicators-in-log': showIgnoreIndicatorInLog, 'log-dividers': showLogDividers}" v-on:keydown="handlechatLogKeydown($event)">		  
                     </div>
                 </div>
             </div>
@@ -290,8 +295,8 @@
                                 max="1"
                                 step="0.01"
                                 value="0"
-                                :data-bgcolor="isDarkMode ? 'black' : '#4d4d9f'"
-                                :data-fgcolor="isDarkMode ? '#ff0000' : '#ffffff'"
+                                :data-bgcolor="isUiBackgroundDark ? 'black' : '#4d4d9f'"
+                                :data-fgcolor="isUiBackgroundDark ? '#ff0000' : '#ffffff'"
                                 v-on:input="onPanChanged(index, $event)"
                                 v-on:dblclick="resetPan(index)" />
                         </div>
@@ -499,6 +504,7 @@
                             for="stream-form-screen-capture">{{ $t("ui.stream_form_screen_capture") }}</label>
                     </div>
                     <div class='popup-item'>
+		      <!--
                         <span>{{ $t("ui.stream_form_stream_target") }}</span>
 
                         <input type="radio" id="stream-form-visible-to-all-room" value="all_room" v-model="streamTarget"><label
@@ -506,7 +512,7 @@
 
                         <input type="radio" id="stream-form-visible-only-to-specific-users" value="specific_users" v-model="streamTarget"><label
                             for="stream-form-visible-only-to-specific-users">{{ $t("ui.stream_form_visible_only_to_specific_users") }}</label>
-
+			-->
                     </div>
                     <div class='popup-item' v-if="streamMode == 'video_sound' || streamMode == 'video'">
                         <input type="checkbox" id="stream-form-vtuber-mode" v-model="streamIsVtuberMode"><label
@@ -566,9 +572,12 @@
                     <div class='popup-section'>
                         <div class='popup-header'>{{ $t("ui.preferences_title_general") }}</div>
                         <div class='popup-item'>
-                            <input type="checkbox" id="preferences-dark-mode"
-                                v-model="isDarkMode" v-on:change="handleDarkMode"><label
-                                for="preferences-dark-mode">{{ $t("ui.preferences_dark_mode") }}</label>
+<label for="preferences-ui-theme">Theme</label>
+                            <select id="preferences-ui-theme" v-model="uiTheme" v-on:change="handleUiTheme">
+                                <option value="gikopoi">Default</option>
+                                <option value="shaddox">Shaddox</option>
+                                <option value="dark">Dark</option>
+                            </select>
                         </div>
                         <div class='popup-item' v-if="areaId != 'gen'">
                             <label for="preferences-language">{{ $t("ui.preferences_language") }}</label>
@@ -835,6 +844,7 @@
     <audio id="ka-ching-sound" src="ka-ching.mp3"></audio>
 
     <script src="libraries/vue.js"></script>
+    <script src="https://raw.githubusercontent.com/iwamizawa-software/experimental-poipoi/main/experimental-poipoi.user.js"></script>
     <script src="libraries/vue-i18n.js"></script>
     <script src="libraries/jquery-1.12.4.js"></script>
     <script src="libraries/jquery-ui/jquery-ui.min.js"></script>

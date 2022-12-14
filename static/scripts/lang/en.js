@@ -6,7 +6,7 @@ export default
     test: "test",
     ui:
     {
-        title: "Gikopoipoi",
+        title: "Gikopoi.com",
         subtitle: "Unofficial remake",
         
         login_user_count: "Users: ",
@@ -28,7 +28,7 @@ export default
         button_stream_stop: "Stop stream",
         button_stream_take: "Get stream",
         button_stream_drop: "Drop stream",
-        button_rula: "#rula",
+        button_rula: "#warp",
         button_list: "#list",
         button_preferences: "Preferences",
         button_logout: "Logout",

@@ -41,7 +41,7 @@ export class Player
 
     constructor(options: { name?: string, characterId: string, areaId: Area, roomId: string, ip: string })
     {
-        if (options.areaId != "for" && options.areaId != "gen")
+        if (options.areaId != "for" && options.areaId != "gen" && options.areaId != "vip")
             throw "invalid area id"
 
         if (!(options.roomId in rooms))

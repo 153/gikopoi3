@@ -1,0 +1,14 @@
+{
+    "janusServers": [
+        {
+            "url": "",
+            "id": ""
+        }
+    ],
+    "janusApiSecret": "",
+    "janusRoomNamePrefix": "prod",
+    "janusRoomNameIntPrefix": 1,
+    "isBehindProxy": true,
+    "restrictLoginByIp": true,
+    "abuseIpDBApiKey": ""
+}

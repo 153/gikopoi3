@@ -641,6 +641,11 @@ csso@^4.2.0:
   dependencies:
     css-tree "^1.1.2"
 
+dayjs@^1.11.6:
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
+  integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
+
 debug-logger@0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/debug-logger/-/debug-logger-0.4.1.tgz#e33849c369e3cd361b50b299d71ca5224baa1ae1"

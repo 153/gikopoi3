@@ -32,6 +32,7 @@
     <script>
         window.EXPECTED_SERVER_VERSION = Number.parseInt("@EXPECTED_SERVER_VERSION@");
     </script>
+
     
 </head>
 
@@ -45,16 +46,11 @@
                 </div>
             </header>
             <form id="login-form">
-                <input v-if="passwordInputVisible" type="text" v-model="password"></input>
+              <input v-if="passwordInputVisible" type="text" v-model="password"></input>
+	      <input type="hidden" id="for-selection" value="for">
                 <div id="area-selection">
-		  <!--
-                    <label for="gen-selection"><input type="radio" id="gen-selection" value="gen" v-model="areaId"
-                            v-on:click="setLanguage('ja')" :disabled="isLoggingIn">
-                        一般 (_gen) [{{ $t("ui.login_user_count") }}@USER_COUNT_GEN@
-                        {{ $t("ui.login_streamer_count") }}@STREAMER_COUNT_GEN@]</label>
--->
                     <label for="for-selection"><input type="radio" id="for-selection" value="for" v-model="areaId"
-						      checked
+						      checked checked="checked"
                             v-on:click="setLanguage(language)" :disabled="isLoggingIn">
                         International (_for) [{{ $t("ui.login_user_count") }}@USER_COUNT_FOR@
                         {{ $t("ui.login_streamer_count") }}@STREAMER_COUNT_FOR@]</label>
@@ -90,11 +86,11 @@
             <h2 class="big-red-alert" v-if="pageRefreshRequired">
                 {{ $t("msg.page_refresh_required") }}
             </h2>
-            <h2 v-if="connectionRefused">
+            <h2 class="big-red-alert" v-if="connectionRefused">
                 {{ $t("msg.connection_refused") }}
             </h2>
             <div id="main-section" v-bind:class="{'log-above-toolbar': showLogAboveToolbar}">
-                <div id="canvas-container" v-if="!connectionRefused">
+                <div id="canvas-container">
                     <canvas id="room-canvas" tabindex="1"
                         v-on:keydown="handleCanvasKeydown($event)"
                         v-on:mousedown="handleCanvasPointerDown($event)"
@@ -132,7 +128,7 @@
                             tabindex="-1"></button>
                     </div>
                 </div>
-                <div id="toolbar" v-if="!connectionRefused">
+                <div id="toolbar">
                     <div id="toolbar-text-input">
                         {{ $t("ui.label_input") }} <textarea id="input-textbox"
                             v-on:keypress="handleMessageInputKeypress($event)"
@@ -217,7 +213,7 @@
                     </div>
                 </div>
             </div>
-            <div id="video-streams" v-if="!connectionRefused">
+            <div id="video-streams">
                 <div v-for="(streamSlot, index) in streams" v-bind:class="{'stream-is-active': streamSlot.isActive}">
                     <hr v-if="index != 0" />
                     <div>
@@ -667,7 +663,8 @@
                             <div>
                                 <label for="preferences-custom-mention-sound-pattern">{{ $t("ui.preferences_custom_mention_sound_pattern") }}</label>
                                 <input type="text" id="preferences-custom-mention-sound-pattern"
-                                    v-model="customMentionSoundPattern" v-on:change="handleCustomMentionSoundPattern">
+                                       v-model="customMentionSoundPattern" v-on:change="handleCustomMentionSoundPattern"
+				       value="stream, room">
                             </div>
                             <div class='popup-notice'>{{ $t("ui.preferences_custom_mention_sound_notice") }}</div>
                         </div>
@@ -862,6 +859,8 @@
 
     <script type="module" src='scripts/polyfills.js'></script>
     <script type="module" src='scripts/main.js'></script>
+
+
 </body>
 
 </html>

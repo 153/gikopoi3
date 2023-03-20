@@ -1,7 +1,7 @@
 export default
 {
     lang_name: "English",
-    default_user_name: "Anonymous",
+    default_user_name: "Spy",
     message_colon: ": ",
     test: "test",
     ui:
@@ -176,6 +176,7 @@ export default
     },
     room:
     {
+	grave: "Graveyard",
         long_st: "Eel Track", // Eel road/way/alley
         jinja: "Shrine",
         jinja_st: "Shrine Entrance",

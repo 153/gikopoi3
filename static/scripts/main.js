@@ -83,11 +83,11 @@ function getDefaultAreaId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("areaid") || localStorage.getItem("areaId") || "gen"
+        return urlSearchParams.get("areaid") || localStorage.getItem("areaId") || "for"
     }
     catch
     {
-        return localStorage.getItem("areaId") || "gen"
+        return localStorage.getItem("areaId") || "for"
     }
 }
 
@@ -132,6 +132,8 @@ window.vueApp = new Vue({
         isLoggingIn: false,
         areaId: getDefaultAreaId(), // 'gen' or 'for'
         language: localStorage.getItem("language") || "en",
+        uiBackgroundColor: null,
+	isUiBackgroundDark: null,
 
         // canvas
         canvasContext: null,
@@ -932,7 +934,8 @@ window.vueApp = new Vue({
         },
         addUser: function (userDTO)
         {
-            const newUser = new User(characters[userDTO.characterId], userDTO.name);
+            const character = characters.hasOwnProperty(userDTO.characterId) ? characters[userDTO.characterId] : characters.giko;
+	    const newUser = new User(character, userDTO.name);
             newUser.moveImmediatelyToPosition(
                 this.currentRoom,
                 userDTO.position.x,
@@ -2997,6 +3000,11 @@ window.vueApp = new Vue({
         {
             this.passwordInputVisible = true;
         },
+	checkBackgroundColor: function ()
+	{
+	    this.uiBackgroundColor = getComputedStyle(this.$el).getPropertyValue("background-color").match(/\d+/g).slice(0, 3).map(c => parseInt(c));
+	    this.isUiBackgroundDark = Math.round(this.uiBackgroundColor.reduce((p, c) => p + c) / this.uiBackgroundColor.length) <= 127
+	},
         handleUiTheme: async function ()
         {
             this.isRedrawRequired = true

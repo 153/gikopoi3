@@ -27,7 +27,7 @@ const persistInterval = 5 * 1000
 const maxGhostRetention = 30 * 60 * 1000
 const inactivityTimeout = 30 * 60 * 1000
 const maxWaitForChessMove = 1000 * 60 * 5
-const maximumUsersPerIpPerArea = 3
+const maximumUsersPerIpPerArea = 4
 const maximumAbuseConfidenceScore = 50
 
 const appVersion = Number.parseInt(readFileSync("version").toString())
@@ -416,8 +416,14 @@ io.on("connection", function (socket: Socket)
 		}
                 
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
-                msg = msg.replace(/bon/g, "fag")
-		msg = msg.replace(/maf/g, "faggot")
+		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
+		msg = msg.replace(/moonshine/gi, "gikoshine")
+		msg = msg.replace(/covid-19/gi, "Jesus Christ")		
+		msg = msg.replace(/covid/gi, "Jesus")
+		msg = msg.replace(/vax/gi, "prayers")
+		msg = msg.replace(/vaccine/gi, "baptism")
+                msg = msg.replace(/\sbon\s/g, " fag ")
+		msg = msg.replace(/\smaf\s/g, " faggot ")
                 msg = msg.replace(/◆/g, "◇")
                 
                 msg = msg.substr(0, 500)
@@ -1508,6 +1514,10 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "giko_hungover"
 	|| characterId == "giko_islam"
 	|| characterId == "mitsugiko"
+	|| characterId == "naito_npc"
+	|| characterId == "giko_shroom"
+	|| characterId == "bif_alien"
+	|| characterId == "bif_wizard"
 	|| characterId == "blankchan"
 	) ? "png" : "svg"
 

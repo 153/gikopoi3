@@ -118,12 +118,16 @@ export const characters = {
     youkanman: new Character("youkanman", "svg", false),
     baba_shobon: new Character("baba_shobon", "svg", false),
     uzukumari: new Character("uzukumari", "svg", false),
+    mitsugiko: new Character ("mitsugiko", "png", false),    
     giko_cop: new Character ("giko_cop", "png", false),
     giko_batman: new Character ("giko_batman", "png", false),
     giko_hungover: new Character ("giko_hungover", "png", false),
     giko_islam: new Character ("giko_islam", "png", false),
-    mitsugiko: new Character ("mitsugiko", "png", false),
     shii_islam: new Character ("shii_islam", "png", false),
+    naito_npc: new Character("naito_npc", "png", false),
+    giko_shroom: new Character("giko_shroom", "png", false),
+    bif_alien: new Character("bif_alien", "png", false),
+    bif_wizard: new Character("bif_wizard", "png", false),
     blankchan: new Character ("blankchan", "png", false),
     
 

@@ -16,7 +16,7 @@ export default (req: Request, res: Response) => {
 
   // User count by rooms
   const playerListData: PlayerListResponse = rooms.reduce((acc, roomId) => {
-    const roomUsers = foundUsers.filter((u) => u.roomId === roomId);
+    const roomUsers = foundUsers.filter((u) => u.roomId === roomId && !u.disconnectionTime);
 
     acc[roomId] = {
       users: roomUsers.length,

@@ -12,6 +12,7 @@ import { readdir, readFile, writeFile } from "fs/promises";
 import { Chess } from "chess.js";
 import { Socket } from "socket.io";
 import { intersectionBy } from "lodash"
+import registerEndpoints from "./endpoints";
 
 const app: express.Application = express()
 const http = require('http').Server(app);
@@ -1752,7 +1753,7 @@ app.post("/login", async (req, res) =>
         {
             if (!response.isLoginSuccessful)
                 res.statusCode = 500
-            res.json(response)
+            res.json(response)   
         }
 
         const ip = getRealIp(req)
@@ -2267,3 +2268,22 @@ restoreState()
         log.info("Server running on http://localhost:" + port);
     })
     .catch(log.error)
+
+
+export function retrieveStreamersByRoom(roomId: string): string[] {
+  // TODO don't hardcode areaId like a retard
+  const foundRoom = roomStates["for"]?.[roomId];
+
+  if (!foundRoom) {
+    console.warn(`No roomState matching roomId: ${roomId}`);
+    return [];
+  }
+
+  const usersStreaming = foundRoom.streams
+    .map((stream) => stream.publisher?.user?.name || null)
+    .filter((x) => x !== null) as string[];
+
+  return usersStreaming;
+}
+
+registerEndpoints(app);

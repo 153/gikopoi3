@@ -2648,7 +2648,7 @@ export const rooms: { [roomId: string]: Room } = {
             spawn: { x: 6, y: 0, direction: "up", target: null },
             down: { x: 11, y: 0, direction: "up", target: { roomId: "admin_st", doorId: "admin" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 3,
     },
     bar774: {
         id: "bar774",

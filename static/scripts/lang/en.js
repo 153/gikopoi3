@@ -1,7 +1,7 @@
 export default
 {
     lang_name: "English",
-    default_user_name: "VIPPER",
+    default_user_name: "Spy",
     message_colon: ": ",
     test: "test",
     ui:

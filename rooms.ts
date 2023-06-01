@@ -427,7 +427,8 @@ export const rooms: { [roomId: string]: Room } = {
             right: { x: 9, y: 2, direction: "left", target: { roomId: "admin_st", doorId: "left" } },
             manhole: { x: 8, y: 4, direction: "up", target: { roomId: "basement", doorId: "up_left" } }
         },
-        streamSlotCount: 1,
+        streamSlotCount: 2,
+	hasChessboard: true,
     },
     takadai: {
         id: "takadai",
@@ -1157,7 +1158,7 @@ export const rooms: { [roomId: string]: Room } = {
             { name: 'donation-text', x: 2, y: 7 },
             { name: 'donation-box', x: 3, y: 5, value: 0 },
         ],
-        streamSlotCount: 0,
+        streamSlotCount: 5,
         hasChessboard: true,
     },
     cafe_st: {

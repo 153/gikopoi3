@@ -415,9 +415,16 @@ io.on("connection", function (socket: Socket)
 			changeCharacter(user, "mitsugiko", false)
 			return;
 		}
+		if (msg == "#giko")
+		{
+			changeCharacter(user, "giko", false)
+			return;
+			}
                 
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
+		msg = msg.replace(/based/gi, "gay")
+		msg = msg.replace(/cringe/gi, "epic")
 		msg = msg.replace(/moonshine/gi, "gikoshine")
 		msg = msg.replace(/covid-19/gi, "Jesus Christ")		
 		msg = msg.replace(/covid/gi, "Jesus")

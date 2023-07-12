@@ -420,7 +420,6 @@ io.on("connection", function (socket: Socket)
 			changeCharacter(user, "giko", false)
 			return;
 			}
-                
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")

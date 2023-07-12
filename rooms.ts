@@ -1308,6 +1308,7 @@ export const rooms: { [roomId: string]: Room } = {
             manhole: { x: 3, y: 5, direction: "down", target: { roomId: "basement", doorId: "down_right" } },
         },
         streamSlotCount: 5,
+	hasChessboard: true
     },
     busstop: {
         id: "busstop",

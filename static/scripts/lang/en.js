@@ -199,7 +199,7 @@ export default
         school_rouka: "School: Hallway",
         school_international: "School: Cultural Room", // International classroom
         school_pc: "School Computer Lab",
-        seashore: "Seashore",
+        seashore: "Sageru Beach",
         radio: "Radio Studio", // Radio station
         radio_room1: "Radio Studio 1", // Radio station studio 1
         radio_room2: "Radio Studio 2: BEAT GIKO", // Radio station studio 2 BEAT GIKO
@@ -222,6 +222,7 @@ export default
         admin_old: "Lost Lounge",
         river: "River",
         irori: "Fireplace",
+	gym: "Gym",
     },
     area:
     {

@@ -563,7 +563,7 @@ export const rooms: { [roomId: string]: Room } = {
     silo: {
         id: "silo",
         group: "gikopoipoi",
-        scale: 0.6,
+        scale: 0.72,
         size: { x: 12, y: 12 },
         originCoordinates: { x: 740-345, y: 1310-393 },
         spawnPoint: "spawn",
@@ -2767,7 +2767,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 7, y: 0, direction: "up", target: { roomId: "bar_st", doorId: "up_right" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 3,
     },
     school_rouka: {
         id: "school_rouka",
@@ -3380,9 +3380,9 @@ export const rooms: { [roomId: string]: Room } = {
     gym: {
         id: "gym",
 	group: "gikopoi",
-	scale: 0.6,
+	scale: 0.68,
 	size: {x: 12, y: 18},
-	originCoordinates: {x: 40, y: 590 },
+	originCoordinates: {x: 10, y: 410 },
 	spawnPoint: "bottom",
 	backgroundImageUrl: "rooms/gym/gym2.png",
 	objects: [],
@@ -3407,23 +3407,38 @@ export const rooms: { [roomId: string]: Room } = {
                 {x: 3, y: 12},
                 {x: 4, y: 12},
                 {x: 5, y: 12},
-                {x: 5, y: 13},
                 {x: 6, y: 14},
-                {x: 7, y: 14},
+		{x: 7, y: 13},
+                {x: 7, y: 14}, // arch
                 {x: 6, y: 14},
                 {x: 6, y: 14},
                 {x: 6, y: 14},
-                {x: 8, y: 14},
-                {x: 8, y: 15},
+                {x: 7, y: 15},
                 {x: 8, y: 16},
+                {x: 7, y: 16},
                 {x: 8, y: 17},
                 {x: 9, y: 17},
                 {x: 10, y: 17},
-                {x: 11, y: 17},
+                {x: 11, y: 17}, // arch additions
+		{x: 6, y: 12}, // door
+		{x: 7, y: 12},
+		{x: 7, y: 13},
+		{x: 1, y: 11}, // equip
+		{x: 2, y: 11},
+		{x: 3, y: 11},
+		{x: 4, y: 11},
+		{x: 5, y: 11},
+		{x: 9, y: 16}, // wall
+		{x: 10, y: 16},
+		{x: 11, y: 16},
+		
+		
      ],
      forbiddenMovements: [],
      doors: {
        bottom: { x: 0, y: 0, direction: "up", target: { roomId: "grave", doorId: "spawn"} },
+       moon: { x: 6, y: 13, direction: "up", target: {roomId: "gym", doorId: "moon"}},
+       warp: { x: 10, y: 15, direction: "up", target: {roomId: "gym", doorId: "moon"}},
      },
      streamSlotCount: 3,
      },
@@ -3934,7 +3949,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             door: { x: 9, y: 0, direction: "up", target: { roomId: "bar_giko_square", doorId: "office" } },
         },
-        streamSlotCount: 5,
+        streamSlotCount: 8,
     },
 };
 
@@ -4049,7 +4064,8 @@ const summerKonbini: Room = {
     streamSlotCount: 0,
 }
 
-rooms["konbini"] = isSummer ? summerKonbini : regularKonbini
+// rooms["konbini"] = isSummer ? summerKonbini : regularKonbini
+rooms["konbini"] = regularKonbini
 
 rooms["irori"] = {
     id: "irori",

@@ -423,8 +423,6 @@ io.on("connection", function (socket: Socket)
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")
-		msg = msg.replace(/vax/gi, "prayers")
-		msg = msg.replace(/vaccine/gi, "baptism")
                 msg = msg.replace(/\sbon\s/g, " fag ")
 		msg = msg.replace(/\smaf\s/g, " faggot ")
                 msg = msg.replace(/◆/g, "◇")
@@ -1816,8 +1814,8 @@ app.post("/login", async (req, res) =>
             }
         }
 
-        if (userName.length > 20)
-            userName = userName.substr(0, 20)
+        if (userName.length > 25)
+            userName = userName.substr(0, 25)
 
         const n = userName.indexOf("#");
         let processedUserName = (n >= 0 ? userName.substr(0, n) : userName)

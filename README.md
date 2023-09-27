@@ -1,10 +1,12 @@
-https://gikopoipoi.net
+https://play.gikopoi.com
+
+Like [iccanobif/gikopoi2](https://github.com/iccanobif/gikopoi2) but with bees
+and misc hacks. 
 
 to start server, run:
 
-``$ yarn``
-``$ yarn build``
-``$ yarn start``
+``$ ./compile.sh``
+``$ ./run.sh``
 
 for local debugging:
 ``$ yarn dev``

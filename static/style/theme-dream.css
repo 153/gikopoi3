@@ -1,0 +1,198 @@
+/* Thank you again to Gikopoi.hu dev! */
+#vue-app.theme-dream {
+    background-color: #230B11;
+/*    background-image: url("/images/Yn-DoorRoomBackground.png"); */
+    background-image: url("https://tcrf.net/images/4/42/Yn-DoorRoomBackground.png");
+    background-repeat: repeat;
+    color: #F8D2E5;
+    scrollbar-color: #F8D2E5 #230B11;
+    font-family: Monospace;
+}
+
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.theme-dream canvas {
+    -webkit-filter: blur(1px) grayscale(0.5) saturate(1.8) hue-rotate(200deg)  brightness(95%) sepia(0.2);
+    filter: blur(1px) grayscale(0.5) saturate(1.8) hue-rotate(200deg)  brightness(95%)  sepia(0.2);
+}
+
+.theme-dream h1 a {
+    color: #6F5871;
+}
+/*
+.theme-dream .message a:link, a:visited, p.intro a.email span.name {
+	color: #F8D2E5;
+  font-weight: bold;
+}*/
+.theme-dream .message a {
+	color: #F8D2E5;
+  font-weight: bold;
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.theme-dream .message-author {
+    padding-right: 2px;
+    color: #F8D2E5;
+    font-weight: bold;
+}
+
+.theme-dream .log-dividers .message {
+    border-color: #666666;
+}
+
+.theme-dream .log-dividers .message:nth-child(even) {
+    background-color: #ccee7b;
+}
+
+.theme-dream input[type="text"],
+.theme-dream textarea,
+.theme-dream #chatLog {
+    background: linear-gradient(75deg, #230B11, #230011, #6F5871, #230011);
+        color: #F8D2E5;
+	background-size: 400% 400%;
+	animation: AnimationName 10s linear infinite;
+	-webkit-animation: AnimationName 10s linear infinite;
+  -moz-animation: AnimationName 10s linear infinite;
+  -o-animation: AnimationName 10s linear infinite;
+  border: 2px solid #d9ad7c;
+    border: 1px solid #502D33;
+    border-radius: 8px;
+    box-shadow: 2px 2px;
+    padding: 10px;
+}
+
+
+.theme-dream #login-page button,
+.theme-dream #toolbar button,
+.theme-dream .stream-buttons button,
+.theme-dream .slot-wrapper button,
+.theme-dream .popup button {
+       background-color: #6F5871;
+    color: #F8D2E5;
+    border: 1px solid #502D33;
+    border-radius: 8px;
+    box-shadow: 2px 2px;
+    margin: 5px;
+    padding: 10px;
+      appearance: button;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  font-size: 12pt;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 20px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.theme-dream button:focus {
+  text-decoration: none;
+}
+
+.theme-dream button:hover {
+  text-decoration: none;
+}
+
+.theme-dream button:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.theme-dream button:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+
+.theme-dream .stream-buttons button.red-button,
+.theme-dream .slot-wrapper button.red-button,
+.theme-dream .slot-wrapper button.slot-button-highlight
+{
+    background-color: #754848;
+}
+
+.theme-dream .popup {
+    background-color: #6F5871;
+    color: #F8D2E5;
+    border-radius: 8px;
+}
+
+.theme-dream .popup .popup-titlebar {
+    background-color: #6F5871;
+    color: #F8D2E5;
+}
+
+.theme-dream .popup th {
+    background-color: #6F5871;
+    color: #F8D2E5;
+    font-weight: bold;
+}
+
+.theme-dream .popup-selectable-table tr:hover td {
+    background-color: #A28689;
+    color: #230B11;
+    transform: scale(1, -1);
+}
+
+.theme-dream .popup-selectable-table tr.popup-row-is-selected td {
+    color: #364041;
+    background-color: #6F5871;
+    font-weight: bold;
+    transform: scale(1, -1);
+}
+
+.theme-dream .popup-row-is-selected
+{
+    color: #F8D2E5;
+    font-weight: bold;
+}
+
+.theme-dream .arrow-button-left
+{
+    background-image: url("../north_west_black_24dp.shaddox.svg");   
+}
+.theme-dream .arrow-button-up
+{
+    background-image: url("../north_east_black_24dp.shaddox.svg");
+}
+.theme-dream .arrow-button-down
+{
+    background-image: url("../south_west_black_24dp.shaddox.svg");
+}
+.theme-dream .arrow-button-right
+{
+    background-image: url("../south_east_black_24dp.shaddox.svg");
+}
+.theme-dream hr {
+	border-color: #d4ac6e;
+  width: 95%;
+}

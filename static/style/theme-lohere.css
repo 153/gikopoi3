@@ -1,0 +1,93 @@
+/* Thank you gikopoi.hu anon */
+
+#vue-app.theme-lohere {
+    background-color: #bada55;
+    color: #3640410;
+    scrollbar-color: #1a242e #bada55;
+}
+
+.theme-lohere h1 a {
+    color: #0f0c5d;
+}
+
+.theme-lohere .message a {
+    color: #0f0c5d;
+}
+
+.theme-lohere .message-author {
+    padding-right: 2px;
+    color: #117743;
+}
+
+.theme-lohere .log-dividers .message {
+    border-color: #666666;
+}
+
+.theme-lohere .log-dividers .message:nth-child(even) {
+    background-color: #ccee7b;
+}
+
+.theme-lohere input[type="text"],
+.theme-lohere textarea,
+.theme-lohere #chatLog,
+.theme-lohere #login-page button,
+.theme-lohere #toolbar button,
+.theme-lohere .stream-buttons button,
+.theme-lohere .slot-wrapper button,
+.theme-lohere .popup button {
+    background-color: #ccee7b;
+    color: #364041;
+    border: 1px solid #bada55;
+}
+
+.theme-lohere ::-webkit-scrollbar {
+    background-color: #28282b;
+}
+
+.theme-lohere ::-webkit-scrollbar-track {
+    background-color: #28282b;
+}
+
+.theme-lohere ::-webkit-scrollbar-thumb {
+    background-color: #686868;
+}
+
+.theme-lohere ::-webkit-scrollbar-corner {
+    background-color: #28282b;
+}
+
+.theme-lohere .stream-buttons button.red-button,
+.theme-lohere .slot-wrapper button.red-button,
+.theme-lohere .slot-wrapper button.slot-button-highlight
+{
+    background-color: #754848;
+}
+
+.theme-lohere .popup {
+    background-color: #bada55;
+    color: #364041;
+}
+
+.theme-lohere .popup .popup-titlebar {
+    background-color: #bada55;
+    color: #364041;
+}
+
+.theme-lohere .popup th {
+    background-color: #bada55;
+    color: #364041;
+}
+
+.theme-lohere .popup-selectable-table tr:hover td {
+    background-color: #bada55;
+}
+
+.theme-lohere .popup-selectable-table tr.popup-row-is-selected td {
+    color: #364041;
+    background-color: #789922;
+}
+
+.theme-lohere .popup-row-is-selected
+{
+    color: black;
+}

@@ -1,5 +1,3 @@
-/* Thank you gikopoi.hu anon */
-
 #vue-app.theme-lohere {
     background-color: #bada55;
     color: #3640410;
@@ -33,11 +31,10 @@
 .theme-lohere #login-page button,
 .theme-lohere #toolbar button,
 .theme-lohere .stream-buttons button,
-.theme-lohere .slot-wrapper button,
 .theme-lohere .popup button {
     background-color: #ccee7b;
     color: #364041;
-    border: 1px solid #bada55;
+    border: 2px outset #bada55;
 }
 
 .theme-lohere ::-webkit-scrollbar {
@@ -56,11 +53,19 @@
     background-color: #28282b;
 }
 
+.theme-lohere .slot-wrapper button {
+	background-color: #4d4df9;
+	color:whitesmoke;
+}
+    
 .theme-lohere .stream-buttons button.red-button,
 .theme-lohere .slot-wrapper button.red-button,
 .theme-lohere .slot-wrapper button.slot-button-highlight
 {
-    background-color: #754848;
+    background-color: #ba5a55;
+    color: white;
+    font-weight:bold;
+    border: 3px outset black;
 }
 
 .theme-lohere .popup {

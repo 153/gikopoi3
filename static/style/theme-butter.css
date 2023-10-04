@@ -1,0 +1,160 @@
+#vue-app.theme-butter {
+    background-color: #ffffec; /* Beige */
+    color: #202012; /* Dark Gray */
+    font-family: inherit;
+    scrollbar-color: #ffffec #999f4f; /* Light Gray Beige */
+    scrollbar-width: 20x;
+}
+
+.theme-butter h1 a {
+    color: #a0522d; /* Sienna */
+    font-variant: small-caps;
+}
+
+.theme-butter .message a {
+    color: #a0522d; /* Sienna */
+}
+
+.theme-butter .message-author {
+    padding-right: 2px;
+    font-variant: small-caps;
+    /*text-shadow: -1px -1px 0 #000;*/
+    font-weight: bold;
+}
+
+.theme-butter .log-dividers .message {
+    border-color: #555; /* Gray */
+}
+
+.theme-butter .log-dividers .message:nth-child(even) {
+    background-color: #fffaf0; /* Floral White */
+}
+
+.theme-butter textarea::selection {
+  background: #8882ca;
+}
+
+.theme-butter ::selection {
+  background: #ecf3a1;
+}
+
+.theme-butter input[type="text"],
+.theme-butter textarea {
+    background-color: #ecfffe; /* Floral White */
+    scrollbar-color: #ecfffe #8882ca; /* Light Gray Beige */
+    scrollbar-width: 20x;
+    color: #202012; /* Dark Gray */
+    border: 2px inset #8882ca; /* Beige */}
+
+.theme-butter #chatLog {
+    background-color: #ffffec; /* Floral White */
+    color: #202012; /* Dark Gray */
+    scrollbar-color: #ffffec #999f4e; /* Light Gray Beige */
+    scrollbar-width: 20x;
+    border: 3px inset #DBDB80; /* Beige */
+}
+
+.theme-butter #login-page button,
+.theme-butter #toolbar button,
+.theme-butter .stream-buttons button,
+.theme-butter .slot-wrapper button,
+.theme-butter .popup button
+{ margin: 5px;
+  padding: 10px;
+  appearance: button;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 2px 2px 0 0,#000 2px 2px 0 1px;
+  box-sizing: border-box;
+  font-size: 12pt;
+    color: #202012;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-color: #f6f6df; 
+  font-variant: small-caps;
+}
+
+.theme-butter ::-webkit-scrollbar {
+    background-color: #ffffec; /* Dark Gray */
+}
+
+.theme-butter ::-webkit-scrollbar-track {
+    background-color: #999f4f; /* Dark Gray */
+}
+
+.theme-butter ::-webkit-scrollbar-thumb {
+    background-color: #666; /* Gray */
+}
+
+.theme-butter .popup-header {
+	font-variant: small-caps;
+}
+
+.theme-butter ::-webkit-scrollbar-corner {
+    background-color: #333; /* Dark Gray */
+}
+
+.theme-butter .stream-buttons button.red-button,
+.theme-butter .slot-wrapper button.red-button,
+.theme-butter .slot-wrapper button.slot-button-highlight
+{
+    background-color: #ecf3a1; /* Chocolate */
+    color: #333; /* White */
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+.theme-butter .popup {
+    background-color: #ffffec; /* Beige */
+    color: #202012; /* Dark Gray */
+      border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 2px 2px 0 0,#000 2px 2px 0 1px;
+  box-sizing: border-box;
+}
+
+.theme-butter .popup .popup-titlebar {
+    background-color: #f5f5dc; /* Beige */
+    color: #333; /* Dark Gray */
+    font-weight: bold;
+    padding: 5px;
+    font-variant: small-caps;
+}
+
+.theme-butter .popup th {
+    background-color: #f5f5dc; /* Beige */
+    color: #333; /* Dark Gray */
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+.theme-butter .popup-selectable-table tr:hover td {
+    background-color: #f5f5dc; /* Beige */
+}
+
+.theme-butter .popup-selectable-table tr.popup-row-is-selected td {
+    color: #333; /* Dark Gray */
+    background-color: #999f4f;
+       border: 1px double black;
+}
+
+.theme-butter .popup-row-is-selected
+{
+    color: black;
+}
+.theme-butter button:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.theme-butter button:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}

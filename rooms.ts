@@ -4114,7 +4114,7 @@ rooms["irori"] = {
     doors: {
         door: { x: 0, y: 10, direction: "down", target: { roomId: "river", doorId: "left" } },
     },
-    streamSlotCount: 5,
+    streamSlotCount: 8,
 }
 
 export function calculateCurrentRiverType(): number

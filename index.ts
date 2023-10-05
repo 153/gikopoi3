@@ -445,7 +445,7 @@ io.on("connection", function (socket: Socket)
 			   return;
 	        }}
 
-                if (msgArray[0] == "#shout" || msgArray[0] == "#kialt") {		               
+                if (msgArray[0] == "#shout" || msgArray[0] == "#spy") {		               
 	                    if (20 < 5){
                             //socket.emit("server-system-message", "failedwhisper");
                             //log.info("Not enough mp, currently: "+user.manaPoints.toString());

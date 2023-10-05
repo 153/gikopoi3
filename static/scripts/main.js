@@ -752,7 +752,7 @@ window.vueApp = new Vue({
             this.socket.on("server-system-message", (messageCode, extra) =>
             {
                 let message = i18n.t("msg." + messageCode);
-                if (messageCode == "flood_warning")
+                if (messageCode == "flood_warning" ||  messageCode == "normalwhisper")
                     message += extra;
                 
                 this.writeMessageToLog("SYSTEM", message, null)

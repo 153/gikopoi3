@@ -305,11 +305,14 @@ io.on("connection", function (socket: Socket)
         }
     })
 
-    socket.on("user-msg", function (msg: string)
+    socket.on("user-msg", function (msg: string, param?: string)
     {
         try
         {
             setUserAsActive(user)
+	        if (param == undefined) param = user.id;
+	       const msgArray = msg.split(" ");
+       	         const msgParam = param.toString();
 
             // Don't do flood control on henshin, after all it's not more spammy or affects performance more than user-move
             if (msg == "#henshin")
@@ -420,6 +423,62 @@ io.on("connection", function (socket: Socket)
 			changeCharacter(user, "giko", false)
 			return;
 			}
+
+                if (msgArray[0] == "#whisper" || msgArray[0] == "#suttog")
+                {
+		   if (10 < 1){
+                   //socket.emit("server-system-message", "failedwhisper");
+		   //log.info("Not enough mp, currently: "+user.manaPoints.toString());
+//		   userRoomEmit(user, "server-failedspell", user.id);
+		   return;
+		   }
+		else {
+		   const recipSocketId = msgParam && getUser(msgParam) && getUser(msgParam).socketId
+ 	 	          if (recipSocketId) {
+			   msg = msgArray.slice(1).join(' ');
+			   io.to(recipSocketId).emit("server-system-message", "normalwhisper", msg);
+//			   user.manaPoints-=1;
+//			   socket.emit("pushmana", user.manaPoints);
+			   return;
+	   		   }
+			   else socket.emit("server-system-message", "failedwhisper");
+			   return;
+	        }}
+
+                if (msgArray[0] == "#shout" || msgArray[0] == "#kialt") {		               
+	                    if (20 < 5){
+                            //socket.emit("server-system-message", "failedwhisper");
+                            //log.info("Not enough mp, currently: "+user.manaPoints.toString());
+//                            userRoomEmit(user, "server-failedspell", user.id);
+                            return;
+                        }
+	                else {
+                        msg = msgArray.slice(1).join(' ');
+//			user.manaPoints-=5;
+//			socket.emit("pushmana", user.manaPoints);
+			const allConnectedUsers = getAllUsers()
+		        for (let user in allConnectedUsers) {
+                            const recipSocketId = allConnectedUsers[user] && getUser(allConnectedUsers[user].id) && getUser(allConnectedUsers[user].id).socketId;
+			    if (recipSocketId) io.to(recipSocketId).emit("server-system-message", "normalwhisper", msg);
+		                     }
+			return;
+                   }}
+
+                if (msg.match("#d(4|6|8|10|12|20|100)"))
+		                {
+			       // No more than one die roll every 10 seconds
+	                        if (Date.now() - user.lastDieRollDate < 10000)
+				                    {
+	                            socket.emit("server-system-message", "flood_warning", msg)
+				                            return;
+		                        }
+                    user.lastDieRollDate = Date.now()
+		                        const sideCount = Number.parseInt(msg.substring(2))
+                    const result = Math.floor(Math.random() * sideCount) + 1
+		                        userRoomEmit(user, "server-roll-die", user.id, sideCount, result);
+                    return;
+		                    }
+				    
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")

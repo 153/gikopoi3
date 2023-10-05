@@ -37,6 +37,8 @@ export class Player
     public socketId: string | null = null;
     public blockedIps: string[] = [];
     public lastMessageDates: number[] = [];
+    public manaPoints: number = 0;
+    public lastDieRollDate: number = 0;
     public isAlternateCharacter: boolean = false;
 
     constructor(options: { name?: string, characterId: string, areaId: Area, roomId: string, ip: string })

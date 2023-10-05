@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "irori"
+        return urlSearchParams.get("roomid") || "cafe_st"
     }
     catch
     {
-        return "irori"
+        return "cafe_st"
     }
 }
 
@@ -184,7 +184,7 @@ window.vueApp = new Vue({
         isMessageSoundEnabled: localStorage.getItem("isMessageSoundEnabled") != "false",
         isLoginSoundEnabled: localStorage.getItem("isLoginSoundEnabled") != "false",
         isNameMentionSoundEnabled: localStorage.getItem("isNameMentionSoundEnabled") == "true",
-        customMentionSoundPattern: localStorage.getItem("customMentionSoundPattern") || "",
+        customMentionSoundPattern: localStorage.getItem("customMentionSoundPattern") || "@here,stream,@room,@all",
         isCoinSoundEnabled: localStorage.getItem("isCoinSoundEnabled") != "false",
         mentionSoundFunction: null,
         isStreamAutoResumeEnabled: localStorage.getItem("isStreamAutoResumeEnabled") != "false",

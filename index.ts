@@ -1056,6 +1056,7 @@ io.on("connection", function (socket: Socket)
 
     socket.on("user-block", function ( userId: string )
     {
+    return;
         try
         {
             log.info("user-block", user.id, userId)

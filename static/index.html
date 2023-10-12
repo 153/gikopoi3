@@ -465,7 +465,7 @@
                                     <button v-if="ignoredUserIds.has(u.id)" v-on:click="unignoreUser(u.id)">{{ $t("ui.user_list_popup_unignore") }}</button>
                                     <button v-if="!ignoredUserIds.has(u.id)" v-on:click="ignoreUser(u.id)">{{ $t("ui.user_list_popup_ignore") }}</button>
 
-                                    <button v-on:click="blockUser(u.id)">{{ $t("ui.user_list_popup_block") }}</button>
+<!--                                    <button v-on:click="blockUser(u.id)">{{ $t("ui.user_list_popup_block") }}</button> -->
                                 </td>
                             </tr>
                         </tbody>

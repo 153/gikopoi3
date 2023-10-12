@@ -160,5 +160,6 @@ export function setUserAsActive(user: Player)
 
 export function isUserBlocking(blocker: Player, blocked: Player)
 {
+    return;
     return blocker.blockedIps.some(blockedIp => blocked.ips.some(ip => ip == blockedIp))
 }

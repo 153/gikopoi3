@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "cafe_st"
+        return urlSearchParams.get("roomid") || "radio_room3"
     }
     catch
     {
-        return "cafe_st"
+        return "radio_room3"
     }
 }
 
@@ -2888,6 +2888,7 @@ window.vueApp = new Vue({
         },
         blockUser: function(userId)
         {
+	    return;
             this.confirm(i18n.t("msg.are_you_sure_you_want_to_block"), () =>
             {
                 this.socket.emit("user-block", userId);

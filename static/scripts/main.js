@@ -3275,6 +3275,16 @@ window.vueApp = new Vue({
             panKnobElement.value = 0;
             this.inboundAudioProcessors[streamSlotID].setPan(0);
         },
+	mute()
+	{
+	    if (this.outboundAudioProcessor)
+		this.outboundAudioProcessor.mute()
+	},
+	unmute()
+	{
+	    if (this.outboundAudioProcessor)
+		this.outboundAudioProcessor.unmute()
+	},
         isStreaming: function()
         {
             // Not correct, because streamSlotIdInWhichIWantToStream is different from null also when

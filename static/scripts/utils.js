@@ -111,6 +111,7 @@ export class AudioProcessor
     {
         this.stream = stream
         this.isBoostEnabled = false
+	this.isMute = false
 
         this.vuMeterCallback = vuMeterCallback
 
@@ -212,6 +213,18 @@ export class AudioProcessor
             : volume
     }
 
+    mute()
+    {
+	this.gain.gain.value = 0
+	this.setVolume(0)
+	this.isMute = true
+    }
+    unmute()
+    {
+	this.gain.gain.value = this.volume
+	this.isMute = false
+    }
+    
     setPan(value)
     {
         // Check that this is actually a pan node and not a dummy gain node (see comments in constructor)

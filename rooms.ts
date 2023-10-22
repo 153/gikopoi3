@@ -365,8 +365,9 @@ export const rooms: { [roomId: string]: Room } = {
             school: { x: 0, y: 5, direction: "right", target: { roomId: "school_rouka", doorId: "right_top" } },
             up: { x: 3, y: 7, direction: "down", target: { roomId: "bar_st", doorId: "down" } },
             right: { x: 5, y: 2, direction: "left", target: { roomId: "cafe_st", doorId: "left" } },
-            manhole: { x: 4, y: 1, direction: "down", target: { roomId: "basement", doorId: "down_left" } }
-        },
+            manhole: { x: 4, y: 1, direction: "down", target: { roomId: "basement", doorId: "down_left" } },
+	    hell: { x: 5, y: 0, direction: "down", target: { roomId: "hell", doorId: "spawn"}
+        }, },
         streamSlotCount: 0,
     },
     bar_st: {
@@ -1944,7 +1945,7 @@ export const rooms: { [roomId: string]: Room } = {
             down: { x: 10, y: 0, direction: "up", target: { roomId: "radio", doorId: "door3" } },
             stage_door: { x: 0, y: 1, direction: "right", target: { roomId: "radio_backstage", doorId: "top" } },
         },
-        streamSlotCount: 4,
+        streamSlotCount: 7,
     },
     radio: {
         id: "radio",
@@ -3951,7 +3952,40 @@ export const rooms: { [roomId: string]: Room } = {
         },
         streamSlotCount: 8,
     },
-};
+
+    hell: {
+        id: "hell",
+        group: "gikopoi",
+        scale: 0.39,
+        size: { x: 6, y: 8 },
+        originCoordinates: { x: 11, y: 290},
+        spawnPoint: "school",
+        backgroundImageUrl: "rooms/hell/giko-hell.png",
+	backgroundColor: "#990600",
+        objects: [],
+        sit: [],
+        blocked: [
+            { x: 0, y: 3 },
+            { x: 0, y: 4 },
+            { x: 0, y: 4 },
+            { x: 0, y: 6 },
+            { x: 0, y: 7 },
+        ],
+        forbiddenMovements: [],
+        worldSpawns: [
+            { x: 3, y: 4, direction: "down", target: null }
+        ],
+        doors: {
+            left: { x: 0, y: 2, direction: "right", target: { roomId: "busstop", doorId: "right" } },
+            school: { x: 0, y: 5, direction: "right", target: { roomId: "school_rouka", doorId: "right_top" } },
+            up: { x: 3, y: 7, direction: "down", target: { roomId: "bar_st", doorId: "down" } },
+            right: { x: 5, y: 2, direction: "left", target: { roomId: "cafe_st", doorId: "left" } },
+            manhole: { x: 4, y: 1, direction: "down", target: { roomId: "basement", doorId: "down_left" } },
+	    spawn: { x: 3, y: 4, direction: "down", target: null},
+        },
+        streamSlotCount: 0,
+    },
+    };
 
 const regularKonbini: Room = {
     id: "konbini",
@@ -4116,6 +4150,8 @@ rooms["irori"] = {
     },
     streamSlotCount: 8,
 }
+    
+
 
 export function calculateCurrentRiverType(): number
 {

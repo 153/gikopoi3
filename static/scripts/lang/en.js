@@ -227,6 +227,7 @@ export default
         river: "River",
         irori: "Fireplace",
 	gym: "Gym",
+	hell: "Hell"
     },
     area:
     {

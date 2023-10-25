@@ -3983,7 +3983,7 @@ export const rooms: { [roomId: string]: Room } = {
             manhole: { x: 4, y: 1, direction: "down", target: { roomId: "basement", doorId: "down_left" } },
 	    spawn: { x: 3, y: 4, direction: "down", target: null},
         },
-        streamSlotCount: 0,
+        streamSlotCount: 3,
     },
     };
 

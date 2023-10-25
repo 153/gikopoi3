@@ -174,6 +174,8 @@ export default
         chess_timeout_reached: "The chess game is over: timeout reached.",
         chess_win: "The chess game is over: the winner is @USER_NAME@.",
         chess_quit: "The chess game is over: @USER_NAME@ quit the game.",
+
+	roll_die:  "{{userName}} rolled {{diceNum}} × d{{sideCount}} and got {{result}}!",
         
         are_you_sure_you_want_to_clear_log: "Are you sure you want to clear the chat log?",
         chat_log_cleared: "The chat log has been cleared.",

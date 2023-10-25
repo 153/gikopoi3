@@ -464,21 +464,46 @@ io.on("connection", function (socket: Socket)
 			return;
                    }}
 
-                if (msg.match("#d(4|6|8|10|12|20|100)"))
-		                {
-			       // No more than one die roll every 10 seconds
-	                        if (Date.now() - user.lastDieRollDate < 10000)
-				                    {
-	                            socket.emit("server-system-message", "flood_warning", msg)
-				                            return;
-		                        }
-                    user.lastDieRollDate = Date.now()
-		                        const sideCount = Number.parseInt(msg.substring(2))
-                    const result = Math.floor(Math.random() * sideCount) + 1
-		                        userRoomEmit(user, "server-roll-die", user.id, sideCount, result);
-                    return;
-		                    }
-				    
+		   // start hungary dice hack
+		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
+		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101 && Number.parseInt(diceMsg[1]) < 101)
+		   {
+		   if (Date.now() - user.lastDieRollDate < 5000)
+		   {
+		   socket.emit("server-system-message", "flood_warning", msg)
+		   return;
+		   }
+		   user.lastDieRollDate = Date.now()
+		   let diceNum: number = 1;
+		   let sideCount: number = Number.parseInt(diceMsg[2]);
+		   let result: number = 0;
+		   let stringResult = "";
+		   let sideCountString = diceMsg[2];
+		   let results = [];
+		   if(Number.isInteger(Number.parseInt(diceMsg[1])))
+		   {
+		   diceNum = Number.parseInt(diceMsg[1]);
+		   sideCount = Number.parseInt(diceMsg[2]);
+		   }
+		   for (let i = 0; i < diceNum; i++) {
+		   let thisres = Math.floor(Math.random() * sideCount) + 1;
+		   result += thisres;
+		   results.push(thisres);
+		   }
+		   if (diceMsg[4])
+		   {
+		   if(diceMsg[4]=="+") result+= Number.parseInt(diceMsg[5]);
+		   else if (diceMsg[4]=="-") result -= Number.parseInt(diceMsg[5]);
+		   sideCountString+=" ("+diceMsg[3]+")";
+		   }
+		   stringResult = result.toString();
+		   if(diceMsg[0].match("D")) stringResult += " [" + results.join(",") + "]";
+		   userRoomEmit(user, "server-roll-die", user.id, sideCountString, stringResult, diceNum);
+		   return;
+		   }
+
+		   // end hungary dice hack
+		   
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")

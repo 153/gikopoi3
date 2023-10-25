@@ -466,6 +466,7 @@ io.on("connection", function (socket: Socket)
 
 		   // start hungary dice hack
 		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
+		   if (diceMsg) { console.log(diceMsg) }
 		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101 && Number.parseInt(diceMsg[1]) < 101)
 		   {
 		   if (Date.now() - user.lastDieRollDate < 5000)
@@ -492,13 +493,14 @@ io.on("connection", function (socket: Socket)
 		   }
 		   if (diceMsg[4])
 		   {
-		   if(diceMsg[4]=="+") result+= Number.parseInt(diceMsg[5]);
+		   if(diceMsg[4]=="+") result += Number.parseInt(diceMsg[5]);
 		   else if (diceMsg[4]=="-") result -= Number.parseInt(diceMsg[5]);
 		   sideCountString+=" ("+diceMsg[3]+")";
 		   }
 		   stringResult = result.toString();
 		   if(diceMsg[0].match("D")) stringResult += " [" + results.join(",") + "]";
-		   userRoomEmit(user, "server-roll-die", user.id, sideCountString, stringResult, diceNum);
+		   console.log(stringResult);
+		   userRoomEmit(user, user.areaId, user.roomId, "server-roll-die", user.id, sideCountString, stringResult, diceNum);
 		   return;
 		   }
 

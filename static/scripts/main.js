@@ -905,9 +905,10 @@ window.vueApp = new Vue({
                 this.isRedrawRequired = true
             })
 
-	    this.socket.on("server-roll-die", (userId, sideCount, diceNum) => {
-		const userName = this.users[userId] ? this.users[userId].name : "N/A"
-		this.writeMessageToLog("SYSTEM", this.$t("msg.roll_die", {userName: userName, sideCount: sideCount, result: result, diceNum: diceNum}), null)
+	    this.socket.on("server-roll-die", (userId, sideCount, result, diceNum) => {
+		console.log(userId, sideCount, result, diceNum);
+		const userName = this.toDisplayName(this.users[userId] ? this.users[userId].name : "N/A")
+		this.writeMessageToLog("SYSTEM", i18n.t("msg.roll_die").replace("@USER_NAME@", userName).replace("@DICE_NUM@", diceNum).replace("@DICE_SIDE@", sideCount).replace("@DICE_RESULT@", result), null)
 	    })
 
             this.socket.on("server-update-chessboard", (state) => {

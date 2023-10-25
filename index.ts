@@ -466,8 +466,8 @@ io.on("connection", function (socket: Socket)
 
 		   // start hungary dice hack
 		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
-		   if (diceMsg) { console.log(diceMsg) }
-		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101 && Number.parseInt(diceMsg[1]) < 101)
+		   console.log(diceMsg)
+		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101)
 		   {
 		   if (Date.now() - user.lastDieRollDate < 5000)
 		   {
@@ -481,11 +481,14 @@ io.on("connection", function (socket: Socket)
 		   let stringResult = "";
 		   let sideCountString = diceMsg[2];
 		   let results = [];
+		   console.log(diceMsg)
 		   if(Number.isInteger(Number.parseInt(diceMsg[1])))
 		   {
 		   diceNum = Number.parseInt(diceMsg[1]);
 		   sideCount = Number.parseInt(diceMsg[2]);
 		   }
+		   if (diceNum > 100 || sideCount > 100)  return;
+		   console.log(diceMsg)
 		   for (let i = 0; i < diceNum; i++) {
 		   let thisres = Math.floor(Math.random() * sideCount) + 1;
 		   result += thisres;

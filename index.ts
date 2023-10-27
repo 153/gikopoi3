@@ -418,6 +418,7 @@ io.on("connection", function (socket: Socket)
 			changeCharacter(user, "mitsugiko", false)
 			return;
 		}
+		
 		if (msg == "#giko")
 		{
 			changeCharacter(user, "giko", false)
@@ -453,7 +454,7 @@ io.on("connection", function (socket: Socket)
                             return;
                         }
 	                else {
-                        msg = msgArray.slice(1).join(' ');
+                        msg = msgArray.slice(1).join(' ').substr(0, 500);
 //			user.manaPoints-=5;
 //			socket.emit("pushmana", user.manaPoints);
 			const allConnectedUsers = getAllUsers()
@@ -464,12 +465,18 @@ io.on("connection", function (socket: Socket)
 			return;
                    }}
 
+		   // start roleplay
+		if (msgArray[0] == "#me" || msgArray[0] == "/me") {
+		    roomEmit(user.areaId, user.roomId, "server-roleplay", user.id, msgArray.slice(1).join(' '));
+//		       socket.emit("server-roleplay", user.id, msgArray.slice(1).join(' '));
+		      return;
+		    }
+
 		   // start hungary dice hack
 		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
-		   console.log(diceMsg)
 		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101)
 		   {
-		   if (Date.now() - user.lastDieRollDate < 5000)
+		   if (Date.now() - user.lastDieRollDate < 1000)
 		   {
 		   socket.emit("server-system-message", "flood_warning", msg)
 		   return;
@@ -481,14 +488,12 @@ io.on("connection", function (socket: Socket)
 		   let stringResult = "";
 		   let sideCountString = diceMsg[2];
 		   let results = [];
-		   console.log(diceMsg)
 		   if(Number.isInteger(Number.parseInt(diceMsg[1])))
 		   {
 		   diceNum = Number.parseInt(diceMsg[1]);
 		   sideCount = Number.parseInt(diceMsg[2]);
 		   }
 		   if (diceNum > 100 || sideCount > 100)  return;
-		   console.log(diceMsg)
 		   for (let i = 0; i < diceNum; i++) {
 		   let thisres = Math.floor(Math.random() * sideCount) + 1;
 		   result += thisres;

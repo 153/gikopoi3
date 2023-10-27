@@ -905,6 +905,13 @@ window.vueApp = new Vue({
                 this.isRedrawRequired = true
             })
 
+	    this.socket.on("server-roleplay", (userId, action) => {
+		console.log(userId, action);
+		const userName = this.toDisplayName(this.users[userId] ? this.users[userId].name : "N/A")		
+		this.writeMessageToLog("* " + userName + " " + action, null, null);
+		
+	    })
+
 	    this.socket.on("server-roll-die", (userId, sideCount, result, diceNum) => {
 		console.log(userId, sideCount, result, diceNum);
 		const userName = this.toDisplayName(this.users[userId] ? this.users[userId].name : "N/A")

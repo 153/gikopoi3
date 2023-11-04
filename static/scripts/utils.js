@@ -111,6 +111,7 @@ export class AudioProcessor
     {
         this.stream = stream
         this.isBoostEnabled = false
+	this.volume = 0
 	this.isMute = false
 
         this.vuMeterCallback = vuMeterCallback
@@ -137,9 +138,9 @@ export class AudioProcessor
             this.pan = this.context.createGain();
         }
 
+	this.connectNodes()
         this.setVolume(volume)
 
-        this.connectNodes()
 
         // Vu meter
         const vuMeterSource = this.context.createMediaStreamSource(stream);
@@ -193,15 +194,15 @@ export class AudioProcessor
         {
             this.source.connect(this.compressor)
             this.compressor.connect(this.gain)
-            this.gain.connect(this.pan)
+	}
+	else {
+	    this.source.connect(this.gain)
+	}
+        this.gain.connect(this.pan)
+	if (this.isInbound)
             this.pan.connect(this.context.destination)
-        }
-        else
-        {
-            this.source.connect(this.gain)
-            this.gain.connect(this.pan)
+        
             this.pan.connect(this.context.destination)
-        }
     }
 
     setVolume(volume)
@@ -216,7 +217,6 @@ export class AudioProcessor
     mute()
     {
 	this.gain.gain.value = 0
-	this.setVolume(0)
 	this.isMute = true
     }
     unmute()

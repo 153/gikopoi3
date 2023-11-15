@@ -229,6 +229,9 @@ export default
         admin_old: "Lost Lounge",
         river: "River",
         irori: "Fireplace",
+        yaneura: "Attic",
+	meganeya: "Opticians",
+	taiikukan: "School Gym",
 	gym: "Gym",
 	hell: "Hell"
     },

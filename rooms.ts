@@ -1,4 +1,4 @@
-import { Room } from "./types";
+import { Room, Coordinates } from "./types";
 
 // In the frontend there's a thing called annualevents.js... I'm lazy so I'll just
 // reimplement here the logic for deciding if it's summer or not. Not even sure I'm
@@ -7,6 +7,19 @@ const today = new Date()
 const isSummer = new Date(today.getFullYear(), 6 - 1, 21) < today && today < new Date(today.getFullYear(), 9 - 1, 21)
 const isAutumn = new Date(today.getFullYear(), 9 - 1, 22) < today && today < new Date(today.getFullYear(), 12 - 1, 20)
 const isWinter = today > new Date(today.getFullYear(), 12 - 1, 21) || today < new Date(today.getFullYear(), 3 - 1, 19)
+
+function coordRange(from: Coordinates, to: Coordinates): Coordinates[]
+{
+    const coords = []
+    for (let x=from.x; x<to.x+1; x+=(from.x<=to.x?1:-1))
+    {
+      for (let y=from.y; y<to.y+1; y+=(from.y<=to.y?1:-1))
+      {
+         coords.push({x, y})
+      }
+    }
+     return coords
+}
 
 export const rooms: { [roomId: string]: Room } = {
     bar: {
@@ -1512,6 +1525,7 @@ export const rooms: { [roomId: string]: Room } = {
             left: { x: 0, y: 12, direction: "right", target: { roomId: "monachat", doorId: "door" } },
             right: { x: 23, y: 11, direction: "left", target: { roomId: "konbini", doorId: "door" } },
             office: { x: 5, y: 17, direction: "down", target: { roomId: "nerd_office", doorId: "door"} },
+	    bottom_left: {x: 12, y: 0, direction: "up", target: {roomId: "meganeya", doorId: "top_right"}},
         },
         streamSlotCount: 0,
     },
@@ -2768,7 +2782,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 7, y: 0, direction: "up", target: { roomId: "bar_st", doorId: "up_right" } },
         },
-        streamSlotCount: 3,
+        streamSlotCount: 8,
     },
     school_rouka: {
         id: "school_rouka",
@@ -3112,8 +3126,10 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             up: { x: 4, y: 8, direction: "down", target: { roomId: "school_rouka", doorId: "down" } },
             down: { x: 5, y: 0, direction: "up", target: { roomId: "busstop", doorId: "up" } },
+	    left: { x: 0, y: 5, direction: "right", target: { roomId: "taiikukan", doorId: "left_door"}},
             warp: { x: 8, y: 0, direction: "up", target: { roomId: "school_ground", doorId: "jungle" } },
             jungle: { x: 1, y: 1, direction: "down", target: null },
+	    
         },
         streamSlotCount: 3,
     },
@@ -3953,6 +3969,148 @@ export const rooms: { [roomId: string]: Room } = {
         streamSlotCount: 8,
     },
 
+    meganeya: {
+        id: "meganeya",
+        group: "gikopoipoi",
+        scale: ((10.5 * 80)/1202)/2,
+        size: { x: 18, y: 16 },
+        originCoordinates: { x: 5, y: 982*(((10.5 * 80)/1202)/2) },
+        spawnPoint: "top_right",
+        backgroundImageUrl: "rooms/meganeya/background.svg",
+        objects: [
+            { x: 14, y: 15, offset: { x: 1174, y: 292 }, url: "arrow_light_up_right.svg" },
+            { x: 13, y: 9, scale: ((10.5 * 80)/1202)/2, offset: { x: 2455, y: 917 }, url: "shop_entrance.svg" },
+            { x: 18, y: -1, scale: ((10.5 * 80)/1202)/2, offset: { x: 0, y: 0 }, url: "foreground.svg" },
+        ],
+        sit: [
+            { x: 5, y: 0 },
+        ],
+        blocked: [
+            { x: 6, y: 0 },
+            { x: 6, y: 1 },
+            { x: 6, y: 2 },
+            { x: 6, y: 3 },
+            { x: 6, y: 4 },
+            { x: 6, y: 5 },
+            { x: 6, y: 6 },
+            { x: 6, y: 7 },
+            { x: 6, y: 8 },
+            { x: 6, y: 9 },
+
+            { x: 7, y: 2 },
+            { x: 7, y: 3 },
+            { x: 7, y: 4 },
+            { x: 7, y: 5 },
+            { x: 7, y: 6 },
+            { x: 7, y: 7 },
+
+            { x:  7, y: 9 },
+            { x:  8, y: 9 },
+            { x:  9, y: 9 },
+            { x: 10, y: 9 },
+            { x: 11, y: 9 },
+            { x: 12, y: 9 },
+            { x: 13, y: 9 },
+
+            { x:  8, y: 8 },
+            { x:  9, y: 8 },
+            { x: 10, y: 8 },
+            { x: 11, y: 8 },
+            { x: 12, y: 8 },
+            { x: 13, y: 8 },
+            
+            { x: 13, y: 10 },
+
+            { x:  8, y: 1 },
+            { x:  9, y: 1 },
+            { x: 10, y: 1 },
+            { x: 11, y: 1 },
+            { x: 12, y: 1 },
+            { x: 13, y: 1 },
+            { x: 13, y: 0 },
+
+            { x:  16, y: 0 },
+            { x:  16, y: 1 },
+            { x:  16, y: 2 },
+            { x:  16, y: 3 },
+            { x:  16, y: 4 },
+            { x:  16, y: 5 },
+            { x:  16, y: 6 },
+            { x:  16, y: 7 },
+            { x:  16, y: 8 },
+            { x:  16, y: 9 },
+            { x:  16, y: 10 },
+            { x:  17, y: 10 },
+        ],
+        forbiddenMovements: [],
+        doors: {
+            top_right: { x: 14, y: 15, direction: "down", target: { roomId: "bar_giko_square", doorId: "bottom_left" } },
+        },
+        streamSlotCount: 1,
+    },
+    taiikukan: {
+        id: "taiikukan",
+        group: "gikopoipoi",
+        scale: (10.5 * 80)/1202,
+        size: { x: 29, y: 17 },
+        originCoordinates: { x: -225*((10.5 * 80)/1202), y: 630*((10.5 * 80)/1202) },
+        spawnPoint: "left_door",
+        backgroundImageUrl: "rooms/taiikukan/background.svg",
+        objects: [
+            { x: 9, y: 4, height: 5, scale: (10.5 * 80)/1202, offset: { x: 286, y: 558}, url: "wall.svg" },
+            { x: 29, y: -1, scale: (10.5 * 80)/1202, offset: { x: 0, y: 0 }, url: "foreground.svg" },
+        ],
+        objectRenderSortMethod: "diagonal_scan",
+        sit: [
+            { x: 4, y: 0 },
+            { x: 4, y: 1 },
+            { x: 5, y: 0 },
+            { x: 5, y: 1 },
+        ],
+        blocked: ([
+            {x: 28, y: 10},
+            {x:  7, y:  7},
+            {x: 26, y: 12},
+        ] as Coordinates[])
+            //left wall
+            .concat(coordRange({x:  8, y:  0}, {x:  8, y:  4}))
+            .concat(coordRange({x:  8, y:  7}, {x:  8, y: 10}))
+            .concat(coordRange({x:  5, y:  4}, {x:  5, y: 14}))
+            .concat(coordRange({x:  0, y: 15}, {x:  4, y: 15}))
+            .concat(coordRange({x:  6, y:  2}, {x:  6, y:  6}))
+            .concat(coordRange({x:  3, y:  0}, {x:  3, y:  1}))
+            .concat(coordRange({x:  0, y:  3}, {x:  4, y:  3}))
+            .concat(coordRange({x:  4, y:  2}, {x:  5, y:  2}))
+            .concat(coordRange({x:  6, y:  0}, {x:  7, y:  0}))
+            .concat(coordRange({x:  3, y: 12}, {x:  3, y: 13}))
+
+            //stage
+            .concat(coordRange({x:  9, y: 11}, {x: 27, y: 11}))
+            .concat(coordRange({x: 10, y: 12}, {x: 23, y: 12}))
+            .concat(coordRange({x:  9, y: 13}, {x:  9, y: 16}))
+            .concat(coordRange({x: 24, y: 13}, {x: 24, y: 16}))
+            
+            // backroom
+            .concat(coordRange({x: 27, y: 13}, {x: 27, y: 16})),
+        forbiddenMovements: [],
+        doors: {
+            left_door: { x: 10, y: 10, direction: "down", target: { roomId: "school_ground", doorId: "left" } },
+
+            stage_left_top: { x: 10, y: 13, direction: "up", target: { roomId: "taiikukan", doorId: "stage_left_bottom" } },
+            stage_left_bottom: { x: 12, y: 10, direction: "down", target: { roomId: "taiikukan", doorId: "stage_left_top" } },
+
+            stage_right_top: { x: 23, y: 13, direction: "up", target: { roomId: "taiikukan", doorId: "stage_right_bottom" } },
+            stage_right_bottom: { x: 25, y: 10, direction: "down", target: { roomId: "taiikukan", doorId: "stage_right_top" } },
+
+            balcony_bottom: { x: 8, y: 6, direction: "down", target: { roomId: "taiikukan", doorId: "balcony_top" } },
+            balcony_top: { x: 3, y: 14, direction: "left", target: { roomId: "taiikukan", doorId: "balcony_bottom" } },
+
+            booth_outside: { x: 27, y: 10, direction: "down", target: { roomId: "taiikukan", doorId: "booth_inside" } },
+            booth_inside: { x: 27, y: 12, direction: "right", target: { roomId: "taiikukan", doorId: "booth_outside" } },
+        },
+        streamSlotCount: 1,
+    },
+
     hell: {
         id: "hell",
         group: "gikopoi",
@@ -3985,6 +4143,62 @@ export const rooms: { [roomId: string]: Room } = {
         },
         streamSlotCount: 3,
     },
+    
+yaneura: {
+id: "yaneura",
+group: "gikopoipoi",
+scale: 0.3494,
+size: {x: 5, y: 7},
+originCoordinates: {x: -40, y: 216},
+spawnPoint: "left_corner",
+backgroundImageUrl: "rooms/yaneura/background.spring.svg",
+            objects: [
+                { x: -1, y: 9, scale: 1, offset: { x: 22 , y: 585*0.3494 }, url: "arrow_light_down_left.svg" },
+                { x: 5, y: -1, scale: 0.3494, offset: { x: 0 , y: 0 }, url: "overlay.spring.svg" }
+            ],
+            sit: [
+                // floor mats
+                { x: 2, y: 1 },
+                { x: 3, y: 1 },
+                { x: 2, y: 2 },
+                { x: 3, y: 2 },
+
+                // hammock
+                { x: 0, y: 6 },
+                { x: 1, y: 6 },
+            ],
+            blocked: [
+                // light
+                { x: 4, y: 0 },
+
+                // table
+                { x: 1, y: 4 },
+                { x: 2, y: 4 },
+                { x: 3, y: 4 },
+
+                // left wall
+                { x: 0, y: 0 },
+                { x: 0, y: 1 },
+                { x: 0, y: 2 },
+                { x: 0, y: 3 },
+                
+                // right wall
+                { x: 0, y: 5 },
+                { x: 1, y: 5 },
+                { x: 2, y: 5 },
+                { x: 4, y: 5 },
+
+                { x: 3, y: 6 },
+            ],
+            forbiddenMovements: [],
+            doors: {
+                left_corner: { x: 1, y: 0, direction: "up", target: { roomId: "irori", doorId: "stairs" } },
+                steps_bottom: { x: 4, y: 4, direction: "down", target: { roomId: "yaneura", doorId: "steps_top" } },
+                steps_top: { x: 2, y: 6, direction: "left", target: { roomId: "yaneura", doorId: "steps_bottom" } },
+            },
+            streamSlotCount: 0,
+},
+
     };
 
 const regularKonbini: Room = {
@@ -4147,6 +4361,7 @@ rooms["irori"] = {
     ],
     doors: {
         door: { x: 0, y: 10, direction: "down", target: { roomId: "river", doorId: "left" } },
+	stairs: { x: 3, y: 0, direction: "right", target: {roomId: "yaneura", doorId: "leftCorner"}},
     },
     streamSlotCount: 8,
 }

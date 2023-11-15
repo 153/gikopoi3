@@ -176,12 +176,27 @@ export interface ChessboardStateDto
     turn: "b" | "w" | null,
 }
 
+export interface SiteArea {
+id: string,
+name: string,
+language?: string,
+}
+
 export interface PersistedState
 {
     users: Player[],
     bannedIPs: string[],
     forCoinCount: number,
     genCoinCount: number,
+}
+
+export type DynamicRoomBuildFunction = (currentAnnualEvents: string[], addedEvents: string[], removedEvents: string[]) => Room
+
+export interface DynamicRoom
+{
+    roomId: string
+    subscribedAnnualEvents: string[]
+    build: DynamicRoomBuildFunction
 }
 
 export interface CharacterSvgDto
@@ -212,12 +227,3 @@ export interface AnnualEventObject
 }
 
 export type AnnualEventCallback = (currentEvents: string[], addedEvents: string[], removedEvents: string[]) => void
-
-export type DynamicRoomBuildFunction = (currentAnnualEvents: string[], addedEvents: string[], removedEvents: string[]) => Room
-
-export interface DynamicRoom
-{
-    roomId: string
-    subscribedAnnualEvents: string[]
-    build: DynamicRoomBuildFunction
-}

@@ -1,4 +1,5 @@
 import { readFileSync } from "fs"
+import type { SiteArea } from './types'
 import log from "loglevel"
 
 interface PoiPoiSettings
@@ -15,7 +16,8 @@ interface PoiPoiSettings
     abuseIpDBApiKey: string
     adminKey: string
     censoredWordsRegex: string
-    noStreamIPs: string[]
+    noStreamIPs: string[],
+    siteAreas: SiteArea[]
 }
 
 let jsonContents: PoiPoiSettings;
@@ -47,4 +49,8 @@ export const settings: PoiPoiSettings = {
     // $-^ is a regex that never matches any string
     censoredWordsRegex: jsonContents.censoredWordsRegex || "$-^",
     noStreamIPs: jsonContents.noStreamIPs || [],
+    siteAreas: jsonContents.siteAreas || [
+    {"id": "for", "name": "International", "language": "any"},
+    {"id": "vip", "name": "VIP", "language": "any"}
+    ],
 }

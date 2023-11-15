@@ -579,7 +579,7 @@ export const rooms: { [roomId: string]: Room } = {
     silo: {
         id: "silo",
         group: "gikopoipoi",
-        scale: 0.72,
+        scale: 0.6,
         size: { x: 12, y: 12 },
         originCoordinates: { x: 740-345, y: 1310-393 },
         spawnPoint: "spawn",

@@ -4527,7 +4527,7 @@ dynamicRooms.push({
                 door: { x: 0, y: 10, direction: "down", target: { roomId: "river", doorId: "left" } },
                 stairs: { x: 3, y:  0, direction: "right", target: { roomId: "yaneura", doorId: "left_corner" } },
             },
-            streamSlotCount: 1,
+            streamSlotCount: 8,
         }
     }
 });

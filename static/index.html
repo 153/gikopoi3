@@ -257,6 +257,9 @@
                             v-if="streamSlot.streamIsVtuberMode"
                             :src="getAvatarSpriteForUser(streamSlot.userId)"
                             v-bind:class="{'jumping': streamSlot.isJumping}" />
+			<!-- div class="nico-nico-messages-container"
+			    v-if="streamSlot.isNicoNicoMode">
+			</div -->
                     </div>
                     <div :id="'vu-meter-container-' + index"
                          v-show="streamSlot.isActive
@@ -535,6 +538,10 @@
                     <div class='popup-item' v-if="streamMode == 'video_sound' || streamMode == 'video'">
                         <input type="checkbox" id="stream-form-vtuber-mode" v-model="streamIsVtuberMode"><label
                             for="stream-form-vtuber-mode">{{ $t("ui.stream_form_vtuber_mode") }}</label>
+                    </div>
+                    <div class='popup-item' v-if="streamMode == 'video_sound' || streamMode == 'video'">
+                        <input type="checkbox" id="stream-form-niconico-mode" v-model="isNicoNicoMode"><label
+                            for="stream-form-niconico-mode">{{ $t("ui.stream_form_niconico_mode") }}</label>
                     </div>
                     <div v-if="streamMode != 'video'">
                         <div class='popup-item'>

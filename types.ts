@@ -34,6 +34,7 @@ export interface StreamSlot
     isVisibleOnlyToSpecificUsers: boolean | null,
     allowedListenerIDs: string[],
     streamIsVtuberMode: boolean | null,
+    isNicoNicoMode: boolean | null,
 }
 
 export interface Door
@@ -158,6 +159,7 @@ export interface StreamSlotDto
     isAllowed: boolean | null,
     isVisibleOnlyToSpecificUsers: boolean | null,
     streamIsVtuberMode: boolean | null,
+    isNicoNicoMode: boolean | null,
 }
 
 export interface ChessboardState {
@@ -190,15 +192,6 @@ export interface PersistedState
     genCoinCount: number,
 }
 
-export type DynamicRoomBuildFunction = (currentAnnualEvents: string[], addedEvents: string[], removedEvents: string[]) => Room
-
-export interface DynamicRoom
-{
-    roomId: string
-    subscribedAnnualEvents: string[]
-    build: DynamicRoomBuildFunction
-}
-
 export interface CharacterSvgDto
 {
     isBase64: boolean
@@ -227,3 +220,12 @@ export interface AnnualEventObject
 }
 
 export type AnnualEventCallback = (currentEvents: string[], addedEvents: string[], removedEvents: string[]) => void
+
+export type DynamicRoomBuildFunction = (currentAnnualEvents: string[], addedEvents: string[], removedEvents: string[]) => Room
+
+export interface DynamicRoom
+{
+    roomId: string
+    subscribedAnnualEvents: string[]
+    build: DynamicRoomBuildFunction
+}

@@ -214,6 +214,7 @@ window.vueApp = new Vue({
         streamTarget: "all_room",
         allowedListenerIDs: new Set(),
         streamIsVtuberMode: false,
+	isNicoNicoMode: false,
 
         // Device selection popup
         isDeviceSelectionOpen: false,
@@ -1084,7 +1085,39 @@ window.vueApp = new Vue({
                         icon: "characters/" + character.characterName + "/front-standing." + character.format
                     })
             }
+	    // write message to niconico style streams (if any)
+	    const niconicoMessageContainers = document.getElementsByClassName("nico-nico-messages-container")
+	    for (let i = 0; i < niconicoMessageContainers.length; i++)
+		this.addNiconicoMessageToVideoContainer(niconicoMessageContainers[i], plainMsg)
+	    Object.values(this.detachedStreamTabs).forEach(tab =>
+	{
+	  if (!tab) return
+	  const container = tab.document.getElementsByClassName("nico-nico-messages-container")[0]
+	  this.addNiconicoMessageToVideoContainer(container, plainMsg, user.id)
+	  })
         },
+
+	addNiconicoMessageToVideoContainer: function(videoContainer, messageText, userID)
+	{
+	    if (!videoContainer) return;
+
+	    const span = document.createElement("span")
+	    span.textContent = messageText
+
+	    // Calculate the vertical position as a crude "hash" of the userid and text of the message,
+	    // so that all users see messages more or less in the same place
+	    const top = ((userID + messageText)
+			 .split("")
+			 .map(c => c.charCodeAt(0))
+			 .reduce((sum, val) => sum + val) % 256) / 256
+	    span.style.top = top * 80 + 2 + "%"
+
+	    videoContainer.appendChild(span)
+	    setTimeout(() => {
+		videoContainer.removeChild(span)
+	    }, 5200)
+	},
+	
         toDisplayName: function (name)
         {
             if (name == "")
@@ -2324,6 +2357,10 @@ window.vueApp = new Vue({
                 {
                     logToServer(new Date() + " " + this.myUserID + " Stream connection closed")
                 }
+		$( "#video-container-" + slotId ).resizable({
+		    aspectRatio: true,
+		    resize: adjustNiconicoMessagesFontSize
+		})
             };
 
             const terminate = () =>
@@ -2639,6 +2676,7 @@ window.vueApp = new Vue({
                     withSound: withSound,
                     isVisibleOnlyToSpecificUsers: this.streamTarget == "specific_users",
                     streamIsVtuberMode: withVideo && this.streamIsVtuberMode,
+		    isNicoNicoMode: withVideo && this.isNicoNicoMode,
                     info: []
                         .concat(this.mediaStream.getAudioTracks().map(t => ({
                             constraints: t.getConstraints && t.getConstraints(),
@@ -3375,8 +3413,19 @@ window.vueApp = new Vue({
                             videoContainer.originalPreviousSibling.after(videoContainer);
                             videoContainer.originalPreviousSibling = null;
                             this.detachedStreamTabs[slotId] = null;
+
+			    // Restore original width for the niconico messages container (the detached tab
+			    // uses javascript to set its width equal to the one of the <video> element, but in
+			    // the main page we don't need that).
+			    const niconicoMessagesContainer = videoContainer.getElementsByClassName("nico-nico-messages-container")[0];
+			    if (niconicoMessagesContainer)
+			    {
+				niconicoMessagesContainer.style.width = "100%"
+				adjustNiconicoMessagesFontSize()
+			    }
                         }
                     };
+		    tab.postMessage("adjust-niconico-stuff")
                 }
             }
         },
@@ -3414,3 +3463,15 @@ const debouncedLogSoundVolume = debounceWithDelayedExecution((myUserID, volume) 
     logToServer(myUserID + " SFX volume: " + volume)
 }, 150)
 
+function adjustNiconicoMessagesFontSize()
+{
+    const videoElements = document.getElementsByClassName("video-being-played")
+	  for (const videoElement of videoElements)
+    {
+	const width = (videoElement.videoWidth / videoElement.videoHeight) * videoElement.clientHeight
+	const fontsize = Math.round(width / 15)
+	const niconicoMessagesContainer = videoElement.parentElement.getElementsByClassName("nico-nico-messages-container")[0]
+	if (niconicoMessagesContainer)
+	    niconicoMessagesContainer.style.fontSize = fontsize + "px"
+    }
+}

@@ -96,6 +96,7 @@ function initializeRoomStates()
                     isVisibleOnlyToSpecificUsers: null,
                     allowedListenerIDs: [],
                     streamIsVtuberMode: false,
+		    isNicoNicoMode: false,
                 })
             }
             roomNumberId++;
@@ -685,13 +686,14 @@ io.on("connection", function (socket: Socket)
         withSound: boolean,
         isVisibleOnlyToSpecificUsers: boolean,
         isPrivateStream: boolean,
+	isNicoNicoMode: boolean,
         streamIsVtuberMode: boolean,
         info: any,
     })
     {
         try
         {
-            const { streamSlotId, withVideo, withSound, info, isVisibleOnlyToSpecificUsers, streamIsVtuberMode } = data
+            const { streamSlotId, withVideo, withSound, info, isVisibleOnlyToSpecificUsers, streamIsVtuberMode, isNicoNicoMode } = data
 
             log.info("user-want-to-stream", user.id,
                      "streamSlotId:", streamSlotId,
@@ -741,6 +743,7 @@ io.on("connection", function (socket: Socket)
             stream.isVisibleOnlyToSpecificUsers = isVisibleOnlyToSpecificUsers
             stream.publisher = { user: user, janusHandle: null };
             stream.streamIsVtuberMode = streamIsVtuberMode
+	    stream.isNicoNicoMode = false
 
             setTimeout(async () =>
             {
@@ -1390,6 +1393,7 @@ function toStreamSlotDtoArray(user: Player, streamSlots: StreamSlot[]): StreamSl
                        || !!s.allowedListenerIDs.find(id => id == user.id)
                        || s.publisher?.user.id == user.id,
             streamIsVtuberMode: isInactive ? null : s.streamIsVtuberMode,
+	    isNicoNicoMode: isInactive ? null : s.isNicoNicoMode,
         }
     })
 }

@@ -53,6 +53,51 @@
 </style>
 
 <body>
+  <script>
+    // set width of nico-nico-messages-container to be the same as the video that's being
+    // displayed (I couldn't find a way to do it with pure CSS, please forgive me...)
+    function adjustNiconicoMessagesContainerSize()
+    {
+	const videoElements = document.getElementsByClassName("video-being-played")
+	if (videoElements.length == 0)
+	    return
+
+	const videoElement = videoElements[0]
+	const width = (videoElement.videoWidth / videoElement.videoHeight) * videoElement.clientHeight
+
+	const niconicoMessagesContainer = document.getElementsByClassName("nico-nico-messages-container")[0]
+	niconicoMessagesContainer.style.width = width + "px"
+    }
+    document.addEventListener("resize", adjustNiconicoMessagesContainerSize)
+
+    // this is copypasted from main.js
+    function adjustNiconicoMessagesFontSize()
+    {
+	const videoElements = document.getElementsByClassName("video-being-played")
+	for (const videoElement of videoElements)
+	{
+	    const width = (videoElement.videoWidth / videoElement.videoHeight) * videoElement.clientHeight
+	    const fontsize = Math.round(width / 15)
+	    const niconicoMessagesContainer = videoElement.parentElement.getElementsByClassName("nico-nico-messages-container")[0]
+	    if (niconicoMessagesContainer)
+		niconicoMessagesContainer.style.fontSize = fontsize + "px"
+	}
+    }
+    document.addEventListener("resize", adjustNiconicoMessagesContainerSize)
+
+    // TODO: handle cases where the geometry of the <video> element changes during the stream,
+    //       can be done with a ResizeObserver, maybe
+
+    window.addEventListener("message", (event) =>
+			    {
+				if (event.data == "adjust-niconico-stuff")
+				{
+				    adjustNiconicoMessagesContainerSize()
+				    adjustNiconicoMessagesFontSize()
+				}
+			    })
+
+  </script>
     
 </body>
 

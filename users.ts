@@ -16,6 +16,7 @@ export class Player
     public id: string = generateId();
     public privateId: string | undefined = generateId();
     public name: string = "Anonymous";
+    public password: string = "";
     public position: { x: number, y: number };
     public direction: Direction;
     public lastDirection: Direction | null = null;

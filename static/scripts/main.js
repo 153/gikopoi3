@@ -644,6 +644,7 @@ window.vueApp = new Vue({
                 characterId: this.characterId,
                 areaId: this.areaId,
                 roomId: getSpawnRoomId(),
+		password: this.password,
             });
 
             const loginMessage = await loginResponse.json();

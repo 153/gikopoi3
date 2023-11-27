@@ -14,6 +14,7 @@ import { Chess } from "chess.js";
 import { Socket } from "socket.io";
 import { intersectionBy } from "lodash"
 import registerEndpoints from "./endpoints";
+import { rareGikos, Passwords } from './passwords';
 
 const app: express.Application = express()
 const http = require('http').Server(app);
@@ -267,6 +268,7 @@ io.on("connection", function (socket: Socket)
         socket.join(user.areaId)
         socket.join(user.areaId + currentRoom.id)
 
+	user.password = ""
         user.isGhost = false
         user.disconnectionTime = null
 
@@ -1866,8 +1868,27 @@ app.post("/login", async (req, res) =>
             })
             return
         }
+	
+        let { userName, characterId, areaId, roomId, password } = req.body
 
-        let { userName, characterId, areaId, roomId } = req.body
+	// maybe we can check for password here
+	console.log("!!!")
+	console.log(password)
+	
+	if (rareGikos.includes(characterId)) {
+	    console.log(characterId);
+	    characterId = "giko";
+	}
+	
+	if (password in Passwords) {
+	    console.log(Passwords[password]);
+	    characterId = Passwords[password];
+	}
+	
+	console.log("!!!")
+
+	// seems to work...
+	    
 
         if (typeof userName !== "string")
         {

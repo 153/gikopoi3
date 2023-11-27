@@ -148,7 +148,7 @@ export default
     msg:
     {
 	failedwhisper: "Choose a recipient from the log to whisper to.",
-	normalwhisper: "Spy says: ",
+	normalwhisper: "",
         no_other_users_in_this_room: "There are no other users in this room!",
         connection_lost: "Reconnecting...",
         connection_refused: "Connection Lost, please refresh the page.",

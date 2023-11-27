@@ -624,7 +624,7 @@ export const rooms: { [roomId: string]: Room } = {
             down: { x: 6, y: 0, direction: "up", target: { roomId: "badend", doorId: "rip" } },
             right: { x: 11, y: 5, direction: "left", target: { roomId: "takadai", doorId: "right" } }
         },
-        streamSlotCount: 0,
+        streamSlotCount: 5,
     },
     badend: {
         id: "badend",
@@ -4163,7 +4163,7 @@ backgroundImageUrl: "rooms/yaneura/background.spring.svg",
                 steps_bottom: { x: 4, y: 4, direction: "down", target: { roomId: "yaneura", doorId: "steps_top" } },
                 steps_top: { x: 2, y: 6, direction: "left", target: { roomId: "yaneura", doorId: "steps_bottom" } },
             },
-            streamSlotCount: 0,
+            streamSlotCount: 3,
 },
     };
 
@@ -4704,7 +4704,7 @@ dynamicRooms.push({
                 steps_bottom: { x: 4, y: 4, direction: "down", target: { roomId: "yaneura", doorId: "steps_top" } },
                 steps_top: { x: 2, y: 6, direction: "left", target: { roomId: "yaneura", doorId: "steps_bottom" } },
             },
-            streamSlotCount: 0,
+            streamSlotCount: 4,
         }
     }
 });

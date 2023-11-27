@@ -381,6 +381,10 @@ window.vueApp = new Vue({
                 if (this.characterId === "dokuo" && die < 0.15)
                     this.characterId = "tabako_dokuo"
 
+		// You must enter the password to play as shar!
+		if (this.characterId === "shar_naito")
+		    this.characterId = "giko"
+		
                 if (this.password == "iapetus56")
                     this.characterId = "shar_naito"
 

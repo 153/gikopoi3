@@ -330,6 +330,12 @@ io.on("connection", function (socket: Socket)
             {
                 msg = ""
             }
+
+	    if (msg.match(/sageru/gi))
+	    {
+	      changeCharacter(user, "mitsugiko", false)
+	      return;
+	    }
             
             if (msg == "" && user.lastRoomMessage == "")
             {

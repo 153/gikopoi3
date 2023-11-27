@@ -1621,6 +1621,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "giko_shroom"
 	|| characterId == "bif_alien"
 	|| characterId == "bif_wizard"
+	|| characterId == "giko_gold"
 	|| characterId == "blankchan"
 	) ? "png" : "svg"
 
@@ -1884,7 +1885,11 @@ app.post("/login", async (req, res) =>
 	    console.log(Passwords[password]);
 	    characterId = Passwords[password];
 	}
-	
+
+	if ( userName === "VIPPER" ) {
+	    console.log("VIPPER")
+	    characterId = "giko_gold";
+	}
 	console.log("!!!")
 
 	// seems to work...

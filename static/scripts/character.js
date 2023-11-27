@@ -128,7 +128,8 @@ export const characters = {
     giko_shroom: new Character("giko_shroom", "png", false),
     bif_alien: new Character("bif_alien", "png", false),
     bif_wizard: new Character("bif_wizard", "png", false),
-    winter_shii: new Character("winter_shii", "svg", false),        
+    winter_shii: new Character("winter_shii", "svg", false),
+    giko_gold: new Character("giko_gold", "png", true),
     blankchan: new Character ("blankchan", "png", false),
     
 

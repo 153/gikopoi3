@@ -95,7 +95,6 @@ export const characters = {
     hentai_giko: new Character("hentai_giko", "svg", false),
     shar_naito: new Character("shar_naito", "svg", true),
     dark_naito_walking: new Character("dark_naito_walking", "svg", false),
-    ika: new Character("ika", "svg", true),
     takenoko: new Character("takenoko", "svg", false),
     kaminarisama_naito: new Character("kaminarisama_naito", "svg", false),
     panda_naito: new Character("panda_naito", "svg", false),
@@ -129,8 +128,11 @@ export const characters = {
     bif_alien: new Character("bif_alien", "png", false),
     bif_wizard: new Character("bif_wizard", "png", false),
     winter_shii: new Character("winter_shii", "svg", false),
+    longcat: new Character("longcat", "png", false),    
+    hotaru: new Character("hotaru", "png", false),
+    
     giko_gold: new Character("giko_gold", "png", true),
-    longcat: new Character("longcat", "png", false),
+    ika: new Character("ika", "svg", true),    
     blankchan: new Character ("blankchan", "png", false),
     
 

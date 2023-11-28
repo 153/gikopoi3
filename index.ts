@@ -1628,6 +1628,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "bif_wizard"
 	|| characterId == "giko_gold"
 	|| characterId == "longcat"
+	|| characterId == "hotaru"
 	|| characterId == "blankchan"
 	) ? "png" : "svg"
 

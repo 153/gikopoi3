@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "cafe_st"
+        return urlSearchParams.get("roomid") || "irori"
     }
     catch
     {
-        return "cafe_st"
+        return "irori"
     }
 }
 
@@ -3012,9 +3012,10 @@ window.vueApp = new Vue({
         changeStreamVolume: function (streamSlotId)
         {
             const volumeSlider = document.getElementById("volume-" + streamSlotId);
-	    const volume = parseFloat(volumeSlider.value)
 	    
-            this.inboundAudioProcessors[streamSlotId].setVolume(volume)
+            this.inboundAudioProcessors[streamSlotId].setVolume(volumeSlider.value)
+
+	    this.slotVolume[streamSlotId] = volumeSlider.value;
 
             localStorage.setItem("slotVolume", JSON.stringify(this.slotVolume))
         },

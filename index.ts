@@ -334,7 +334,6 @@ io.on("connection", function (socket: Socket)
 	    if (msg.match(/sageru/gi))
 	    {
 	      changeCharacter(user, "mitsugiko", false)
-	      return;
 	    }
             
             if (msg == "" && user.lastRoomMessage == "")
@@ -1628,6 +1627,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "bif_alien"
 	|| characterId == "bif_wizard"
 	|| characterId == "giko_gold"
+	|| characterId == "longcat"
 	|| characterId == "blankchan"
 	) ? "png" : "svg"
 

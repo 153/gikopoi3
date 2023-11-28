@@ -130,6 +130,7 @@ export const characters = {
     bif_wizard: new Character("bif_wizard", "png", false),
     winter_shii: new Character("winter_shii", "svg", false),
     giko_gold: new Character("giko_gold", "png", true),
+    longcat: new Character("longcat", "png", false),
     blankchan: new Character ("blankchan", "png", false),
     
 

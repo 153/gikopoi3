@@ -3444,15 +3444,10 @@ window.vueApp = new Vue({
         },
         getAvatarSpriteForUser: function(userId)
         {
-            const characterName = this.users[userId].character.characterName
-	    const imgUrl = "characters/" + characterName + "/front-standing.svg"
-	    const response = fetch(imgUrl)
-	    if (response.status !== 200) {
-		return imgUrl.slice(0, -3) + "png"
-	    } else {
-		return imgUrl
-	    }
-        },
+	    const user = this.users[userId]
+	    const character = user.character
+	    return "characters/" + character.characterName + "/front-standing." + character.format
+	},    
     },
 });
 

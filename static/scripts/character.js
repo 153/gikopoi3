@@ -129,6 +129,7 @@ export const characters = {
     winter_shii: new Character("winter_shii", "svg", false),
     longcat: new Character("longcat", "png", false),    
     hotaru: new Character("hotaru", "png", false),
+    mona: new Character("mona", "png", false),
 
     shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),

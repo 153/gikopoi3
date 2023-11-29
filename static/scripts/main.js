@@ -3444,8 +3444,7 @@ window.vueApp = new Vue({
         },
         getAvatarSpriteForUser: function(userId)
         {
-	    const user = this.users[userId]
-	    const character = user.character
+	    const character = this.users[userId].character
 	    return "characters/" + character.characterName + "/front-standing." + character.format
 	},    
     },

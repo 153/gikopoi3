@@ -434,27 +434,6 @@ io.on("connection", function (socket: Socket)
 			return;
 			}
 
-                if (msgArray[0] == "#whisper" || msgArray[0] == "#suttog")
-                {
-		   if (10 < 1){
-                   //socket.emit("server-system-message", "failedwhisper");
-		   //log.info("Not enough mp, currently: "+user.manaPoints.toString());
-//		   userRoomEmit(user, "server-failedspell", user.id);
-		   return;
-		   }
-		else {
-		   const recipSocketId = msgParam && getUser(msgParam) && getUser(msgParam).socketId
- 	 	          if (recipSocketId) {
-			   msg = msgArray.slice(1).join(' ');
-			   io.to(recipSocketId).emit("server-system-message", "normalwhisper", msg);
-//			   user.manaPoints-=1;
-//			   socket.emit("pushmana", user.manaPoints);
-			   return;
-	   		   }
-			   else socket.emit("server-system-message", "failedwhisper");
-			   return;
-	        }}
-
                 if (msgArray[0] == "#shout" || msgArray[0] == "#spy") {		               
 	                    if (20 < 5){
                             //socket.emit("server-system-message", "failedwhisper");
@@ -474,14 +453,15 @@ io.on("connection", function (socket: Socket)
 			return;
                    }}
 
-		   // start roleplay
+
+	   // start roleplay
 		if (msgArray[0] == "#me" || msgArray[0] == "/me") {
 		    roomEmit(user.areaId, user.roomId, "server-roleplay", user.id, msgArray.slice(1).join(' '));
 //		       socket.emit("server-roleplay", user.id, msgArray.slice(1).join(' '));
 		      return;
 		    }
 
-		   // start hungary dice hack
+	   // start hungary dice hack
 		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
 		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101)
 		   {
@@ -522,7 +502,20 @@ io.on("connection", function (socket: Socket)
 		   }
 
 		   // end hungary dice hack
-		   
+
+		// wordfilters
+		msg = msg.replace(/covid-19/gi, "jesus christ")		
+		msg = msg.replace(/covid/gi, "jesus")
+		msg = msg.replace(/vaccine/gi, "bible")
+		msg = msg.replace(/pandemic/gi, "mass conversions to christianity")
+		msg = msg.replace(/vaxxed/gi, "circumcised")
+		msg = msg.replace(/jews/gi, "Aryans")
+		msg = msg.replace(/jewish/gi, "white")		
+		msg = msg.replace(/jew/gi, "Aryan")
+		msg = msg.replace(/communist/gi, "Christian")
+		msg = msg.replace(/communism/gi, "democracy")				
+		msg = msg.replace(/nigger/gi, "white guy")
+		msg = msg.replace(/tranny/gi, "fine people")
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")

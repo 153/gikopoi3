@@ -116,6 +116,7 @@ export const characters = {
     youkanman: new Character("youkanman", "svg", false),
     baba_shobon: new Character("baba_shobon", "svg", false),
     uzukumari: new Character("uzukumari", "svg", false),
+    giko_basketball: new Character("giko_basketball", "svg", false),
     mitsugiko: new Character ("mitsugiko", "png", false),    
     giko_cop: new Character ("giko_cop", "png", false),
     giko_batman: new Character ("giko_batman", "png", false),

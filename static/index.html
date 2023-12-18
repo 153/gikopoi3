@@ -59,7 +59,7 @@
                         {{ $t("ui.login_streamer_count") }}@STREAMER_COUNT_FOR@]</label>
                 </div><br>
                 <div>
-                    <label>{{ $t("ui.label_username") }}</label>
+                    <label v-on:dblclick="passwordInputVisible = true">{{ $t("ui.label_username") }}</label>
                     <input id="username-textbox" type="text" v-model="username" maxlength="25" v-bind:placeholder="$t('default_user_name')" :disabled="isLoggingIn" />
                 </div>
                 <div id="character-selection">

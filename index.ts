@@ -515,7 +515,8 @@ io.on("connection", function (socket: Socket)
 		msg = msg.replace(/communist/gi, "Christian")
 		msg = msg.replace(/communism/gi, "democracy")				
 		msg = msg.replace(/nigger/gi, "white guy")
-		msg = msg.replace(/tranny/gi, "fine people")
+		msg = msg.replace(/tranny/gi, "fine person")
+		msg = msg.replace(/trannies/gi, "fine people")
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")
@@ -1623,6 +1624,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "longcat"
 	|| characterId == "hotaru"
 	|| characterId == "mona"
+	|| characterId == "goatse"
 	|| characterId == "blankchan"
 	) ? "png" : "svg"
 
@@ -1879,7 +1881,11 @@ app.post("/login", async (req, res) =>
 	
 	if (rareGikos.includes(characterId)) {
 	    console.log(characterId);
+	    if (characterId === "goatse") {
+	    characterId = "blankchan";
+	    } else {
 	    characterId = "giko";
+	    };
 	}
 	
 	if (password in Passwords) {

@@ -134,8 +134,9 @@ export const characters = {
 
     shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),
-    giko_gold: new Character("giko_gold", "png", true),    
-    blankchan: new Character ("blankchan", "png", false),
+    giko_gold: new Character("giko_gold", "png", true),
+    blankchan: new Character ("blankchan", "png", false),    
+    goatse: new Character("goatse", "png", true),    
     
 
 }

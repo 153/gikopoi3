@@ -233,7 +233,8 @@ export default
 	meganeya: "Opticians",
 	taiikukan: "School Gym",
 	gym: "Gym",
-	hell: "Hell"
+	hell: "Hell",
+	lounge: "McDonald's"
     },
     area:
     {

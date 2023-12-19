@@ -49,6 +49,7 @@
                 </div>
             </header>
             <form id="login-form">
+	      <span v-if="passwordInputVisible">Password:</span>
               <input v-if="passwordInputVisible" type="text" v-model="password"></input>
 	      <input type="hidden" id="for-selection" value="for">
                 <div id="area-selection">

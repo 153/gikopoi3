@@ -9,11 +9,13 @@ import sv from "./lang/sv.js";
 import hu from "./lang/hu.js";
 import la from "./lang/la.js";
 import tr from "./lang/tr.js";
+import fr from "./lang/fr.js";
 
 export default
 {
-    ja,
     en,
+    fr,
+    ja,    
     de,
     it,
     es,

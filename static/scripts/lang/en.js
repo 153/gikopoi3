@@ -238,7 +238,7 @@ export default
     },
     area:
     {
-        gikopoipoi: "Gikopoipoi",
+        gikopoipoi: "Gikopoi.com",
         gikopoi: "Sea City",
         bar_giko: "Bar Giko Town",
     }

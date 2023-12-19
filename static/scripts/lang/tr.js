@@ -6,7 +6,7 @@ export default
     test: "test",
     ui:
     {
-        title: "Gikopoipoi",
+        title: "Gikopoi.com",
         subtitle: "Gayriresmi tekrar yapımı",
         
         login_user_count: "Kullanıcılar: ",
@@ -224,7 +224,7 @@ export default
     },
     area:
     {
-        gikopoipoi: "Gikopoipoi",
+        gikopoipoi: "Gikopoi.com",
         gikopoi: "Deniz Şehri",
         bar_giko: "Bar Giko Kasabası",
     }

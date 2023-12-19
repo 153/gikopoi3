@@ -6,7 +6,7 @@ export default
     test: "test",
     ui:
     {
-        title: "Gikopoipoi",
+        title: "Gikopoi.com",
         subtitle: "Nem-hivatalos átdolgozás",
         
         login_user_count: "Felhasználók: ",
@@ -222,7 +222,7 @@ export default
     },
     area:
     {
-        gikopoipoi: "Gikopoipoi",
+        gikopoipoi: "Gikopoi.com",
         gikopoi: "Tengerváros",
         bar_giko: "Gikováros Kocsma",
     }

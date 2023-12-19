@@ -6,7 +6,7 @@ export default
     test: "test",
     ui:
     {
-        title: "Gikopoipoi",
+        title: "Gikopoi.com",
         subtitle: "Inoffizielles Remake",
         
         login_user_count: "Benutzer: ",
@@ -222,7 +222,7 @@ export default
     },
     area:
     {
-        gikopoipoi: "Gikopoipoi",
+        gikopoipoi: "Gikopoi.com",
         gikopoi: "Seestadt",
         bar_giko: "Bar-Giko-Stadt",
     }

@@ -122,7 +122,7 @@ export default
     },
     area:
     {
-        gikopoipoi: "Gikopoipoi",
+        gikopoipoi: "Gikopoi.com",
         gikopoi: "Urbs maris",
         bar_giko: "Urbs Bar Giko",
     }

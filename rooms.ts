@@ -3351,7 +3351,7 @@ export const rooms: { [roomId: string]: Room } = {
         ],
         forbiddenMovements: [],
         doors: {
-            spawn: { x: 4, y: 0, direction: "down", target: { roomId: "densha", doorId: "top"} },
+            spawn: { x: 4, y: 0, direction: "down", target: { roomId: "hell", doorId: "spawn"} },
          },
         streamSlotCount: 2,
     },
@@ -3412,7 +3412,7 @@ export const rooms: { [roomId: string]: Room } = {
 	
 	forbiddenMovements: [],
 	doors: {
-	    default: {x:10, y:10, direction: "up", target: {roomId: "lounge", doorId: "default"} },
+	    default: {x:10, y:10, direction: "up", target: {roomId: "hell", doorId: "manhole"} },
 	},
 	streamSlotCount: 1,
     },
@@ -4163,11 +4163,11 @@ export const rooms: { [roomId: string]: Room } = {
             { x: 3, y: 4, direction: "down", target: null }
         ],
         doors: {
-            left: { x: 0, y: 2, direction: "right", target: { roomId: "busstop", doorId: "right" } },
-            school: { x: 0, y: 5, direction: "right", target: { roomId: "school_rouka", doorId: "right_top" } },
-            up: { x: 3, y: 7, direction: "down", target: { roomId: "bar_st", doorId: "down" } },
-            right: { x: 5, y: 2, direction: "left", target: { roomId: "cafe_st", doorId: "left" } },
-            manhole: { x: 4, y: 1, direction: "down", target: { roomId: "basement", doorId: "down_left" } },
+            left: { x: 0, y: 2, direction: "right", target: { roomId: "grave", doorId: "spawn" } },
+            school: { x: 0, y: 5, direction: "right", target: { roomId: "grave", doorId: "spawn" } },
+            up: { x: 3, y: 7, direction: "down", target: { roomId: "grave", doorId: "spawn" } },
+            right: { x: 5, y: 2, direction: "left", target: { roomId: "grave", doorId: "spawn" } },
+            manhole: { x: 4, y: 1, direction: "down", target: { roomId: "lounge", doorId: "default" } },
 	    spawn: { x: 3, y: 4, direction: "down", target: null},
         },
         streamSlotCount: 3,

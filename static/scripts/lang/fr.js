@@ -8,16 +8,16 @@ export default
     {
         title: "Gikopoi.com",
         subtitle: "Remake non-officiel",
-        
+
         login_user_count: "Utilisateurs: ",
         login_streamer_count: "Streamers: ",
-        
+
         infobox_label_area: "Région:",
         infobox_label_room: "Salle:",
         infobox_label_user_name: "Pseudo:",
         infobox_label_user_count: "Utilisateurs:",
         infobox_label_stream_count: "Streams:",
-        
+
         label_username: "Pseudo:",
         label_stream: "Chaîne {index}: ",
         label_input: "Saisie:",
@@ -40,14 +40,14 @@ export default
         tts_volume: "Vol. synth. voc.",
         label_move: "Déplacement",
         label_bubble: "Bulle",
-        
+
         popup_button_ok: "OK",
         popup_button_cancel: "Annuler",
-        
+
         warning_toast_title: "Avertissement",
-        
-        rula_menu_title: "Stage Info",
-        rula_menu_column_room_name: "Stage Name",
+
+        rula_menu_title: "Info de la salle",
+        rula_menu_column_room_name: "Nom de la salle",
         rula_menu_column_user_count: "Utilisateurs",
         rula_menu_column_streamers: "Streamers",
         rula_menu_button_rula: "Rula",
@@ -65,12 +65,12 @@ export default
         user_list_popup_blurb: "Attention: Quand vous ignorez un utilisateur, celui-ci peut toujours vous voir.<br>Quand vous bloquez un utilisateur, il restera bloqué même après s'être reconnecté.<br/>Quand la 'cible du stream' est mise à 'Utilisateurs spécifiques', il est possible de choisir qui peut voir votre stream en cliquant sur 'Autoriser au stream'.",
         user_list_popup_give_stream: "Autoriser au stream",
         user_list_popup_revoke_stream: "Bannir du stream",
-        
-        stream_form_title: "Stream Settings",
+
+        stream_form_title: "Réglages stream",
         stream_form_mode: "Mode:",
-        stream_form_video_sound_mode: "Video + Voice",
-        stream_form_sound_only_mode: "Voice only",
-        stream_form_video_only_mode: "Video only",
+        stream_form_video_sound_mode: "Vidéo + Voix",
+        stream_form_sound_only_mode: "Voix seul.",
+        stream_form_video_only_mode: "Vidéo seul.",
         stream_form_show_advanced: "Voir réglages avancés",
         stream_form_hide_advanced: "Cacher réglages avancés",
         stream_form_echo_cancellation: "Suppression de l'écho",
@@ -88,7 +88,7 @@ export default
         device_selection_title: "Choisir appareil",
         device_selection_audio_devices: "Appareils audio",
         device_selection_video_devices: "Appareils vidéo",
-        
+
         preferences_title: "Préférences",
         preferences_name_bg: "Afficher arrière-plan pseudo",
         preferences_shift_enter: "Saut de ligne avec Maj+Entrée",
@@ -153,13 +153,13 @@ export default
         connection_lost: "Reconnexion...",
         connection_refused: "Connexion perdue, veuillez rafraîchir la page.",
         page_refresh_required: "Mise-à-jour prête, veuillez rafraîchir la page.",
-        
+
         error_obtaining_media: "Impossible d'obtenir le contenu média. Vérifiez les permissions du navigateur.",
         error_obtaining_video: "Impossible d'obtenir le contenu vidéo. Vérifiez les permissions du navigateur.",
         error_obtaining_audio: "Impossible d'obtenir le contenu audio. Vérifiez les permissions du navigateur.",
         no_webrtc: "Désolé, WebRTC n'est pas supporté par votre navigateur.",
         error_didnt_select_device: "Veuillez choisir un appareil.",
-        
+
         unknown_error: "La connexion a échoué dû à une erreur inconnue.",
         invalid_username: "Le pseudonyme choisi est invalide.",
         ip_restricted: "Tu es déjà connecté deux fois avec cette adresse IP.",
@@ -177,7 +177,7 @@ export default
 
 	roll_die:  "@USER_NAME@ a roulé @DICE_NUM@× d@DICE_SIDE@ et a obtenu @DICE_RESULT@!",
 	roleplay: "@USER_NAME@ @ACTION@",
-        
+
         are_you_sure_you_want_to_clear_log: "Voulez-vous effacer l'historique de chat?",
         chat_log_cleared: "L'historique de chat a été effacé.",
     },

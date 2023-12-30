@@ -117,6 +117,12 @@ export const characters = {
     baba_shobon: new Character("baba_shobon", "svg", false),
     uzukumari: new Character("uzukumari", "svg", false),
     giko_basketball: new Character("giko_basketball", "svg", false),
+    giko_shamisen: new Character("giko_shamisen", "svg", false),
+    mikan_naito: new Character("mikan_naito", "svg", false),
+    shii_syakuhati: new Character("shii_syakuhati", "svg", false),
+    taiko_naito: new Character("taiko_naito", "svg", false),
+
+    // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "png", false),    
     giko_cop: new Character ("giko_cop", "png", false),
     giko_batman: new Character ("giko_batman", "png", false),
@@ -132,6 +138,7 @@ export const characters = {
     hotaru: new Character("hotaru", "png", false),
     mona: new Character("mona", "png", false),
 
+    // begin secret characters
     shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),
     giko_gold: new Character("giko_gold", "png", true),

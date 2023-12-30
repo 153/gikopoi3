@@ -137,6 +137,9 @@ export const characters = {
     longcat: new Character("longcat", "png", false),    
     hotaru: new Character("hotaru", "png", false),
     mona: new Character("mona", "png", false),
+    foe: new Character("foe", "svg", false),
+    kimono_giko: new Character("kimono_giko", "svg", false),
+    kimono_shii: new Character("kimono_shii", "svg", false),    
 
     // begin secret characters
     shar_naito: new Character("shar_naito", "svg", true),

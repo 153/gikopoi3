@@ -463,7 +463,7 @@ io.on("connection", function (socket: Socket)
 
 	   // start hungary dice hack
 		   const diceMsg = msgArray[0].match(/# *([0-9]+)? *[d\D] *([0-9]+) *(([+\-]) *([0-9]+))?/)
-		   if (diceMsg && Number.parseInt(diceMsg[2]) < 101)
+		   if (diceMsg && (Number.parseInt(diceMsg[2]) < 101) && msg.startsWith("#"))
 		   {
 		   if (Date.now() - user.lastDieRollDate < 1000)
 		   {
@@ -509,7 +509,7 @@ io.on("connection", function (socket: Socket)
 		msg = msg.replace(/vaccine/gi, "bible")
 		msg = msg.replace(/pandemic/gi, "mass conversions to christianity")
 		msg = msg.replace(/vaxxed/gi, "circumcised")
-		msg = msg.replace(/nigger/gi, "white guy")
+
 		msg = msg.replace(/tranny/gi, "fine person")
 		msg = msg.replace(/trannies/gi, "fine people")
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")

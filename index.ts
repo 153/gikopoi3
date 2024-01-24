@@ -517,7 +517,6 @@ io.on("connection", function (socket: Socket)
 		msg = msg.replace(/moonshine/gi, "gikoshine")
                 msg = msg.replace(/\sbon\s/g, " fag ")
 		msg = msg.replace(/\smaf\s/g, " faggot ")
-                msg = msg.replace(/◆/g, "◇")
                 
                 msg = msg.substr(0, 500)
             }
@@ -1807,6 +1806,35 @@ app.post("/ban", async (req, res) => {
     }
 })
 
+app.post("/kick", async (req, res) => {
+    try 
+    {
+        const pwd = req.body.pwd
+
+        if (pwd != settings.adminKey)
+        {
+            res.end("nope")
+            return
+        }
+
+        const userIdsToKick = Object.keys(req.body).filter(x => x != "pwd")
+        console.log(userIdsToKick)
+        for (const id of userIdsToKick)
+        {
+            const user = getUser(id)
+            for (const ip of user.ips)
+                await kickIP(ip)
+        }
+        res.end("done")
+    }
+    catch (exc)
+    {
+        logException(exc, null)
+        res.end("error")
+    }
+})
+
+
 app.post("/unban", (req, res) => {
     try 
     {
@@ -1871,7 +1899,6 @@ app.post("/login", async (req, res) =>
         let { userName, characterId, areaId, roomId, password } = req.body
 
 	// maybe we can check for password here
-	console.log("!!!")
 	console.log(password)
 	
 	if (rareGikos.includes(characterId)) {
@@ -1892,7 +1919,6 @@ app.post("/login", async (req, res) =>
 	    console.log("VIPPER")
 	    characterId = "giko_gold";
 	}
-	console.log("!!!")
 
 	// seems to work...
 	    
@@ -2191,6 +2217,22 @@ async function banIP(ip: string)
         }
 
         await disconnectUser(user)
+    }
+}
+
+async function kickIP(ip: string)
+{
+    log.info("KICKING " + ip)
+
+    for (const user of getUsersByIp(ip, null))
+    {
+	if (user.socketId)
+	{
+	    const socket = io.sockets.sockets[user.socketId]
+	    if (socket)
+		socket.disconnect();
+	}
+	await disconnectUser(user)
     }
 }
 

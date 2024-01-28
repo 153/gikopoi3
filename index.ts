@@ -1823,7 +1823,7 @@ app.post("/kick", async (req, res) => {
         {
             const user = getUser(id)
             for (const ip of user.ips)
-                await kickIP(ip)
+            	await kickIP(ip)
         }
         res.end("done")
     }
@@ -2211,7 +2211,7 @@ async function banIP(ip: string)
     {
         if (user.socketId)
         {
-            const socket = io.sockets.sockets[user.socketId]
+            const socket = io.sockets.sockets.get(user.socketId)
             if (socket)
                 socket.disconnect();
         }
@@ -2228,9 +2228,12 @@ async function kickIP(ip: string)
     {
 	if (user.socketId)
 	{
-	    const socket = io.sockets.sockets[user.socketId]
+	    console.log(user.socketId)
+	    const socket = io.sockets.sockets.get(user.socketId)
 	    if (socket)
-		socket.disconnect();
+	    {
+		socket.disconnect(true);
+	     }
 	}
 	await disconnectUser(user)
     }

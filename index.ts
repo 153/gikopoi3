@@ -235,6 +235,9 @@ io.on("connection", function (socket: Socket)
 
             user.isGhost = true
             user.disconnectionTime = Date.now()
+	    if (typeof user.ips === "string")
+		user.ips = [user.ips]
+
 
             await clearStream(user) // This also calls emitServerStats(), but only if the user was streaming...
             emitServerStats(user.areaId)
@@ -1821,7 +1824,9 @@ app.post("/kick", async (req, res) => {
         console.log(userIdsToKick)
         for (const id of userIdsToKick)
         {
+	    console.log(id)
             const user = getUser(id)
+	    console.log(user)
             for (const ip of user.ips)
             	await kickIP(ip)
         }
@@ -1834,6 +1839,32 @@ app.post("/kick", async (req, res) => {
     }
 })
 
+app.post("/kick-ip", async (req, res) => {
+    try
+    {
+	const pwd = req.body.pwd
+
+	if (pwd != settings.adminKey)
+	{
+	    res.end("nope")
+	    return
+	}
+
+	const userIpsToKick = Object.keys(req.body).filter(x => x != "pwd")
+	console.log(userIpsToKick)
+	for (const ip of userIpsToKick)
+	{
+	    await kickIP(ip);
+	}
+	res.end("done")
+    }
+    catch (exc)
+    {
+	logException(exc, null)
+	res.end("error")
+    }
+})
+	    
 
 app.post("/unban", (req, res) => {
     try 
@@ -2226,6 +2257,7 @@ async function kickIP(ip: string)
 
     for (const user of getUsersByIp(ip, null))
     {
+	
 	if (user.socketId)
 	{
 	    console.log(user.socketId)

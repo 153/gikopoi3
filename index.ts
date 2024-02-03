@@ -114,7 +114,11 @@ app.use(async function (req, res, next) {
 
     if (bannedIPs.has(ip))
     {
-        res.end("")
+	res.set({'Content-Type': 'text/html; charset=utf-8',
+		 'Cache-Control': 'no-store'
+		})
+		
+        res.end('<meta http-equiv="refresh" content="0; url=https://gikopoipoi.net/?areaid=for&roomid=bar">')
         return
     }
 
@@ -1864,7 +1868,33 @@ app.post("/kick-ip", async (req, res) => {
 	res.end("error")
     }
 })
-	    
+
+app.post("/ban-ip", async (req, res) => {
+    try
+    {
+	const pwd = req.body.pwd
+
+	if (pwd != settings.adminKey)
+	{
+	    res.end("nope")
+	    return
+	}
+
+	const userIpsToBan = Object.keys(req.body).filter(x => x != "pwd")
+	console.log(userIpsToBan)
+	for (const ip of userIpsToBan)
+	{
+	    bannedIPs.add(ip)
+	    await kickIP(ip);
+	}
+	res.end("done")
+    }
+    catch (exc)
+    {
+	logException(exc, null)
+	res.end("error")
+    }
+})
 
 app.post("/unban", (req, res) => {
     try 

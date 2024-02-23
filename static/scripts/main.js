@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "yoshinoya"
+        return urlSearchParams.get("roomid") || "school_ground"
     }
     catch
     {
-        return "yoshinoya"
+        return "school_ground"
     }
 }
 
@@ -629,6 +629,7 @@ window.vueApp = new Vue({
             this.justSpawnedToThisRoom = true;
             this.isLoadingRoom = false;
             this.requestedRoomChange = false;
+	    history.replaceState(null,"","?roomid="+dto.currentRoom.id) 
         },
         connectToServer: async function ()
         {
@@ -3325,12 +3326,12 @@ window.vueApp = new Vue({
             panKnobElement.value = 0;
             this.inboundAudioProcessors[streamSlotID].setPan(0);
         },
-	mute()
+	mute: function()
 	{
 	    if (this.outboundAudioProcessor)
 		this.outboundAudioProcessor.mute()
 	},
-	unmute()
+	unmute: function()
 	{
 	    if (this.outboundAudioProcessor)
 		this.outboundAudioProcessor.unmute()

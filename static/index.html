@@ -341,7 +341,7 @@
                             {{ $t("ui.button_stream_stop") }}
                         </button>
 			
-			<!-- button
+			<button
 			  v-if="streamSlotIdInWhichIWantToStream == index
 && streamSlot.withSound
 && !outboundAudioProcessor?.isMute"
@@ -358,7 +358,7 @@
 			    class="mute-unmute-button"
 			    v-bind:title="$t('ui.button_stream_unmute')">
 			    <span class="fas fa-microphone-slash"></span>
-			    </button -->
+			    </button>
                     </div>
                 </div>
                 <hr v-if="streams.length && currentRoom.hasChessboard" />

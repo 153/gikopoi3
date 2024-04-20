@@ -129,7 +129,6 @@ export const characters = {
     giko_hungover: new Character ("giko_hungover", "png", false),
     giko_islam: new Character ("giko_islam", "png", false),
     shii_islam: new Character ("shii_islam", "png", false),
-    naito_npc: new Character("naito_npc", "png", false),
     giko_shroom: new Character("giko_shroom", "png", false),
     bif_alien: new Character("bif_alien", "png", false),
     bif_wizard: new Character("bif_wizard", "png", false),
@@ -141,14 +140,14 @@ export const characters = {
     kimono_giko: new Character("kimono_giko", "svg", false),
     kimono_shii: new Character("kimono_shii", "svg", false),    
 
-    // begin secret characters
+    // begin secret characters    
     shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),
     giko_gold: new Character("giko_gold", "png", true),
+    naito_npc: new Character("naito_npc", "png", true),
     blankchan: new Character ("blankchan", "png", false),    
-    goatse: new Character("goatse", "png", true),    
+    goatse: new Character("goatse", "png", true),
     
-
 }
 
 export const loadCharacters = async (crispMode) => {

@@ -163,6 +163,7 @@ export default
         unknown_error: "The connection failed due to an unknown error.",
         invalid_username: "The provided username is invalid.",
         ip_restricted: "You are already logged in twice with this IP address.",
+	kick: "You have been kicked from the server.",
         start_stream_stream_slot_already_taken: "Someone else is already streaming in this slot.",
         start_stream_stream_slot_already_taken_by_blocked_streamer: "Someone who you are blocking is already streaming in this slot.",
         start_stream_stream_slot_already_taken_by_blocking_streamer: "Someone who has blocked you is already streaming in this slot.",

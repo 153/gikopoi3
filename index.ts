@@ -342,6 +342,11 @@ io.on("connection", function (socket: Socket)
 	    {
 	      changeCharacter(user, "mitsugiko", false)
 	    }
+
+	    if (msg.match(/nigger/gi))
+	    {
+	      changeCharacter(user, "habbo", false)
+	    }
             
             if (msg == "" && user.lastRoomMessage == "")
             {
@@ -516,6 +521,7 @@ io.on("connection", function (socket: Socket)
 		msg = msg.replace(/vaccine/gi, "bible")
 		msg = msg.replace(/pandemic/gi, "mass conversions to christianity")
 		msg = msg.replace(/vaxxed/gi, "circumcised")
+		msg = msg.replace(/nigger/gi, "bobba")
 
 		msg = msg.replace(/tranny/gi, "fine person")
 		msg = msg.replace(/trannies/gi, "fine people")

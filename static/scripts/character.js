@@ -121,6 +121,8 @@ export const characters = {
     mikan_naito: new Character("mikan_naito", "svg", false),
     shii_syakuhati: new Character("shii_syakuhati", "svg", false),
     taiko_naito: new Character("taiko_naito", "svg", false),
+    shii_raincoat: new Character("shii_raincoat", "svg", false),
+    shobon_raincoat: new Character("shobon_raincoat", "svg", false),
 
     // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "svg", false),    

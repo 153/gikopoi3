@@ -516,6 +516,7 @@ io.on("connection", function (socket: Socket)
 		   // end hungary dice hack
 
 		// wordfilters
+		msg = msg.replace(/nigger/gi, "bobba")
 		msg = msg.replace(/covid-19/gi, "jesus christ")		
 		msg = msg.replace(/covid/gi, "jesus")
 		msg = msg.replace(/vaccine/gi, "bible")
@@ -2042,6 +2043,7 @@ app.post("/login", async (req, res) =>
             .replace(/[◆⯁♦⬥]/g, "◇");
         if (n >= 0)
             processedUserName = processedUserName + "◆" + (tripcode(userName.substr(n + 1)) || "fnkquv7jY2");
+	processedUserName = processedUserName.replace(/nigger/gi, "bobba")
 
         const user = addNewUser(processedUserName, characterId, areaId, roomId, getRealIp(req));
 

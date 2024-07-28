@@ -231,6 +231,7 @@ export default
         river: "River",
         irori: "Fireplace",
         yaneura: "Attic",
+	kyougijou: "Track",
 	meganeya: "Opticians",
 	taiikukan: "School Gym",
 	gym: "Gym",

@@ -1527,7 +1527,8 @@ export const rooms: { [roomId: string]: Room } = {
             left: { x: 0, y: 12, direction: "right", target: { roomId: "monachat", doorId: "door" } },
             right: { x: 23, y: 11, direction: "left", target: { roomId: "konbini", doorId: "door" } },
             office: { x: 5, y: 17, direction: "down", target: { roomId: "nerd_office", doorId: "door"} },
-	    bottom_left: {x: 12, y: 0, direction: "up", target: {roomId: "meganeya", doorId: "top_right"}},
+	    bottom_left: {x: 12, y: 0, direction: "up", target: {roomId: "meganeya", doorId: "top_right"} },
+	    very_left: {x: 9, y: 0, direction: "right", target: { roomId: "kyougijou", doorId: "door"} },
         },
         streamSlotCount: 0,
     },
@@ -2071,7 +2072,7 @@ export const rooms: { [roomId: string]: Room } = {
             door: { x: 0, y: 5, direction: "right", target: { roomId: "radio_backstage", doorId: "bottom" } },
             right: { x: 8, y: 5, direction: "left", target: { roomId: "radio", doorId: "single_door" } },
         },
-        streamSlotCount: 4,
+        streamSlotCount: 6,
 	hasChessboard: true,
     },
     jinja_st: {
@@ -3133,7 +3134,7 @@ export const rooms: { [roomId: string]: Room } = {
             jungle: { x: 1, y: 1, direction: "down", target: null },
 	    
         },
-        streamSlotCount: 3,
+        streamSlotCount: 5,
     },
     kaidan: {
         id: "kaidan",
@@ -3414,7 +3415,7 @@ export const rooms: { [roomId: string]: Room } = {
 	doors: {
 	    default: {x:10, y:10, direction: "up", target: {roomId: "hell", doorId: "manhole"} },
 	},
-	streamSlotCount: 1,
+	streamSlotCount: 12,
     },
 							 
     gym: {
@@ -4140,6 +4141,43 @@ export const rooms: { [roomId: string]: Room } = {
         streamSlotCount: 1,
     },
 
+    kyougijou: {
+        // 元　　 -> 五輪　 -> 戻
+        // 872929 -> 8A83CE -> 872929
+        // A04C49 -> C4A8D3 -> A04C49
+        // 835754 -> 665483 -> 835754
+        // B55E5A -> E3C6F3 -> A04C49
+        id: "kyougijou",
+        group: "gikopoipoi",
+        scale: 0.35,// (10.5 * 80)/1202,
+        size: { x: 9, y: 28 },
+        originCoordinates: { x: 203, y: 684 },
+        spawnPoint: "door",
+        backgroundImageUrl: "rooms/kyougijou/background.svg",
+        objects: [
+        ],
+        sit: coordRange({x: 2, y:  5}, {x:  5, y:  5})
+            .concat(coordRange({x: 2, y: 7 }, {x: 5, y: 7}))
+            .concat(coordRange({x: 2, y: 9 }, {x: 5, y: 9}))
+            .concat(coordRange({x: 2, y: 11 }, {x: 5, y: 11}))
+            .concat(coordRange({x: 2, y: 13 }, {x: 5, y: 13}))
+            .concat(coordRange({x: 2, y: 15 }, {x: 5, y: 15}))
+            .concat(coordRange({x: 2, y: 17 }, {x: 5, y: 17}))
+            .concat(coordRange({x: 2, y: 19 }, {x: 5, y: 19})),
+        blocked: [
+            { x: 8, y: 25 },
+            { x: 0, y: 1 },
+            { x: 0, y: 2 },
+            { x: 0, y: 3 },
+            { x: 0, y: 27 },
+        ],
+        forbiddenMovements: [],
+        doors: {
+            door: { x: 8, y: 2, direction: "left", target: { roomId: "bar_giko_square", doorId: "very_left" } },
+        },
+        streamSlotCount: 3,
+    },
+
     hell: {
         id: "hell",
         group: "gikopoi",
@@ -4818,7 +4856,7 @@ dynamicRooms.push({
             doors: {
                 door: { x: 6, y: 6, direction: "left", target: { roomId: "bar_giko_square", doorId: "left" } },
             },
-            streamSlotCount: 3,
+            streamSlotCount: 5,
         }
     }
 });

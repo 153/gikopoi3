@@ -71,11 +71,11 @@ export default class User
             
         const blockWidth = room.blockWidth ? room.blockWidth : BLOCK_WIDTH;
         const blockHeight = room.blockHeight ? room.blockHeight : BLOCK_HEIGHT;
-        
-        let walkingSpeedX = blockWidth / ( this.character.characterName == "shar_naito" ? 13 : 40)
-        let walkingSpeedY = blockHeight / ( this.character.characterName == "shar_naito" ? 13 : 40)
 
-        if (room.id == "long_st")
+	let walkingSpeedX = blockWidth / ( (this.character.characterName == "shar_naito" || this.character.characterName == "shii_shintaisou") ? 13 : 40)
+        let walkingSpeedY = blockHeight / ( (this.character.characterName == "shar_naito" || this.character.characterName == "shii_shintaisou") ? 13 : 40)
+
+        if (room.id == "long_st" || room.id == "kyougijou")
         {
             walkingSpeedX *= 2;
             walkingSpeedY *= 2;

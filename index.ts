@@ -1633,6 +1633,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "goatse"
 	|| characterId == "blankchan"
         || characterId == "habbo"
+	|| characterId == "sonichu"
 	) ? "png" : "svg"
 
         const getCharacterImage = async (path: string, crisp: boolean) => {

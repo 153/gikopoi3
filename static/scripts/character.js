@@ -141,9 +141,10 @@ export const characters = {
     mona: new Character("mona", "png", false),
     foe: new Character("foe", "svg", false),
     kimono_giko: new Character("kimono_giko", "svg", false),
-    kimono_shii: new Character("kimono_shii", "svg", false),    
+    kimono_shii: new Character("kimono_shii", "svg", false),
+    sonichu: new Character("sonichu", "png", false),
 
-    // begin secret characters    
+    // begin secret characters
     shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),
     giko_gold: new Character("giko_gold", "png", true),

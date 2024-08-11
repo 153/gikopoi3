@@ -124,6 +124,7 @@ export const characters = {
     shii_raincoat: new Character("shii_raincoat", "svg", false),
     shobon_raincoat: new Character("shobon_raincoat", "svg", false),
     shii_shintaisou: new Character("shii_shintaisou", "svg", false),
+    shii_toast: new Character("shii_toast", "svg", false),
 
     // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "svg", false),    

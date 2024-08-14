@@ -236,7 +236,8 @@ export default
 	taiikukan: "School Gym",
 	gym: "Gym",
 	hell: "Hell",
-	lounge: "McDonald's"
+	lounge: "McDonald's",
+	temple: "Temple",
     },
     area:
     {

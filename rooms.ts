@@ -3360,16 +3360,14 @@ export const rooms: { [roomId: string]: Room } = {
 temple: {
     id: "temple",
     group: "gikopoipoi",
-    scale: 1.29,
-    // 1.3 too small
+    scale: 1,
     size: { x: 12, y: 9},
-    // 328 too high
-    originCoordinates: { x: 0, y: 435} ,
+    originCoordinates: { x: 0, y: 445} ,
     spawnPoint: "door",
     backgroundImageUrl: "rooms/temple/background.svg",
     backgroundColor: "#333333",
     objects: [
-    { x: 2, y: 2, offset: { x: 50, y: 300}, url: 'altar.svg'},
+    { x: 2, y: 6, offset: { x: 80, y: 157}, url: 'altar.svg'},
     ],
     sit: [
       { x: 4, y: 4},

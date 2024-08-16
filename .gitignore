@@ -7,3 +7,12 @@ local-settings.test.json
 .idea/
 static/rooms/konbini/original-files
 *.log
+index.ts
+passwords.ts
+settings.json
+static/login_footer.html
+static/rooms/bar_giko_square/background.svg
+static/rooms/temple/background.svg
+static/scripts/character.js
+static/scripts/main.js
+version

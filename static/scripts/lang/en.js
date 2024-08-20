@@ -238,6 +238,7 @@ export default
 	hell: "Hell",
 	lounge: "McDonald's",
 	temple: "Temple",
+	library: "Library",
     },
     area:
     {

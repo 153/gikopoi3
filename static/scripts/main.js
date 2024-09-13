@@ -1014,7 +1014,7 @@ window.vueApp = new Vue({
                 {
                     const anchor = document.createElement('a');
                     anchor.target = '_blank';
-		    anchor.setAttribute('rel', 'norefer');
+		    anchor.setAttribute('rel', 'noreferrer');
                     anchor.setAttribute('tabindex', '-1');
                     anchor.innerHTML = htmlUrl;
                     const url = anchor.textContent;

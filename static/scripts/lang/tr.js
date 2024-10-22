@@ -221,11 +221,14 @@ export default
         //admin_old: "",
         // river: "",
         // irori: "Fireplace",
+        bar_giko_square_v2: "Çeşme Meydanı + Agora no shoppingu mōru",
+        vapor_mall:"Mōru iriguchi",
     },
     area:
     {
         gikopoipoi: "Gikopoi.com",
         gikopoi: "Deniz Şehri",
         bar_giko: "Bar Giko Kasabası",
+        agora_road: "Agora Road",
     }
 }

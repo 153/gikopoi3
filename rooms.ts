@@ -109,6 +109,7 @@ export const rooms: { [roomId: string]: Room } = {
             hatch: { x: 3, y: 7, direction: "down", target: { roomId: "basement", doorId: "left" } }
         },
         streamSlotCount: 8,
+	hasChessboard: true,
     },
     admin_st: {
         id: "admin_st",
@@ -4517,6 +4518,7 @@ dynamicRooms.push({
                 manhole: { x: 3, y: 5, direction: "down", target: { roomId: "basement", doorId: "down_right" } },
             },
             streamSlotCount: 8,
+	    hasChessboard: true,
         }
     }
 });
@@ -4774,7 +4776,7 @@ dynamicRooms.push({
                 right: { x: 8, y: 5, direction: "left", target: { roomId: "densha", doorId: "left_bottom" } },
                 left: { x: 7, y: 0, direction: "up", target: { roomId: "irori", doorId: "door" } },
             },
-            streamSlotCount: 0,
+            streamSlotCount: 5,
         }
 
         if (type == 5 || type == 6)

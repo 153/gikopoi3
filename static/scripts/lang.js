@@ -10,6 +10,7 @@ import hu from "./lang/hu.js";
 import la from "./lang/la.js";
 import tr from "./lang/tr.js";
 import fr from "./lang/fr.js";
+import ch from "./lang/ch.js";
 
 export default
 {
@@ -25,4 +26,5 @@ export default
     hu,
     la,
     tr,
+    ch,
 }

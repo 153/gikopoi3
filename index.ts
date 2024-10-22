@@ -163,8 +163,8 @@ io.use(async (socket: Socket, next: () => void) => {
         {
             log.info("server-cant-log-you-in", privateUserId)
             socket.emit("server-cant-log-you-in")
-            // socket.disconnect(true)
-            // return;
+            socket.disconnect(true)
+            return;
             next()
             return
         }
@@ -517,17 +517,13 @@ io.on("connection", function (socket: Socket)
 
 		// wordfilters
 		msg = msg.replace(/nigger/gi, "bobba")
-		msg = msg.replace(/covid-19/gi, "jesus christ")		
-		msg = msg.replace(/covid/gi, "jesus")
-		msg = msg.replace(/vaccine/gi, "bible")
-		msg = msg.replace(/pandemic/gi, "mass conversions to christianity")
-		msg = msg.replace(/vaxxed/gi, "circumcised")
 
 		msg = msg.replace(/tranny/gi, "fine person")
 		msg = msg.replace(/trannies/gi, "fine people")
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")
+		msg = msg.replace(/dxm/gi, "sillypill")
                 msg = msg.replace(/\sbon\s/g, " fag ")
 		msg = msg.replace(/\smaf\s/g, " faggot ")
                 
@@ -1634,6 +1630,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "blankchan"
         || characterId == "habbo"
 	|| characterId == "sonichu"
+	|| characterId == "yume"
 	) ? "png" : "svg"
 
         const getCharacterImage = async (path: string, crisp: boolean) => {

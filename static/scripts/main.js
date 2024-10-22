@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "radio_gakuya"
+        return urlSearchParams.get("roomid") || "cafe_st"
     }
     catch
     {
-        return "radio_gakuya"
+        return "cafe_st"
     }
 }
 
@@ -1014,6 +1014,7 @@ window.vueApp = new Vue({
                 {
                     const anchor = document.createElement('a');
                     anchor.target = '_blank';
+		    anchor.setAttribute('rel', 'noreferrer');
                     anchor.setAttribute('tabindex', '-1');
                     anchor.innerHTML = htmlUrl;
                     const url = anchor.textContent;

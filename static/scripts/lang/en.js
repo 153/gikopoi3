@@ -240,11 +240,14 @@ export default
 	lounge: "McDonald's",
 	temple: "Temple",
 	library: "Library",
+        bar_giko_square_v2: "Fountain Plaza + Agora Mall",
+        vapor_mall:"Agora Mall Entrance",
     },
     area:
     {
         gikopoipoi: "Gikopoi.com",
         gikopoi: "Sea City",
         bar_giko: "Bar Giko Town",
+        agora_road: "Agora Road",
     }
 }

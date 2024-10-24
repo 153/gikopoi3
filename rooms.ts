@@ -795,7 +795,8 @@ export const rooms: { [roomId: string]: Room } = {
         ],
         doors: {
             spawn: { x: 6, y: 7, direction: "up", target: null },
-            door: { x: 11, y: 7, direction: "left", target: { roomId: "bar_giko_square", doorId: "yoshinoya" } }
+            door: { x: 11, y: 7, direction: "left", target: { roomId: "bar_giko_square_v2", doorId: "yoshinoya" } }
+            //door: { x: 11, y: 7, direction: "left", target: { roomId: "bar_giko_square", doorId: "yoshinoya" } }
         },
         streamSlotCount: 6,
     },
@@ -1087,7 +1088,8 @@ export const rooms: { [roomId: string]: Room } = {
         ],
         forbiddenMovements: [],
         doors: {
-            stairs: { x: 7, y: 19, direction: "right", target: { roomId: "bar_giko_square", doorId: "bar_giko" } },
+            stairs: { x: 7, y: 19, direction: "right", target: { roomId: "bar_giko_square_v2", doorId: "bar_giko" } },
+            //stairs: { x: 7, y: 19, direction: "right", target: { roomId: "bar_giko_square", doorId: "bar_giko" } },
             right: { x: 13, y: 19, direction: "left", target: { roomId: "bar_giko2", doorId: "stairs" } },
         },
         streamSlotCount: 0,
@@ -3319,7 +3321,8 @@ export const rooms: { [roomId: string]: Room } = {
         ],
         doors: {
             left_top: { x: 0, y: 12, direction: "right", target: { roomId: "busstop", doorId: "down" } },
-            left_middle: { x: 0, y: 7, direction: "right", target: { roomId: "bar_giko_square", doorId: "up" } },
+            left_middle: { x: 0, y: 7, direction: "right", target: { roomId: "bar_giko_square_v2", doorId: "up" } },
+            //left_middle: { x: 0, y: 7, direction: "right", target: { roomId: "bar_giko_square", doorId: "up" } },
             top: { x: 1, y: 14, direction: "down", target: { roomId: "densha", doorId: "bottom" } },
             bottom: { x: 1, y: 0, direction: "up", target: { roomId: "densha", doorId: "top" } },
             left_bottom: { x: 0, y: 2, direction: "right", target: { roomId: "river", doorId: "right"} },
@@ -4082,7 +4085,8 @@ temple: {
         ],
         forbiddenMovements: [],
         doors: {
-            door: { x: 9, y: 0, direction: "up", target: { roomId: "bar_giko_square", doorId: "office" } },
+            door: { x: 9, y: 0, direction: "up", target: { roomId: "bar_giko_square_v2", doorId: "office" } },
+            //door: { x: 9, y: 0, direction: "up", target: { roomId: "bar_giko_square", doorId: "office" } },
         },
         streamSlotCount: 8,
     },
@@ -4162,7 +4166,8 @@ temple: {
         ],
         forbiddenMovements: [],
         doors: {
-            top_right: { x: 14, y: 15, direction: "down", target: { roomId: "bar_giko_square", doorId: "bottom_left" } },
+            top_right: { x: 14, y: 15, direction: "down", target: { roomId: "bar_giko_square_v2", doorId: "bottom_left" } },
+            //top_right: { x: 14, y: 15, direction: "down", target: { roomId: "bar_giko_square", doorId: "bottom_left" } },
         },
         streamSlotCount: 1,
     },
@@ -4267,7 +4272,8 @@ temple: {
         ],
         forbiddenMovements: [],
         doors: {
-            door: { x: 8, y: 2, direction: "left", target: { roomId: "bar_giko_square", doorId: "very_left" } },
+            door: { x: 8, y: 2, direction: "left", target: { roomId: "bar_giko_square_v2", doorId: "very_left" } },
+        //    door: { x: 8, y: 2, direction: "left", target: { roomId: "bar_giko_square", doorId: "very_left" } },
         },
         streamSlotCount: 3,
     },
@@ -4484,14 +4490,14 @@ bar_giko_square_v2:{
         { x:  9, y:  5, offset: { x:    157, y:  543 }, url: "mall_arch_back.svg" },
         { x:  14, y:  0, offset: { x:    197, y:  541 }, url: "mall_arch_front.svg" },
         
-        { x:  3, y:  8, offset: { x:    160, y:  199 }, url: "koban_with_poster.svg" },
-        { x: 15, y: 18, offset: { x: 1319, y:  259 }, url: "bar_giko_with_roof.svg" },
-        { x: 16, y: 17, offset: { x: 1320, y:  438 }, url: "bar_giko_sign.svg" },
-        { x: 12, y: 10, offset: { x:  820, y:  422 }, url: "fountain.svg" },
-        { x:  5, y: 17, offset: { x:  919, y:  232 }, url: "bench.svg" },
-        { x: 19, y:  4, offset: { x:  1149, y:  491 }, url: "street_light_left.svg" },
-        { x: 14, y: 17, offset: { x: 1270, y:  226 }, url: "street_light_left.svg" },
-        { x:  9, y:  4, offset: { x:  750, y:  491 }, url: "street_light_right.svg" },
+        { x:  0, y:  9, offset: { x:    160, y:  199 }, url: "koban_with_poster.svg" },
+        { x: 15, y: 23, offset: { x: 1319, y:  259 }, url: "bar_giko_with_roof.svg" },
+        { x: 16, y: 22, offset: { x: 1320, y:  438 }, url: "bar_giko_sign.svg" },
+        { x: 11, y: 16, offset: { x:  820, y:  422 }, url: "fountain.svg" },
+        { x:  6, y: 22, offset: { x:  919, y:  232 }, url: "bench.svg" },
+        { x: 19, y:  14, offset: { x:  1149, y:  491 }, url: "street_light_left.svg" },
+        { x: 14, y: 22, offset: { x: 1270, y:  226 }, url: "street_light_left.svg" },
+        { x:  14, y:  9, offset: { x:  750, y:  491 }, url: "street_light_right.svg" },
     ],
     sit: [
         { x:  6, y: 22 },
@@ -4547,11 +4553,10 @@ bar_giko_square_v2:{
         { x:  8, y:  26 },
         
         // Bar Giko quarter
-        { x:  14, y:  23 },
-        { x:  14, y:  24 },
-        { x:  14, y:  25 },
-        { x:  14, y:  26 },
-        { x:  15, y:  22 },
+        { x:  15, y:  23 },
+        { x:  15, y:  24 },
+        { x:  15, y:  25 },
+        { x:  15, y:  26 },
         { x:  16, y:  23 },
         { x:  17, y:  23 },
         { x:  18, y:  23 },
@@ -4832,7 +4837,8 @@ dynamicRooms.push({
                 { xFrom: 1, yFrom: 2, xTo: 0, yTo: 2 },
             ],
             doors: {
-                door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square", doorId: "right" } },
+                door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square_v2", doorId: "right" } },
+            //    door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square", doorId: "right" } },
             },
             streamSlotCount: 1,
         }
@@ -5218,7 +5224,8 @@ dynamicRooms.push({
             ],
             forbiddenMovements: [],
             doors: {
-                door: { x: 6, y: 6, direction: "left", target: { roomId: "bar_giko_square", doorId: "left" } },
+                door: { x: 6, y: 6, direction: "left", target: { roomId: "bar_giko_square_v2", doorId: "left" } },
+            //    door: { x: 6, y: 6, direction: "left", target: { roomId: "bar_giko_square", doorId: "left" } },
             },
             streamSlotCount: 5,
         }

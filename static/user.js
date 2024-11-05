@@ -970,7 +970,7 @@ window.interval = setInterval(function () {
     };
     // 設定
     var configButton = logButtons.appendChild(document.createElement('button'));
-    configButton.textContent = text('設定', 'Config');
+    configButton.textContent = text('設定', '#config');
     configButton.id = 'configButton';
     configButton.onclick = function () {
       if (configWindow && !configWindow.closed) {
@@ -1003,6 +1003,11 @@ window.interval = setInterval(function () {
 `);
       configWindow.document.close();
     };
+      // insert config button
+      const buttons = document.getElementsByClassName('fa-cogs');
+      const settingsButton = buttons.length ? buttons[0] : null;
+      settingsButton.parentElement.appendChild(configButton);
+      
     // カラーピッカー
     var colorPicker = logButtons.appendChild(document.createElement('input'));
     colorPicker.id = 'colorPicker';

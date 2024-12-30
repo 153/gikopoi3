@@ -286,6 +286,7 @@ document.querySelector('head').appendChild(document.createElement('script').appe
     experimentalConfig.hideClearButton = true;
     experimentalConfig.hideSaveButton = true;
     experimentalConfig.autoComplete = true;
+//    experimentalConfig.takeStreamImmediately = true;
 //    experimentalConfig.hideConfigButton = true;
     experimentalConfig.hidePIP = true;
   ['ttsAllowList', 'ttsDenyList', 'autoBlock', 'autoIgnore', 'wordFilter'].forEach(key => {

@@ -517,13 +517,13 @@ io.on("connection", function (socket: Socket)
 
 		// wordfilters
 		msg = msg.replace(/nigger/gi, "bobba")
-
+		msg = msg.replace(/jews/gi, "JEWS")
 		msg = msg.replace(/tranny/gi, "fine person")
 		msg = msg.replace(/trannies/gi, "fine people")
                 msg = msg.replace(/(vod)(k)(a)/gi, "$1$3$2")
 		msg = msg.replace(/(d)(r)(u)(nk)/gi, "$1$3$2$4")
 		msg = msg.replace(/moonshine/gi, "gikoshine")
-		msg = msg.replace(/dxm/gi, "sillypill")
+		msg = msg.replace(/dxm/g, "sillypill")
                 msg = msg.replace(/\sbon\s/g, " fag ")
 		msg = msg.replace(/\smaf\s/g, " faggot ")
                 

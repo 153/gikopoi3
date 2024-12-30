@@ -287,7 +287,8 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             down: { x: 10, y: 0, direction: "up", target: { roomId: "admin_st", doorId: "admin" } }
         },
-        streamSlotCount: 0,
+        streamSlotCount: 8,
+	hasChessboard: true,
     },
     admin_old: {
         id: "admin_old",
@@ -1092,7 +1093,8 @@ export const rooms: { [roomId: string]: Room } = {
             //stairs: { x: 7, y: 19, direction: "right", target: { roomId: "bar_giko_square", doorId: "bar_giko" } },
             right: { x: 13, y: 19, direction: "left", target: { roomId: "bar_giko2", doorId: "stairs" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 4,
+		hasChessboard: true,
     },
     jinja: {
         id: "jinja",

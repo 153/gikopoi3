@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-        return urlSearchParams.get("roomid") || "cafe_st"
+	return urlSearchParams.get("roomid") || "admin";
     }
     catch
     {
-        return "cafe_st"
+        return "admin";
     }
 }
 

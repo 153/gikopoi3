@@ -154,6 +154,7 @@ export const characters = {
     giko_gold: new Character("giko_gold", "png", true),
     naito_npc: new Character("naito_npc", "png", true),
     habbo: new Character("habbo", "png", true),
+    glenda: new Character("glenda", "svg", true),
     blankchan: new Character ("blankchan", "png", false),    
     goatse: new Character("goatse", "png", true),
     

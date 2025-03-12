@@ -343,6 +343,11 @@ io.on("connection", function (socket: Socket)
 	      changeCharacter(user, "mitsugiko", false)
 	    }
 
+	    if (msg.match(/plan9/gi))
+	    {
+	      changeCharacter(user, "glenda", false)
+	      }
+
 	    if (msg.match(/nigger/gi))
 	    {
 	      changeCharacter(user, "habbo", false)
@@ -443,6 +448,11 @@ io.on("connection", function (socket: Socket)
 		if (msg == "#giko")
 		{
 			changeCharacter(user, "giko", false)
+			return;
+			}
+		if (msg == "#gnot")
+		{
+			changeCharacter(user, "glenda", false)
 			return;
 			}
 
@@ -2040,8 +2050,13 @@ app.post("/login", async (req, res) =>
         const n = userName.indexOf("#");
         let processedUserName = (n >= 0 ? userName.substr(0, n) : userName)
             .replace(/[◆⯁♦⬥]/g, "◇");
+	var trip = (tripcode(userName.substr(n + 1)) || "fnkquv7jY2");
+	if (trip == "n2OWUxl8LA")
+	   trip = "BOT";
+	if (trip == "GAME/NOTCE")
+	   trip = "NEET";
         if (n >= 0)
-            processedUserName = processedUserName + "◆" + (tripcode(userName.substr(n + 1)) || "fnkquv7jY2");
+            processedUserName = processedUserName + "◆" + trip;
 	processedUserName = processedUserName.replace(/nigger/gi, "bobba")
 
         const user = addNewUser(processedUserName, characterId, areaId, roomId, getRealIp(req));

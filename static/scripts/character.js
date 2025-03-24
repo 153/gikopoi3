@@ -130,6 +130,7 @@ export const characters = {
     // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "svg", false),    
     giko_cop: new Character ("giko_cop", "png", false),
+    shujin: new Character("shujin", "svg", false),
     giko_batman: new Character ("giko_batman", "png", false),
     giko_hungover: new Character ("giko_hungover", "png", false),
     giko_islam: new Character ("giko_islam", "png", false),
@@ -155,6 +156,7 @@ export const characters = {
     naito_npc: new Character("naito_npc", "png", true),
     habbo: new Character("habbo", "png", true),
     glenda: new Character("glenda", "svg", true),
+    gacha: new Character("gacha", "svg", true),
     blankchan: new Character ("blankchan", "png", false),    
     goatse: new Character("goatse", "png", true),
     

@@ -145,7 +145,7 @@ document.querySelector('head').appendChild(document.createElement('script').appe
     loginButton.before(select);
   });
 
-  Array.from(document.querySelectorAll('#character-selection label')).forEach(label => label.setAttribute('style', 'font-size:0'));
+//  Array.from(document.querySelectorAll('#character-selection label')).forEach(label => label.setAttribute('style', 'font-size:0'));
 
   if (window.iPhoneBookmarklet) {
     var audio = new Audio();

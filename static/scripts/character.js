@@ -146,6 +146,7 @@ export const characters = {
     foe: new Character("foe", "svg", false),
     kimono_giko: new Character("kimono_giko", "svg", false),
     kimono_shii: new Character("kimono_shii", "svg", false),
+    negativ: new Character("negativ", "png", false),    
     sonichu: new Character("sonichu", "png", false),
     yume: new Character("yume", "png", false),
 

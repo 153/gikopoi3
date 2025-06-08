@@ -124,15 +124,15 @@ app.use(async function (req, res, next) {
 
     const confidenceScore = await getAbuseConfidenceScore(ip)
 
-    if (confidenceScore > maximumAbuseConfidenceScore)
-    {
-        log.info("Rejected " + ip)
-        res.setHeader("Content-Type", "text/html; charset=utf-8")
-
-        const abuseIPDBURL = "https://www.abuseipdb.com/check/" + ip
-        res.end("あなたのIPは拒否されました。TorやVPNを使わないでください。Your IP was rejected. Please do not use Tor or VPNs. <a href='" + abuseIPDBURL + "'>" + abuseIPDBURL + "</a>")
-        return
-    }
+//    if (confidenceScore > maximumAbuseConfidenceScore)
+//    {
+//        log.info("Rejected " + ip)
+//        res.setHeader("Content-Type", "text/html; charset=utf-8")
+//
+//        const abuseIPDBURL = "https://www.abuseipdb.com/check/" + ip
+//        res.end("あなたのIPは拒否されました。TorやVPNを使わないでください。Your IP was rejected. Please do not use Tor or VPNs. <a href='" + abuseIPDBURL + "'>" + abuseIPDBURL + "</a>")
+//        return
+//    }
 
     next()
 })
@@ -1635,6 +1635,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "giko_gold"
 	|| characterId == "longcat"
 	|| characterId == "negativ"
+	|| characterId == "rainbow"
 	|| characterId == "hotaru"
 	|| characterId == "mona"
 	|| characterId == "goatse"

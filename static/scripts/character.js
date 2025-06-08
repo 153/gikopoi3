@@ -71,6 +71,7 @@ export class Character
 }
 
 export const characters = {
+    // original characters
     giko: new Character("giko", "svg", false),
     shii: new Character("shii", "svg", false),    
     naito: new Character("naito", "svg", false),
@@ -79,9 +80,12 @@ export const characters = {
     furoshiki: new Character("furoshiki", "svg", false),
     shii_pianica: new Character("shii_pianica", "svg", false),
     dark_naito_walking: new Character("dark_naito_walking", "svg", false),
+    shar_naito: new Character("shar_naito", "svg", false),
     naitoapple: new Character("naitoapple", "svg", false),
     hentai_giko: new Character("hentai_giko", "svg", false),    
     tinpopo: new Character("tinpopo", "svg", false),
+
+    // begin gikopoipoi OC
     nida: new Character("nida", "svg", false),
     onigiri: new Character("onigiri", "svg", false),    
     hikki: new Character("hikki", "svg", false),
@@ -148,12 +152,12 @@ export const characters = {
     kimono_shii: new Character("kimono_shii", "svg", false),
     okabe_giko: new Character("okabe_giko", "svg", false),
     kurisu_shii: new Character("kurisu_shii", "svg", false),
-    negativ: new Character("negativ", "png", false),    
+    negativ: new Character("negativ", "png", false),
+    rainbow: new Character("rainbow", "png", false),
     sonichu: new Character("sonichu", "png", false),
     yume: new Character("yume", "png", false),
 
     // begin secret characters
-    shar_naito: new Character("shar_naito", "svg", true),
     ika: new Character("ika", "svg", true),
     giko_gold: new Character("giko_gold", "png", true),
     naito_npc: new Character("naito_npc", "png", true),

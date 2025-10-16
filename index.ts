@@ -124,15 +124,15 @@ app.use(async function (req, res, next) {
 
     const confidenceScore = await getAbuseConfidenceScore(ip)
 
-//    if (confidenceScore > maximumAbuseConfidenceScore)
-//    {
-//        log.info("Rejected " + ip)
-//        res.setHeader("Content-Type", "text/html; charset=utf-8")
-//
-//        const abuseIPDBURL = "https://www.abuseipdb.com/check/" + ip
-//        res.end("あなたのIPは拒否されました。TorやVPNを使わないでください。Your IP was rejected. Please do not use Tor or VPNs. <a href='" + abuseIPDBURL + "'>" + abuseIPDBURL + "</a>")
-//        return
-//    }
+    if (confidenceScore > maximumAbuseConfidenceScore)
+    {
+        log.info("Rejected " + ip)
+        res.setHeader("Content-Type", "text/html; charset=utf-8")
+
+        const abuseIPDBURL = "https://www.abuseipdb.com/check/" + ip
+        res.end("あなたのIPは拒否されました。TorやVPNを使わないでください。Your IP was rejected. Please do not use Tor or VPNs. <a href='" + abuseIPDBURL + "'>" + abuseIPDBURL + "</a>")
+        return
+    }
 
     next()
 })
@@ -467,6 +467,7 @@ io.on("connection", function (socket: Socket)
                         msg = msgArray.slice(1).join(' ').substr(0, 500);
 //			user.manaPoints-=5;
 //			socket.emit("pushmana", user.manaPoints);
+			log.info("SHOUT:", user.ips, user.id, user.areaId, user.roomId, "<" + user.name + ">" + ": " + msg.replace(/[\n\r]+/g, "<br>"));
 			const allConnectedUsers = getAllUsers()
 		        for (let user in allConnectedUsers) {
                             const recipSocketId = allConnectedUsers[user] && getUser(allConnectedUsers[user].id) && getUser(allConnectedUsers[user].id).socketId;
@@ -1644,6 +1645,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "sonichu"
 	|| characterId == "yume"
 	|| characterId == "akai"
+	|| characterId == "clown_dokuo"
 	) ? "png" : "svg"
 
         const getCharacterImage = async (path: string, crisp: boolean) => {

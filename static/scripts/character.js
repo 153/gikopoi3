@@ -156,6 +156,7 @@ export const characters = {
     rainbow: new Character("rainbow", "png", false),
     sonichu: new Character("sonichu", "png", false),
     yume: new Character("yume", "png", false),
+    clown_dokuo: new Character("clown_dokuo", "png", false),
 
     // begin secret characters
     ika: new Character("ika", "svg", true),

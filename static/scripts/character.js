@@ -116,6 +116,7 @@ export const characters = {
     chotto_toorimasu_yo: new Character("chotto_toorimasu_yo", "svg", false),
     tokita_naito: new Character("tokita_naito", "svg", false),
     pumpkinhead: new Character("pumpkinhead", "svg", false),
+    pumpkin_shobon: new Character("pumpkin_shobon", "svg", false),
     naito_yurei: new Character("naito_yurei", "svg", false),
     shiinigami: new Character("shiinigami", "svg", false),
     youkanman: new Character("youkanman", "svg", false),

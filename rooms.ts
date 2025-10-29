@@ -1738,7 +1738,7 @@ export const rooms: { [roomId: string]: Room } = {
         doors: {
             stairs: { x: 0, y: 15, direction: "right", target: { roomId: "bar_giko", doorId: "right" } },
         },
-        streamSlotCount: 0,
+        streamSlotCount: 6,
     },
     radio_room1: {
         id: "radio_room1",
@@ -2010,7 +2010,7 @@ export const rooms: { [roomId: string]: Room } = {
             door2: { x: 0, y: 8, direction: "right", target: { roomId: "radio_room2", doorId: "right" } },
             door3: { x: 2, y: 9, direction: "down", target: { roomId: "radio_room3", doorId: "down" } },
         },
-        streamSlotCount: 2,
+        streamSlotCount: 4,
 	hasChessboard: true,
     },
     radio_gakuya: {
@@ -4842,7 +4842,7 @@ dynamicRooms.push({
                 door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square_v2", doorId: "right" } },
             //    door: { x: 0, y: 6, direction: "right", target: { roomId: "bar_giko_square", doorId: "right" } },
             },
-            streamSlotCount: 1,
+            streamSlotCount: 3,
         }
         
         if (currentAnnualEvents.includes("summer"))

@@ -2062,6 +2062,8 @@ app.post("/login", async (req, res) =>
         if (n >= 0)
             processedUserName = processedUserName + "◆" + trip;
 	processedUserName = processedUserName.replace(/nigger/gi, "bobba")
+	processedUserName = processedUserName.replace(/Butterscotch/gi, "Anonymous")
+	processedUserName = processedUserName.replace(/zzazzachu/gi, "Anonymous")
 
         const user = addNewUser(processedUserName, characterId, areaId, roomId, getRealIp(req));
 

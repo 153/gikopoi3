@@ -233,6 +233,7 @@ export default
         irori: "Fireplace",
         yaneura: "Attic",
 	kyougijou: "Track",
+	yojouhan: "Tatami Room",
 	meganeya: "Opticians",
 	taiikukan: "School Gym",
 	gym: "Gym",

@@ -96,6 +96,7 @@ export const characters = {
     furoshiki_shii: new Character("furoshiki_shii", "svg", false),
     sakura_furoshiki_shii: new Character("sakura_furoshiki_shii", "svg", false),
     furoshiki_shobon: new Character("furoshiki_shobon", "svg", false),
+    furoshiki_chotto: new Character("furoshiki_chotto", "svg", false),
     shii_toast: new Character("shii_toast", "svg", false),        
     shii_uniform: new Character("shii_uniform", "svg", false),
     hungry_giko: new Character("hungry_giko", "svg", false),

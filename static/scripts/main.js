@@ -70,11 +70,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-	return urlSearchParams.get("roomid") || "admin";
+	return urlSearchParams.get("roomid") || "bar";
     }
     catch
     {
-        return "admin";
+        return "bar";
     }
 }
 
@@ -1008,6 +1008,7 @@ window.vueApp = new Vue({
 
             const bodySpan = document.createElement("span");
             bodySpan.className = "message-body";
+	    
             bodySpan.textContent = msg;
             bodySpan.innerHTML = bodySpan.innerHTML
                 .replace(urlRegex, (htmlUrl, prefix) =>

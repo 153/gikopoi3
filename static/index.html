@@ -26,6 +26,7 @@
     <link rel='stylesheet' href='style/theme-dream.css' />
     <link rel='stylesheet' href='style/theme-butter.css' />    
     <link rel='stylesheet' href='chess/css/chessboard-1.0.0.min.css' />
+    <link rel='stylesheet' href='style/snow.css' />
     <link href="font-awesome/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="libraries/jquery-ui/jquery-ui.css">
     <style id="highlighted-user-style"></style>
@@ -47,6 +48,8 @@
                     <h1><a href="/">{{ $t("ui.title") }}</a></h1>
                     <h2>{{ $t("ui.subtitle") }}</h2>
                 </div>
+                <button id="btn-snow" onclick="window.snowRenderer.toggle()" style="cursor: pointer;">Let it
+                    snow</button>                
             </header>
             <form id="login-form">
 	      <span v-if="passwordInputVisible">Password:</span>
@@ -163,6 +166,8 @@
                                     v-bind:title="$t('ui.preferences_show_notifications')"
                                     class="fas"
                                     v-bind:class="{'fa-bell': showNotifications, 'fa-bell-slash': !showNotifications}"></button>
+                                    <button id="btn-snow-toolbar" onclick="window.snowRenderer.toggle()" title="Let it snow"
+                                    class="fas fa-snowflake" style="cursor: pointer;"></button>
                         </div>
                         <div class="tooltip-section" v-if="isMoveSectionVisible">
                             <div class='tooltip-section-title'>
@@ -899,6 +904,7 @@
     <script type="module" src='scripts/main.js'></script>
 
 <script src="/user.js"></script>
+<script src="scripts/snow.js"></script>
 </body>
 
 </html>

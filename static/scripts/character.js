@@ -146,6 +146,7 @@ export const characters = {
     bif_alien: new Character("bif_alien", "png", false),
     bif_wizard: new Character("bif_wizard", "png", false),
     hotaru: new Character("hotaru", "png", false),
+    clown_dokuo: new Character("clown_dokuo", "png", false),
     winter_shii: new Character("winter_shii", "svg", false),
     longcat: new Character("longcat", "png", false),    
     mona: new Character("mona", "png", false),
@@ -158,7 +159,13 @@ export const characters = {
     rainbow: new Character("rainbow", "png", false),
     sonichu: new Character("sonichu", "png", false),
     yume: new Character("yume", "png", false),
-    clown_dokuo: new Character("clown_dokuo", "png", false),
+    // begin petsuki characters
+    hamtaro: new Character("hamtaro", "svg", false),
+    siam: new Character("siam", "svg", false),
+    peng: new Character("peng", "svg", false),
+    mike: new Character("mike", "svg", false),
+    kuro: new Character("kuro", "svg", false),
+    bunn: new Character("bunn", "svg", false),
 
     // begin secret characters
     ika: new Character("ika", "svg", true),

@@ -128,6 +128,7 @@ export const characters = {
     mikan_naito: new Character("mikan_naito", "svg", false),
     shii_syakuhati: new Character("shii_syakuhati", "svg", false),
     taiko_naito: new Character("taiko_naito", "svg", false),
+    chindonnya_shobon: new Character("chindonnya_shobon", "svg", false),
     shii_raincoat: new Character("shii_raincoat", "svg", false),
     shobon_raincoat: new Character("shobon_raincoat", "svg", false),
     shii_shintaisou: new Character("shii_shintaisou", "svg", false),
@@ -147,6 +148,7 @@ export const characters = {
     bif_wizard: new Character("bif_wizard", "png", false),
     hotaru: new Character("hotaru", "png", false),
     clown_dokuo: new Character("clown_dokuo", "png", false),
+
     winter_shii: new Character("winter_shii", "svg", false),
     longcat: new Character("longcat", "png", false),    
     mona: new Character("mona", "png", false),
@@ -158,14 +160,15 @@ export const characters = {
     negativ: new Character("negativ", "png", false),
     rainbow: new Character("rainbow", "png", false),
     sonichu: new Character("sonichu", "png", false),
+    garf: new Character("garf", "svg", false),    
     yume: new Character("yume", "png", false),
     // begin petsuki characters
-    hamtaro: new Character("hamtaro", "svg", false),
+    peng: new Character("peng", "svg", false),    
     siam: new Character("siam", "svg", false),
-    peng: new Character("peng", "svg", false),
     mike: new Character("mike", "svg", false),
     kuro: new Character("kuro", "svg", false),
     bunn: new Character("bunn", "svg", false),
+    hamtaro: new Character("hamtaro", "svg", false),    
 
     // begin secret characters
     ika: new Character("ika", "svg", true),

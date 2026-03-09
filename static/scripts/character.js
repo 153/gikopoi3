@@ -146,6 +146,7 @@ export const characters = {
     akai: new Character("akai", "png", false),    
     bif_alien: new Character("bif_alien", "png", false),
     bif_wizard: new Character("bif_wizard", "png", false),
+    boomer: new Character("boomer", "svg", false),
     hotaru: new Character("hotaru", "png", false),
     clown_dokuo: new Character("clown_dokuo", "png", false),
 

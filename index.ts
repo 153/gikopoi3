@@ -348,10 +348,15 @@ io.on("connection", function (socket: Socket)
 	      changeCharacter(user, "glenda", false)
 	      }
 
+	    
 	    if (msg.match(/nigger/gi))
 	    {
 	      changeCharacter(user, "habbo", false)
 	    }
+	    if (msg.match(/monday/gi))
+	    {
+		changeCharacter(user, "garf", false)
+		}
             
             if (msg == "" && user.lastRoomMessage == "")
             {
@@ -536,6 +541,7 @@ io.on("connection", function (socket: Socket)
 		msg = msg.replace(/moonshine/gi, "gikoshine")
 		msg = msg.replace(/dxm/g, "sillypill")
                 msg = msg.replace(/\sbon\s/g, " fag ")
+		msg = msg.replace(/\sjs\s/g, " javascript  ")
 		msg = msg.replace(/\smaf\s/g, " faggot ")
                 
                 msg = msg.substr(0, 500)

@@ -1,7 +1,7 @@
 export default
 {
     lang_name: "English",
-    default_user_name: "Spy",
+    default_user_name: "Anonymous",
     message_colon: ": ",
     test: "test",
     ui:
@@ -236,6 +236,7 @@ export default
 	yojouhan: "Tatami Room",
 	meganeya: "Opticians",
 	taiikukan: "School Gym",
+	karaoke_box: "Karaoke Room",
 	gym: "Gym",
 	hell: "Hell",
 	lounge: "McDonald's",

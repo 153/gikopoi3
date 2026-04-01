@@ -133,7 +133,9 @@ export const characters = {
     shobon_raincoat: new Character("shobon_raincoat", "svg", false),
     shii_shintaisou: new Character("shii_shintaisou", "svg", false),
     giko_megane: new Character("giko_megane", "svg", false),    
-    shii_megane: new Character("shii_megane", "svg", false),    
+    shii_megane: new Character("shii_megane", "svg", false),
+    giko_headphones: new Character("giko_headphones", "svg", false),
+    shii_headphones: new Character("shii_headphones", "svg", false),
 
 
     // begin gikopoi.com OC

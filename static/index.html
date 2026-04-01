@@ -48,8 +48,8 @@
                     <h1><a href="/">{{ $t("ui.title") }}</a></h1>
                     <h2>{{ $t("ui.subtitle") }}</h2>
                 </div>
-                <button id="btn-snow" onclick="window.snowRenderer.toggle()" style="cursor: pointer;">Let it
-                    snow</button>                
+                <!-- button id="btn-snow" onclick="window.snowRenderer.toggle()" style="cursor: pointer;">Let it
+                    snow</button -->                
             </header>
             <form id="login-form">
 	      <span v-if="passwordInputVisible">Password:</span>
@@ -166,8 +166,8 @@
                                     v-bind:title="$t('ui.preferences_show_notifications')"
                                     class="fas"
                                     v-bind:class="{'fa-bell': showNotifications, 'fa-bell-slash': !showNotifications}"></button>
-                                    <button id="btn-snow-toolbar" onclick="window.snowRenderer.toggle()" title="Let it snow"
-                                    class="fas fa-snowflake" style="cursor: pointer;"></button>
+                                    <!-- button id="btn-snow-toolbar" onclick="window.snowRenderer.toggle()" title="Let it snow"
+                                    class="fas fa-snowflake" style="cursor: pointer;"></button -->
                         </div>
                         <div class="tooltip-section" v-if="isMoveSectionVisible">
                             <div class='tooltip-section-title'>

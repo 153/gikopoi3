@@ -136,6 +136,7 @@ export const characters = {
     shii_megane: new Character("shii_megane", "svg", false),
     giko_headphones: new Character("giko_headphones", "svg", false),
     shii_headphones: new Character("shii_headphones", "svg", false),
+    nanamegiko: new Character("nanamegiko", "svg", false),
 
 
     // begin gikopoi.com OC

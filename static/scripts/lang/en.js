@@ -237,6 +237,7 @@ export default
 	meganeya: "Opticians",
 	taiikukan: "School Gym",
 	karaoke_box: "Karaoke Room",
+	yane: "Rooftop",	
 	gym: "Gym",
 	hell: "Hell",
 	lounge: "McDonald's",

@@ -243,6 +243,7 @@ export default
 	lounge: "McDonald's",
 	temple: "Temple",
 	library: "Library",
+	gammon: "Gammon",
         bar_giko_square_v2: "Fountain Plaza + Agora Mall",
         vapor_mall:"Agora Mall Entrance",
     },

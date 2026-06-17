@@ -3456,6 +3456,40 @@ temple: {
         streamSlotCount: 1,
     },
 
+    gammon: {
+    	id: "gammon",
+	group: "gikopoi",
+	scale: 1,
+	size: {x: 12, y: 14},
+	originCoordinates: { x: 42, y: 523},
+	spawnPoint: "spawn",
+	backgroundImageUrl: "rooms/gammon/background.svg",
+	objects: [
+	{x: 0, y: 4, scale: 1, offset: { x: 252, y: 222}, url: 'beer.png'},
+	],
+	sit: [],
+	blocked: [
+	// the bar
+	{x: 4, y: 13}, 	{x: 5, y: 13},	{x: 6, y: 13},
+	{x: 8, y: 13}, {x: 9, y: 13}, {x: 10, y: 13}, {x: 11, y: 13},
+	// the wall
+	{x: 3, y: 0}, {x: 3, y: 1}, {x: 3, y: 2}, {x: 3, y: 3},
+	{x: 3, y: 4}, {x: 3, y: 5}, {x: 3, y: 6}, {x: 3, y: 7},
+	{x: 3, y: 8}, {x: 3, y: 9}, {x: 3, y: 10}, {x: 3, y: 11},
+	{x: 3, y: 12}, {x: 3, y: 13},
+	// the table
+	{x: 0, y: 4}, {x: 1, y: 5}, {x: 1, y: 6}, {x: 0, y: 7},
+	
+	],
+	forbiddenMovements: [],
+	doors: {
+	    spawn: {x: 4, y: 0, direction: "right", target: {roomId: "hell", doorId: "spawn",},},
+	    bar: {x: 7, y: 13, direction: "left", target: {roomId: "gammon", doorId: "beer"},},
+	    beer: {x: 0, y: 5, direction: "right", target: null},
+	    },
+        streamSlotCount: 5,
+    },
+
     lounge: {
 	id: "lounge",
 	group: "gikopoi",
@@ -5382,7 +5416,7 @@ dynamicRooms.push({
             spawnPoint: "staircase",
             backgroundImageUrl: `rooms/yane/background.${variant}.svg`,
             objects: [
-                { x: 4, y: 0, scale: 0.35, offset: { x: 0 , y: 0 }, url: `top.${variant}.svg` },
+                { x: 6, y: -1, scale: 0.35, offset: { x: 0 , y: 0 }, url: `top.${variant}.svg` },
                 { x: 5, y: 2, scale: 0.35, offset: { x: 720 , y: 1512 }, url: `wall.${variant}.svg` },
                 { x: 0, y: 0, scale: 1, offset: { x: 52 , y: 545 }, url: `../arrow-right.svg` },
                 { x: 0, y: 3, scale: 1, offset: { x: 134 , y: 472 }, url: `../arrow-up.svg` },
@@ -5440,9 +5474,6 @@ dynamicRooms.push({
                 { x: 4, y: 7 },
                 { x: 4, y: 8 },
                 { x: 4, y: 9 },
-                // left corner of the roof
-                { x: 5, y: 0 },
-                { x: 6, y: 0 },
             ],
             forbiddenMovements: [],
             streamSlotCount: 2,

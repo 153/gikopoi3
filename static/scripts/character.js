@@ -156,7 +156,8 @@ export const characters = {
     clown_dokuo: new Character("clown_dokuo", "png", false),
 
     winter_shii: new Character("winter_shii", "svg", false),
-    longcat: new Character("longcat", "png", false),    
+    longcat: new Character("longcat", "png", false),
+    kuma: new Character("kuma", "svg", false),
     mona: new Character("mona", "png", false),
     foe: new Character("foe", "svg", false),
     kimono_giko: new Character("kimono_giko", "svg", false),

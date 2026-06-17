@@ -184,6 +184,7 @@ export const characters = {
     habbo: new Character("habbo", "png", true),
     glenda: new Character("glenda", "svg", true),
     gacha: new Character("gacha", "svg", true),
+    mini: new Character("mini", "svg", true),    
     blankchan: new Character ("blankchan", "png", false),    
     goatse: new Character("goatse", "png", true),
     

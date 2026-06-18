@@ -20,15 +20,15 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="5.3256937"
-     inkscape:cx="64.874178"
-     inkscape:cy="83.181652"
+     inkscape:zoom="3.7932956"
+     inkscape:cx="65.246695"
+     inkscape:cy="128.12078"
      inkscape:window-width="1390"
      inkscape:window-height="1175"
      inkscape:window-x="409"
-     inkscape:window-y="49"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g37-0"
+     inkscape:current-layer="svg8"
      showguides="true">
     <sodipodi:guide
        position="117.97324,29.71278"
@@ -69,7 +69,7 @@
     </g>
   </defs>
   <g
-     transform="matrix(2,0,0,2,82.341,155.50283)"
+     transform="matrix(2,0,0,2,82.341,146.31712)"
      id="g7"
      inkscape:label="bear-front-walking-2">
     <use
@@ -150,6 +150,14 @@
          rx="2.2033491"
          ry="2.2045014"
          transform="scale(-1,1)" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.964;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="ellipse43-8-1-0-88-1"
+         cx="105.89872"
+         cy="33.095848"
+         rx="9.1983738"
+         ry="8.4305878"
+         transform="matrix(0.5,0,0,0.5,21.372376,-98.635022)" />
     </g>
     <g
        id="g47-8"
@@ -170,6 +178,14 @@
          cy="-60.457626"
          rx="2.2033491"
          ry="2.2045014" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.964;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="ellipse43-8-1-0-88"
+         cx="55.449089"
+         cy="32.097538"
+         rx="9.1983738"
+         ry="8.4305878"
+         transform="matrix(0.5,0,0,0.5,-39.397517,-76.424667)" />
     </g>
     <path
        style="display:inline;fill:#8a5430;fill-opacity:1;stroke:none;stroke-width:0.532;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
@@ -280,4 +296,9 @@
        sodipodi:nodetypes="czczczczczcc"
        transform="translate(-93.64164,-2.06701)" />
   </g>
+  <path
+     style="fill:#633a1e;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+     d="M 53.806786,33.751393 C 57.717285,29.369947 64.34173,25.184318 69.662598,22.448302 l 7.311419,3.500488 -17.481438,11.452226 z"
+     id="path10"
+     sodipodi:nodetypes="ccccc" />
 </svg>

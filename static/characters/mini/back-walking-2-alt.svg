@@ -19,15 +19,24 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="2.0349669"
-     inkscape:cx="52.826413"
-     inkscape:cy="45.209581"
+     inkscape:zoom="11.469072"
+     inkscape:cx="55.017527"
+     inkscape:cy="90.591459"
      inkscape:window-width="944"
      inkscape:window-height="997"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg7" />
+     inkscape:current-layer="svg7"
+     showguides="true">
+    <sodipodi:guide
+       position="85.006384,88.80295"
+       orientation="0,1"
+       id="guide1"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
   <defs
      id="defs1">
     <filter
@@ -43,7 +52,7 @@
   </defs>
   <g
      id="g8"
-     transform="matrix(0.38680576,0,0,0.38680576,27.633598,67.123)">
+     transform="matrix(0.38680576,0,0,0.38680576,44.577099,38.443619)">
     <g
        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2"
        id="g7">

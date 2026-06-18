@@ -21,14 +21,14 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:zoom="5.3866541"
-     inkscape:cx="87.438323"
-     inkscape:cy="134.87036"
+     inkscape:cx="79.269987"
+     inkscape:cy="86.974213"
      inkscape:window-width="1083"
      inkscape:window-height="1214"
      inkscape:window-x="446"
-     inkscape:window-y="84"
+     inkscape:window-y="38"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g37-0"
+     inkscape:current-layer="g45-6"
      showguides="true">
     <sodipodi:guide
        position="83.371497,29.71278"
@@ -64,7 +64,7 @@
     </g>
   </defs>
   <g
-     transform="matrix(2,0,0,2,82.136859,154.77247)"
+     transform="matrix(2,0,0,2,82.136859,148.17163)"
      id="g7"
      inkscape:label="bear-back-walking-1">
     <use
@@ -126,6 +126,14 @@
          rx="4.5991869"
          ry="4.2152939"
          transform="scale(-1,1)" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.964;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="ellipse43-8-1-0-4"
+         cx="107.5962"
+         cy="23.920061"
+         rx="9.1983738"
+         ry="8.4305878"
+         transform="matrix(0.5,0,0,0.5,20.251922,-97.217185)" />
     </g>
     <g
        id="g47-8"
@@ -139,6 +147,14 @@
          cy="-62.046028"
          rx="4.5991869"
          ry="4.2152939" />
+      <ellipse
+         style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.964;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="ellipse43-8-1-0"
+         cx="57.279385"
+         cy="25.236877"
+         rx="9.1983738"
+         ry="8.4305878"
+         transform="matrix(0.5,0,0,0.5,-40.51797,-75.00683)" />
     </g>
     <g
        id="g37-0"

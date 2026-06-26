@@ -1634,6 +1634,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "giko_cop"
 	|| characterId == "giko_batman"
 	|| characterId == "giko_hungover"
+	|| characterId == "giko_hot"
 	|| characterId == "giko_islam"
 	|| characterId == "naito_npc"
 	|| characterId == "giko_shroom"
@@ -2070,6 +2071,7 @@ app.post("/login", async (req, res) =>
 	processedUserName = processedUserName.replace(/nigger/gi, "bobba")
 	processedUserName = processedUserName.replace(/Butterscotch/gi, "Anonymous")
 	processedUserName = processedUserName.replace(/zzazzachu/gi, "Anonymous")
+	processedUserName = processedUserName.replace(/killsushi/gi, "Anonymous")
 
         const user = addNewUser(processedUserName, characterId, areaId, roomId, getRealIp(req));
 

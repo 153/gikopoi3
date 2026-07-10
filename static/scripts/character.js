@@ -161,6 +161,8 @@ export const characters = {
     kuma: new Character("kuma", "svg", false),
     mona: new Character("mona", "png", false),
     foe: new Character("foe", "svg", false),
+    domo: new Character("domo", "svg", false),
+//    superfoe: new Character("superfoe", "svg", false),
     kimono_giko: new Character("kimono_giko", "svg", false),
     kimono_shii: new Character("kimono_shii", "svg", false),
     okabe_giko: new Character("okabe_giko", "svg", false),

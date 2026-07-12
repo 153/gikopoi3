@@ -172,6 +172,7 @@ export const characters = {
     sonichu: new Character("sonichu", "png", false),
     garf: new Character("garf", "svg", false),    
     yume: new Character("yume", "png", false),
+    tukan: new Character("tukan", "svg", false),
     // begin petsuki characters
     peng: new Character("peng", "svg", false),    
     siam: new Character("siam", "svg", false),

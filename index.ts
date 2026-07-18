@@ -1642,6 +1642,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "giko_batman"
 	|| characterId == "giko_hungover"
 	|| characterId == "giko_hot"
+	|| characterId == "giko_icy"
 	|| characterId == "giko_islam"
 	|| characterId == "naito_npc"
 	|| characterId == "giko_shroom"

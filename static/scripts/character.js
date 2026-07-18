@@ -146,6 +146,7 @@ export const characters = {
     giko_batman: new Character ("giko_batman", "png", false),
     giko_hungover: new Character ("giko_hungover", "png", false),
     giko_hot: new Character ("giko_hot", "png", false),
+    giko_icy: new Character ("giko_icy", "png", false),
     giko_islam: new Character ("giko_islam", "png", false),
     shii_islam: new Character ("shii_islam", "png", false),
     giko_shroom: new Character("giko_shroom", "png", false),

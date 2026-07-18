@@ -90,7 +90,7 @@
        x2="61.945648"
        y2="99.199509"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(22.861286,3.904)" />
+       gradientTransform="matrix(0.8660254,-0.5,-0.5,-0.8660254,81.692879,223.46649)" />
     <linearGradient
        id="linearGradient31"
        inkscape:collect="always">
@@ -207,11 +207,11 @@
      inkscape:deskcolor="#505050"
      inkscape:zoom="11.842096"
      inkscape:cx="86.766735"
-     inkscape:cy="131.14233"
-     inkscape:window-width="1920"
-     inkscape:window-height="991"
-     inkscape:window-x="-9"
-     inkscape:window-y="740"
+     inkscape:cy="104.12008"
+     inkscape:window-width="1902"
+     inkscape:window-height="973"
+     inkscape:window-x="2400"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg7" />
   <g
@@ -259,9 +259,11 @@
        id="path25" />
     <path
        style="clip-rule:evenodd;display:inline;opacity:1;fill:url(#linearGradient32);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       d="m 85.917748,102.39554 c 1.846994,0.46964 4.35805,1.26386 4.791087,3.11978 1.373511,5.88662 -3.247936,14.86465 -9.247911,15.59889 -3.884166,0.47532 -7.750573,-4.47479 -8.245126,-8.35655 -0.477415,-3.74725 2.486687,-7.79083 5.682452,-9.80501 1.985701,-1.25152 4.744694,-1.13553 7.019498,-0.55711 z"
+       d="m 87.055607,106.64209 c 1.364724,-1.33022 3.142252,-3.27356 2.589313,-5.09735 -1.753815,-5.784723 -10.24512,-11.249202 -15.808371,-8.885085 -3.601446,1.530444 -4.474798,7.750565 -2.962213,11.359545 1.460172,3.48393 6.048949,5.50372 9.823653,5.65017 2.345427,0.091 4.67679,-1.38895 6.357618,-3.02728 z"
        id="path24"
-       sodipodi:nodetypes="ssssss" />
+       sodipodi:nodetypes="ssssss"
+       inkscape:transform-center-x="5.1415767"
+       inkscape:transform-center-y="-4.0065232" />
     <circle
        cx="73.955002"
        cy="87.235001"

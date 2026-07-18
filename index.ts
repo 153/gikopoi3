@@ -449,6 +449,13 @@ io.on("connection", function (socket: Socket)
 			changeCharacter(user, "mitsugiko", false)
 			return;
 		}
+
+		if (msg == "#hello")
+		{
+			changeCharacter(user, "goatse", false)
+			return;
+		}
+
 		
 		if (msg == "#giko")
 		{
@@ -1653,6 +1660,7 @@ async function getCharacterImages(crisp: boolean)
 	|| characterId == "yume"
 	|| characterId == "akai"
 	|| characterId == "clown_dokuo"
+	|| characterId == "kiga"
 	) ? "png" : "svg"
 
         const getCharacterImage = async (path: string, crisp: boolean) => {
@@ -2071,7 +2079,6 @@ app.post("/login", async (req, res) =>
 	processedUserName = processedUserName.replace(/nigger/gi, "bobba")
 	processedUserName = processedUserName.replace(/Butterscotch/gi, "Anonymous")
 	processedUserName = processedUserName.replace(/zzazzachu/gi, "Anonymous")
-	processedUserName = processedUserName.replace(/killsushi/gi, "Anonymous")
 
         const user = addNewUser(processedUserName, characterId, areaId, roomId, getRealIp(req));
 

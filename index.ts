@@ -351,8 +351,20 @@ io.on("connection", function (socket: Socket)
 	    
 	    if (msg.match(/nigger/gi))
 	    {
-	      changeCharacter(user, "habbo", false)
-	    }
+	      if (user.characterId != "habbo") {
+                changeCharacter(user, "habbo", false)
+		msg = msg.replace(/nigger/gi, "bobba")
+		}
+	      if (user.characterId == "habbo") {
+	      let odds = Math.floor(Math.random() * 6) + 1;
+	      if (odds < 4) {
+	      msg = msg.replace(/nigger/gi, "bobba")
+	      }
+	    }}
+	    if (msg.match(/nigga/gi))
+	      if (user.characterId != "habbo") {
+      		msg = msg.replace(/nigga/gi, "bobba")
+		}
 	    if (msg.match(/monday/gi))
 	    {
 		changeCharacter(user, "garf", false)
@@ -539,7 +551,6 @@ io.on("connection", function (socket: Socket)
 		   // end hungary dice hack
 
 		// wordfilters
-		msg = msg.replace(/nigger/gi, "bobba")
 		msg = msg.replace(/jews/gi, "JEWS")
 		msg = msg.replace(/tranny/gi, "fine person")
 		msg = msg.replace(/trannies/gi, "fine people")
@@ -1770,7 +1781,7 @@ app.post("/user-list", (req, res) => {
                                                     + "</label>").join("</br>")
 
         const pwdInput = "<input type='hidden' name='pwd' value='" + pwd + "'>"
-        const banButton = "<br/><input type='submit'>"
+        const banButton = "<br/><input type='submit' name='banbutton' value='ban'><input type='submit' name='kickbutton' value='kick'>"
 
         const output = "<form action='ban' method='post'>" + pwdInput + userList + banButton + "</form>"
 
@@ -1830,14 +1841,29 @@ app.post("/ban", async (req, res) => {
             res.end("nope")
             return
         }
-
-        const userIdsToBan = Object.keys(req.body).filter(x => x != "pwd")
+	let isBan = 0;
+	if (req.body && 'banbutton' in req.body) {
+	   isBan = 1;
+	   }
+	log.info(isBan, req.body)
+	   
+        const userIdsToBan = Object
+	  .keys(req.body)
+	  .filter(x => x != "pwd")
+	  .filter(x => x != "banbutton")
+	  .filter(x=> x != "kickbutton")
+	  
         console.log(userIdsToBan)
         for (const id of userIdsToBan)
         {
             const user = getUser(id)
             for (const ip of user.ips)
+	    if (isBan) {
                 await banIP(ip)
+		}
+	    else {
+		await kickIP(ip)
+		}
         }
         res.end("done")
     }

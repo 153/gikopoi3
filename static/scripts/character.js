@@ -84,6 +84,7 @@ export const characters = {
     naitoapple: new Character("naitoapple", "svg", false),
     hentai_giko: new Character("hentai_giko", "svg", false),    
     tinpopo: new Character("tinpopo", "svg", false),
+    
 
     // begin gikopoipoi OC
     nida: new Character("nida", "svg", false),
@@ -137,7 +138,9 @@ export const characters = {
     giko_headphones: new Character("giko_headphones", "svg", false),
     shii_headphones: new Character("shii_headphones", "svg", false),
     nanamegiko: new Character("nanamegiko", "svg", false),
-
+    giko_matsuri: new Character("giko_matsuri", "svg", false),
+    roubon: new Character("roubon", "svg", false),
+    yukata_shii: new Character("yukata_shii", "svg", false),
 
     // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "svg", false),    
@@ -176,6 +179,9 @@ export const characters = {
     garf: new Character("garf", "svg", false),    
     yume: new Character("yume", "png", false),
     tukan: new Character("tukan", "svg", false),
+    ppakun: new Character("ppakun", "svg", false),
+    zai: new Character("zai", "svg", false),
+    
     // begin petsuki characters
     peng: new Character("peng", "svg", false),    
     siam: new Character("siam", "svg", false),
@@ -191,7 +197,8 @@ export const characters = {
     habbo: new Character("habbo", "png", true),
     glenda: new Character("glenda", "svg", true),
     gacha: new Character("gacha", "svg", true),
-    mini: new Character("mini", "svg", true),    
+    mini: new Character("mini", "svg", true),
+    ufo: new Character("ufo", "svg", true),    
     blankchan: new Character ("blankchan", "png", false),    
     goatse: new Character("goatse", "png", true),
     

@@ -158,8 +158,9 @@ export const characters = {
     bif_wizard: new Character("bif_wizard", "png", false),
     boomer: new Character("boomer", "svg", false),
     hotaru: new Character("hotaru", "png", false),
-    clown_dokuo: new Character("clown_dokuo", "png", false),
+    crow: new Character("crow", "svg", false),    
 
+    clown_dokuo: new Character("clown_dokuo", "png", false),
     winter_shii: new Character("winter_shii", "svg", false),
     longcat: new Character("longcat", "png", false),
     kuma: new Character("kuma", "svg", false),

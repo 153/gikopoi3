@@ -240,17 +240,21 @@ export default
 	yane: "Rooftop",	
 	gym: "Gym",
 	hell: "Hell",
+	pachinko: "Pachinko Parlor",
 	lounge: "McDonald's",
 	temple: "Temple",
 	library: "Library",
 	gammon: "Gammon",
+	hotaru_room: "Hotaru: Room",
         bar_giko_square_v2: "Fountain Plaza + Agora Mall",
         vapor_mall:"Agora Mall Entrance",
     },
     area:
     {
-        gikopoipoi: "Gikopoi.com",
+	gikopoi3: "Gikopoi3",
+        gikopoipoi: "Gikopoi2",
         gikopoi: "Sea City",
+	hotaru: "Hotaru",
         bar_giko: "Bar Giko Town",
         agora_road: "Agora Road",
     }

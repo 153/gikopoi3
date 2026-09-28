@@ -1,4 +1,5 @@
 //localStorage.debug = '*'; // socket.io debug
+let defaultroom = "nerd_office";
 localStorage.removeItem("debug");
 
 import { characters, loadCharacters } from "./character.js";
@@ -70,11 +71,11 @@ function getSpawnRoomId()
     try
     {
         const urlSearchParams = new URLSearchParams(window.location.search);
-	return urlSearchParams.get("roomid") || "cafe_st";
+	return urlSearchParams.get("roomid") || defaultroom;
     }
     catch
     {
-        return "cafe_st";
+        return defaultroom;
     }
 }
 

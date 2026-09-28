@@ -51,7 +51,7 @@ export interface Door
 export interface Room
 {
     id: string;
-    group: "bar_giko" | "gikopoi" | "gikopoipoi" | "agora_road" | string;
+    group: "bar_giko" | "gikopoi" | "gikopoipoi" | "agora_road" | "hotaru" | string;
     variant?: string;
     scale: number;
     size: Coordinates;

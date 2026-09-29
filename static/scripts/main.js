@@ -177,7 +177,8 @@ window.vueApp = new Vue({
         isMoveSectionVisible: localStorage.getItem("isMoveSectionVisible") != "false",
         isBubbleSectionVisible: localStorage.getItem("isBubbleSectionVisible") != "false",
         isLogoutButtonVisible: localStorage.getItem("isLogoutButtonVisible") != "false",
-        uiTheme: localStorage.getItem("uiTheme") == "moon" ? "yellow" : (localStorage.getItem("uiTheme") || (localStorage.getItem("isDarkMode") == "true" ? "shaddox" : "gikopoi")),
+        uiTheme: ["moon", "yellow"].includes(localStorage.getItem("uiTheme")) ? "dark2" : (localStorage.getItem("uiTheme") || (localStorage.getItem("isDarkMode") == "true" ? "shaddox" : "gikopoi")),
+        customHue: Number(localStorage.getItem("customHue")) || 0,
         showNotifications: localStorage.getItem("showNotifications") != "false",
         enableTextToSpeech: localStorage.getItem("enableTextToSpeech") == "true",
         ttsVoiceURI: localStorage.getItem("ttsVoiceURI") || "automatic",
@@ -3150,6 +3151,10 @@ window.vueApp = new Vue({
             {
                 knobElement.refresh()
             }
+        },
+        handleCustomHue: function ()
+        {
+            this.storeSet("customHue");
         },
         toggleCoinSound: function ()
         {

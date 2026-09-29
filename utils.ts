@@ -1,6 +1,19 @@
+import { Coordinates } from "./types";
+
 export async function sleep(ms: number)
 {
     return new Promise(res => setTimeout(res, ms))
+}
+
+export function coordRange(from: Coordinates, to: Coordinates): Coordinates[]
+{
+    const coords = []
+    for (let x = from.x; x < to.x + 1; x += (from.x <= to.x ? 1 : -1))
+    {
+        for (let y = from.y; y < to.y + 1; y += (from.y <= to.y ? 1 : -1))
+            coords.push({ x, y })
+    }
+    return coords
 }
 
 export function indexOfMulti(array: Uint8Array, searchElements: number[], fromIndex: number): number

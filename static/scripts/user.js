@@ -2,6 +2,10 @@ import { calculateRealCoordinates, BLOCK_HEIGHT, BLOCK_WIDTH } from "./utils.js"
 import { RenderCache } from "./rendercache.js";
 import { characters } from "./character.js";
 
+const blinkOpenMinLength = 6000;
+const blinkOpenLengthVariation = 1000;
+const blinkClosedLength = 1000;
+
 export default class User
 {
     constructor(character, name)
@@ -33,6 +37,12 @@ export default class User
         this.bubbleImage = null;
         this.voicePitch = null;
         this.isAlternateCharacter = false;
+
+        this.isBlinking = false;
+        // The blinking pattern/timing is derived deterministically from the user's id, computed
+        // lazily in animateBlinking() once the id is known (it isn't available yet at construction time).
+        this.blinkingPattern = null;
+        this.blinkingStartShift = 0;
     }
 
     moveImmediatelyToPosition(room, logicalPositionX, logicalPositionY, direction)
@@ -72,8 +82,15 @@ export default class User
         const blockWidth = room.blockWidth ? room.blockWidth : BLOCK_WIDTH;
         const blockHeight = room.blockHeight ? room.blockHeight : BLOCK_HEIGHT;
 
-	let walkingSpeedX = blockWidth / ( (this.character.characterName == "shar_naito" || this.character.characterName == "shii_shintaisou") ? 13 : 40)
-        let walkingSpeedY = blockHeight / ( (this.character.characterName == "shar_naito" || this.character.characterName == "shii_shintaisou") ? 13 : 40)
+        const characterSpeedDivider =
+        {
+            shar_naito: 13,
+            shii_shintaisou: 13,
+            roubon: 80,
+        }[this.character.characterName] || 40;
+
+        let walkingSpeedX = blockWidth / characterSpeedDivider
+        let walkingSpeedY = blockHeight / characterSpeedDivider
 
         if (room.id == "long_st" || room.id == "kyougijou")
         {
@@ -114,22 +131,12 @@ export default class User
 
     getCurrentImage(room)
     {
-        const frontSittingImage = this.isAlternateCharacter ? this.character.frontSittingImageAlt : this.character.frontSittingImage;
-        const frontStandingImage = this.isAlternateCharacter ? this.character.frontStandingImageAlt : this.character.frontStandingImage;
-        const frontWalking1Image = this.isAlternateCharacter ? this.character.frontWalking1ImageAlt : this.character.frontWalking1Image;
-        const frontWalking2Image = this.isAlternateCharacter ? this.character.frontWalking2ImageAlt : this.character.frontWalking2Image;
-        const backSittingImage = this.isAlternateCharacter ? this.character.backSittingImageAlt : this.character.backSittingImage;
-        const backStandingImage = this.isAlternateCharacter ? this.character.backStandingImageAlt : this.character.backStandingImage;
-        const backWalking1Image = this.isAlternateCharacter ? this.character.backWalking1ImageAlt : this.character.backWalking1Image;
-        const backWalking2Image = this.isAlternateCharacter ? this.character.backWalking2ImageAlt : this.character.backWalking2Image;
-        const frontSittingFlippedImage = this.isAlternateCharacter ? this.character.frontSittingFlippedImageAlt : this.character.frontSittingFlippedImage;
-        const frontStandingFlippedImage = this.isAlternateCharacter ? this.character.frontStandingFlippedImageAlt : this.character.frontStandingFlippedImage;
-        const frontWalking1FlippedImage = this.isAlternateCharacter ? this.character.frontWalking1FlippedImageAlt : this.character.frontWalking1FlippedImage;
-        const frontWalking2FlippedImage = this.isAlternateCharacter ? this.character.frontWalking2FlippedImageAlt : this.character.frontWalking2FlippedImage;
-        const backSittingFlippedImage = this.isAlternateCharacter ? this.character.backSittingFlippedImageAlt : this.character.backSittingFlippedImage;
-        const backStandingFlippedImage = this.isAlternateCharacter ? this.character.backStandingFlippedImageAlt : this.character.backStandingFlippedImage;
-        const backWalking1FlippedImage = this.isAlternateCharacter ? this.character.backWalking1FlippedImageAlt : this.character.backWalking1FlippedImage;
-        const backWalking2FlippedImage = this.isAlternateCharacter ? this.character.backWalking2FlippedImageAlt : this.character.backWalking2FlippedImage;
+        // Picks the character image variant matching this user's current state: normal/alt
+        // character, and (if blink-capable) eyes open/closed.
+        const hasEyesClosed = this.isBlinking || this.isSpinning || this.isInactive;
+        const suffix = (this.isAlternateCharacter ? "Alt" : "") + (hasEyesClosed ? "EyesClosed" : "");
+        const getImage = (state, isFlipped) =>
+            this.character[state + (isFlipped ? "Flipped" : "") + "Image" + suffix];
 
         if (this.isSpinning)
         {
@@ -138,51 +145,86 @@ export default class User
             {
                 case 0:
                     // this.direction = "up"
-                    return backWalking1Image;
+                    return getImage("backWalking1", false);
                 case 1:
                     // this.direction = "left"
-                    return backWalking1FlippedImage;
+                    return getImage("backWalking1", true);
                 case 2:
                     // this.direction = "down"
-                    return frontWalking1FlippedImage;
+                    return getImage("frontWalking1", true);
                 case 3:
                     // this.direction = "right"
-                    return frontWalking1Image;
+                    return getImage("frontWalking1", false);
             }
         }
         else if (this.isWalking)
         {
             const walkCycle = this.framesUntilNextStep > this.stepLength / 2;
+            const walkState = walkCycle ? "Walking1" : "Walking2";
             switch (this.direction)
             {
                 case "up":
-                    return walkCycle ? backWalking1Image : backWalking2Image;
+                    return getImage("back" + walkState, false);
                 case "left":
-                    return walkCycle ? backWalking1FlippedImage : backWalking2FlippedImage;
+                    return getImage("back" + walkState, true);
                 case "down":
-                    return walkCycle ? frontWalking1FlippedImage : frontWalking2FlippedImage;
+                    return getImage("front" + walkState, true);
                 case "right":
-                    return walkCycle ? frontWalking1Image : frontWalking2Image;
+                    return getImage("front" + walkState, false);
             }
         }
         else
         {
             const isSitting = !!room.sit.find(s => s.x == this.logicalPositionX && s.y == this.logicalPositionY)
+            const restState = isSitting ? "Sitting" : "Standing";
 
             switch (this.direction)
             {
                 case "up":
-                    return isSitting ? backSittingImage : backStandingImage;
+                    return getImage("back" + restState, false);
                 case "left":
-                    return isSitting ? backSittingFlippedImage : backStandingFlippedImage;
+                    return getImage("back" + restState, true);
                 case "down":
-                    return isSitting ? frontSittingFlippedImage : frontStandingFlippedImage;
+                    return getImage("front" + restState, true);
                 case "right":
-                    return isSitting ? frontSittingImage : frontStandingImage;
+                    return getImage("front" + restState, false);
             }
         }
     }
     
+    // Computes this user's per-character deterministic blinking schedule from their id, the
+    // first time it's needed (the id isn't known yet when the User is constructed).
+    computeBlinkingPattern()
+    {
+        const id = this.id;
+        // this needs an id in the uuid format
+        const uniquePattern = id.slice(0, 8) + id.slice(9, 9+4) + id.slice(15, 15+3) + id.slice(20, 20+3) + id.slice(24, 24+12)
+
+        this.blinkingPattern = uniquePattern.slice(2).split("").map(v => parseInt(v, 16)).map((value, index, values) =>
+            (values[index] = (values[index-1] || 0) + (blinkOpenMinLength + Math.floor((value/16) * blinkOpenLengthVariation) + blinkClosedLength)))
+        this.blinkingStartShift = (parseInt(uniquePattern.slice(0, 2), 16) / 256) * this.blinkingPattern[this.blinkingPattern.length-1]
+    }
+
+    animateBlinking(now)
+    {
+        if (!this.id) return false;
+        if (!this.blinkingPattern) this.computeBlinkingPattern();
+
+        const currentCycleTime = (now + this.blinkingStartShift) % this.blinkingPattern[this.blinkingPattern.length-1]
+        const isBlinking = ((this.blinkingPattern.find(b => currentCycleTime < b) - currentCycleTime) - blinkClosedLength) <= 0
+        if (this.isBlinking != isBlinking)
+        {
+            this.isBlinking = isBlinking
+            return true
+        }
+        return false
+    }
+
+    resetBlinking()
+    {
+        this.isBlinking = false;
+    }
+
     checkIfRedrawRequired()
     {
         if (this.isWalking) return true;

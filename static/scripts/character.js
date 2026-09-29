@@ -4,9 +4,12 @@ import { annualEvents } from "./annualevents.js";
 // Some character SVGs contain a "gikopoipoi_eyes_open"/"gikopoipoi_eyes_closed" pair of
 // elements (ported over from gikopoi2's assets) that can be toggled to make the character blink.
 // This never modifies the SVG files themselves, only the in-memory copy used to render a frame.
+// Both groups are required: with only "eyes_open", blinking would just hide the eyes.
 function isBlinkCapable(svgString)
 {
-    return typeof svgString === "string" && svgString.includes("gikopoipoi_eyes_");
+    return typeof svgString === "string"
+        && /\bid=["']gikopoipoi_eyes_open["']/.test(svgString)
+        && /\bid=["']gikopoipoi_eyes_closed["']/.test(svgString);
 }
 
 function setEyesDisplay(svgString, hasEyesClosed)
@@ -25,11 +28,15 @@ function setEyesDisplay(svgString, hasEyesClosed)
     return svgRoot.outerHTML;
 }
 
+// Characters that never change their eyes (no blinking, and no eyes-closed image when spinning/inactive).
+const nonBlinkingCharacters = new Set(["crow"]);
+
 export class Character
 {
     constructor(name, format, isHidden, scale)
     {
         this.characterName = name;
+        this.canBlink = !nonBlinkingCharacters.has(name);
         this.format = format;
         this.isHidden = isHidden
         this.scale = scale || 0.5
@@ -60,7 +67,7 @@ export class Character
         const loadImageWithBlinkVariant = async (svgString, isFlipped) =>
         {
             const image = RenderCache.Image(await stringToImage(svgString, false), this.scale, isFlipped)
-            const eyesClosedImage = isBlinkCapable(svgString)
+            const eyesClosedImage = this.canBlink && isBlinkCapable(svgString)
                 ? RenderCache.Image(await stringToImage(svgString, true), this.scale, isFlipped)
                 : image
             return [image, eyesClosedImage]

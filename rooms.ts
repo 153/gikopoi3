@@ -3490,32 +3490,26 @@ temple: {
         streamSlotCount: 5,
     },
 
-    pachinko: {
+pachinko: {
     id: "pachinko",
-    group: "gikopoi",
+    group: "gikopoi3",
     spawnPoint: "spawn",
-    streamSlotCount: 5,
+    streamSlotCount: 6,
     forcedAnonymous: false,
     size: {x: 11, y: 9},
     scale: 1,
-    originCoordinates: {x: 1, y: 324},
+    originCoordinates: {x: 3, y: 324},
     backgroundImageUrl: "rooms/pachinko/background.svg",
     sit: [
         {x: 1, y: 0},
-            {x: 10, y: 0},
             {x: 0, y: 2},
             {x: 1, y: 2},
             {x: 2, y: 2},
             {x: 3, y: 2},
             {x: 4, y: 2},
             {x: 5, y: 2},
-            {x: 9, y: 4},
-            {x: 0, y: 5},
-            {x: 1, y: 5},
-            {x: 2, y: 5},
-            {x: 3, y: 5},
-            {x: 4, y: 5},
             {x: 5, y: 5},
+            {x: 10, y: 5},
             {x: 0, y: 7},
             {x: 1, y: 7},
             {x: 2, y: 7},
@@ -3524,11 +3518,7 @@ temple: {
             {x: 5, y: 7}
     ],
     blocked: [
-        {x: 0, y: 0},
-            {x: 8, y: 1},
-            {x: 9, y: 1},
-            {x: 10, y: 1},
-            {x: 0, y: 3},
+        {x: 0, y: 3},
             {x: 1, y: 3},
             {x: 2, y: 3},
             {x: 3, y: 3},
@@ -3544,32 +3534,37 @@ temple: {
             {x: 4, y: 4},
             {x: 5, y: 4},
             {x: 8, y: 4},
+            {x: 9, y: 4},
+            {x: 0, y: 5},
+            {x: 1, y: 5},
+            {x: 2, y: 5},
+            {x: 3, y: 5},
+            {x: 4, y: 5},
             {x: 8, y: 5},
             {x: 9, y: 5},
-            {x: 10, y: 5},
+            {x: 8, y: 6},
+            {x: 9, y: 6},
+            {x: 10, y: 6},
+            {x: 8, y: 7},
+            {x: 9, y: 7},
+            {x: 10, y: 7},
             {x: 0, y: 8},
             {x: 1, y: 8},
             {x: 2, y: 8},
             {x: 3, y: 8},
             {x: 4, y: 8},
-            {x: 5, y: 8},
-            {x: 9, y: 8},
-            {x: 10, y: 8}
+            {x: 5, y: 8}
     ],
     objects: [
-        {x: 0, y: 7, offset: {x: 362, y: 228}, url: "onepachink.svg", scale: 0.209},
-            {x: 0, y: 0, offset: {x: 322, y: 209}, url: "toppachinko3.svg", scale: 0.066},
-            {x: 0, y: 0, offset: {x: 281, y: 188}, url: "toppachinko3.svg", scale: 0.066},
-            {x: 0, y: 0, offset: {x: 241, y: 168}, url: "toppachinko3.svg", scale: 0.066},
-            {x: 0, y: 0, offset: {x: 201, y: 148}, url: "toppachinko3.svg", scale: 0.066},
-            {x: 0, y: 0, offset: {x: 161, y: 128}, url: "toppachinko3.svg", scale: 0.066}
+        {x: 0, y: 0, offset: {x: -3, y: -3}, url: "toplayer_light.svg", scale: 0.96},
+            {x: 0, y: 0, offset: {x: -45, y: -16}, url: "smoke_layer.svg", scale: 1}
     ],
     doors: {
-        spawn: {x: 7, y: 8, direction: "left", target: null},
-        door_3: {x: 10, y: 4, direction: "left", target: null},
+        spawn: {x: 7, y: 8, direction: "down", target: null},
+        teleport: {x: 10, y: 4, direction: "left", target: {roomId: "room_id", doorId: "door_id"}}
     },
-    forbiddenMovements: []    
-},    
+    forbiddenMovements: []
+},
 
     lounge: {
 	id: "lounge",

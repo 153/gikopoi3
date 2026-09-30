@@ -3556,8 +3556,8 @@ pachinko: {
             {x: 5, y: 8}
     ],
     objects: [
-        {x: 0, y: 0, offset: {x: -3, y: -3}, url: "toplayer_light.svg", scale: 0.96},
-            {x: 0, y: 0, offset: {x: -45, y: -16}, url: "smoke_layer.svg", scale: 1}
+        {x: 10, y: -1, offset: {x: -3, y: -3}, url: "toplayer_light.svg", scale: 0.96},
+            {x: 10, y: -1, offset: {x: -45, y: -16}, url: "smoke_layer.svg", scale: 1}
     ],
     doors: {
         spawn: {x: 7, y: 8, direction: "down", target: null},

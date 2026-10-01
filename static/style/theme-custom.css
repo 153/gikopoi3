@@ -1,0 +1,74 @@
+/* Custom theme: the Default (main.css) layout using Custom 2's colors, hue-shifted by --custom-hue-shift (degrees), set on #vue-app from the preferences slider. */
+#vue-app.theme-custom {
+    background-color: hsl(calc(46 + var(--custom-hue-shift, 0)), 77.59%, 77.25%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+    scrollbar-color: hsl(calc(42.25 + var(--custom-hue-shift, 0)), 56.8%, 49.02%) hsl(calc(46 + var(--custom-hue-shift, 0)), 77.59%, 77.25%);
+}
+
+.theme-custom h1 a {
+    color: hsl(calc(38.79 + var(--custom-hue-shift, 0)), 72.5%, 31.37%);
+}
+
+.theme-custom .message a,
+.theme-custom .message-author {
+    color: hsl(calc(38.76 + var(--custom-hue-shift, 0)), 75.84%, 29.22%);
+}
+
+.theme-custom .log-dividers .message {
+    border-color: hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
+}
+
+.theme-custom .log-dividers .message:nth-child(even) {
+    background-color: hsl(calc(46.24 + var(--custom-hue-shift, 0)), 72.19%, 70.39%);
+}
+
+.theme-custom input[type="text"],
+.theme-custom textarea,
+.theme-custom #chatLog {
+    background-color: hsl(calc(46.23 + var(--custom-hue-shift, 0)), 100%, 88.04%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+    border-color: hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
+}
+
+.theme-custom #login-page button,
+.theme-custom #toolbar button,
+.theme-custom .stream-buttons button,
+.theme-custom .slot-wrapper button,
+.theme-custom .popup button {
+    background-color: hsl(calc(45.71 + var(--custom-hue-shift, 0)), 77.78%, 57.65%);
+    border-color: hsl(calc(42.14 + var(--custom-hue-shift, 0)), 73.18%, 35.1%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom .stream-buttons button.red-button,
+.theme-custom .slot-wrapper button.red-button,
+.theme-custom .slot-wrapper button.slot-button-highlight {
+    background-color: hsl(calc(46.21 + var(--custom-hue-shift, 0)), 84.29%, 62.55%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom .popup {
+    background-color: hsl(calc(47.32 + var(--custom-hue-shift, 0)), 100%, 86.08%);
+    border-color: hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom .popup .popup-titlebar,
+.theme-custom .popup th {
+    background-color: hsl(calc(46.02 + var(--custom-hue-shift, 0)), 70.37%, 62.94%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom .popup-selectable-table tr:hover td {
+    background-color: hsl(calc(46.03 + var(--custom-hue-shift, 0)), 70.73%, 67.84%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom .popup-selectable-table tr.popup-row-is-selected td {
+    background-color: hsl(calc(43.6 + var(--custom-hue-shift, 0)), 62.9%, 56.67%);
+    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
+}
+
+.theme-custom hr {
+    border-color: hsl(calc(42.25 + var(--custom-hue-shift, 0)), 56.8%, 49.02%);
+}

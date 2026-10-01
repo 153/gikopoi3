@@ -26,6 +26,7 @@
     <link rel='stylesheet' href='style/theme-dream.css' />
     <link rel='stylesheet' href='style/theme-butter.css' />    
     <link rel="stylesheet" href="style/theme-custom.css" />
+    <link rel="stylesheet" href="style/theme-custom2.css" />
     <link rel='stylesheet' href='chess/css/chessboard-1.0.0.min.css' />
     <link rel='stylesheet' href='style/snow.css' />
     <link href="font-awesome/css/all.css" rel="stylesheet">
@@ -42,7 +43,7 @@
 </head>
 
 <body>
-<div id="vue-app" v-cloak :class="['theme-' + uiTheme]" :style="uiTheme == 'custom' ? { '--custom-hue-shift': customHue } : null" v-bind:lang="$i18n.locale">  
+<div id="vue-app" v-cloak :class="['theme-' + uiTheme]" :style="['custom', 'custom2'].includes(uiTheme) ?{ '--custom-hue-shift': customHue } : null" v-bind:lang="$i18n.locale">  
         <div id="login-page" v-if="appState == 'login'">
             <header>
                 <div>
@@ -612,11 +613,12 @@
                                 <option value="dark">Dark</option>
 				<option value="butter">Butter</option>				
 				<option value="lohere">Clover</option>
-                                <option value="custom">Custom</option>				
+                                <option value="custom">Custom</option>
+                                <option value="custom2">Custom 2</option>
 				<option value="dream">DREAM</option>
                             </select>
                             <input type="range" id="preferences-custom-hue" min="0" max="360" step="1"
-                                   v-if="uiTheme == 'custom'" v-model.number="customHue" v-on:input="handleCustomHue" />
+                                   v-if="['custom', 'custom2'].includes(uiTheme)" v-model.number="customHue" v-on:input="handleCustomHue" />
                         </div>
                         <div class='popup-item' v-if="areaId != 'gen'">
                             <label for="preferences-language">{{ $t("ui.preferences_language") }}</label>

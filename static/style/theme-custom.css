@@ -1,9 +1,8 @@
-/* Custom theme: a copy of theme-yellow.css whose colors are hue-shifted by --custom-hue-shift (degrees), set on #vue-app from the preferences slider. */
+/* Custom theme: the Default (main.css) layout using Custom 2's colors, hue-shifted by --custom-hue-shift (degrees), set on #vue-app from the preferences slider. */
 #vue-app.theme-custom {
     background-color: hsl(calc(46 + var(--custom-hue-shift, 0)), 77.59%, 77.25%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
     scrollbar-color: hsl(calc(42.25 + var(--custom-hue-shift, 0)), 56.8%, 49.02%) hsl(calc(46 + var(--custom-hue-shift, 0)), 77.59%, 77.25%);
-    font-family: Monospace;
 }
 
 .theme-custom h1 a {
@@ -13,11 +12,6 @@
 .theme-custom .message a,
 .theme-custom .message-author {
     color: hsl(calc(38.76 + var(--custom-hue-shift, 0)), 75.84%, 29.22%);
-    font-weight: bold;
-}
-
-.theme-custom .message-author {
-    padding-right: 2px;
 }
 
 .theme-custom .log-dividers .message {
@@ -33,10 +27,7 @@
 .theme-custom #chatLog {
     background-color: hsl(calc(46.23 + var(--custom-hue-shift, 0)), 100%, 88.04%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    border: 1px solid hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
-    border-radius: 8px;
-    box-shadow: 2px 2px hsl(calc(42.45 + var(--custom-hue-shift, 0)), 45.69%, 45.49%);
-    padding: 10px;
+    border-color: hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
 }
 
 .theme-custom #login-page button,
@@ -44,40 +35,9 @@
 .theme-custom .stream-buttons button,
 .theme-custom .slot-wrapper button,
 .theme-custom .popup button {
-    appearance: button;
     background-color: hsl(calc(45.71 + var(--custom-hue-shift, 0)), 77.78%, 57.65%);
-    border: 1px solid hsl(calc(42.14 + var(--custom-hue-shift, 0)), 73.18%, 35.1%);
-    border-radius: 4px;
-    box-shadow: hsl(calc(47.32 + var(--custom-hue-shift, 0)), 100%, 86.08%) 4px 4px 0 0, hsl(calc(42.14 + var(--custom-hue-shift, 0)), 73.18%, 35.1%) 4px 4px 0 1px;
-    box-sizing: border-box;
+    border-color: hsl(calc(42.14 + var(--custom-hue-shift, 0)), 73.18%, 35.1%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    cursor: pointer;
-    display: inline-block;
-    font-size: 12pt;
-    line-height: 20px;
-    margin: 5px;
-    padding: 10px;
-    text-align: center;
-    text-transform: none;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.theme-custom button:focus,
-.theme-custom button:hover {
-    text-decoration: none;
-}
-
-.theme-custom button:active {
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px inset;
-    outline: 0;
-}
-
-.theme-custom button:not([disabled]):active {
-    box-shadow: hsl(calc(47.32 + var(--custom-hue-shift, 0)), 100%, 86.08%) 2px 2px 0 0, hsl(calc(42.14 + var(--custom-hue-shift, 0)), 73.18%, 35.1%) 2px 2px 0 1px;
 }
 
 .theme-custom .stream-buttons button.red-button,
@@ -85,13 +45,11 @@
 .theme-custom .slot-wrapper button.slot-button-highlight {
     background-color: hsl(calc(46.21 + var(--custom-hue-shift, 0)), 84.29%, 62.55%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    font-weight: bold;
 }
 
 .theme-custom .popup {
     background-color: hsl(calc(47.32 + var(--custom-hue-shift, 0)), 100%, 86.08%);
-    border: 1px solid hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
-    border-radius: 8px;
+    border-color: hsl(calc(41.4 + var(--custom-hue-shift, 0)), 56.83%, 44.51%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
 }
 
@@ -99,10 +57,6 @@
 .theme-custom .popup th {
     background-color: hsl(calc(46.02 + var(--custom-hue-shift, 0)), 70.37%, 62.94%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-}
-
-.theme-custom .popup th {
-    font-weight: bold;
 }
 
 .theme-custom .popup-selectable-table tr:hover td {
@@ -113,57 +67,8 @@
 .theme-custom .popup-selectable-table tr.popup-row-is-selected td {
     background-color: hsl(calc(43.6 + var(--custom-hue-shift, 0)), 62.9%, 56.67%);
     color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    font-weight: bold;
-}
-
-.theme-custom .popup-row-is-selected {
-    color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    font-weight: bold;
-}
-
-.theme-custom .arrow-button {
-    position: relative;
-    background-image: none;
-}
-
-.theme-custom .arrow-button::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 15px;
-    height: 15px;
-    margin: auto;
-    background-color: hsl(calc(40.34 + var(--custom-hue-shift, 0)), 65.91%, 17.25%);
-    pointer-events: none;
-    -webkit-mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: contain;
-}
-
-.theme-custom .arrow-button-left::before {
-    -webkit-mask-image: url("/north_west_black_24dp.dark.svg");
-    mask-image: url("/north_west_black_24dp.dark.svg");
-}
-
-.theme-custom .arrow-button-up::before {
-    -webkit-mask-image: url("/north_east_black_24dp.dark.svg");
-    mask-image: url("/north_east_black_24dp.dark.svg");
-}
-
-.theme-custom .arrow-button-down::before {
-    -webkit-mask-image: url("/south_west_black_24dp.dark.svg");
-    mask-image: url("/south_west_black_24dp.dark.svg");
-}
-
-.theme-custom .arrow-button-right::before {
-    -webkit-mask-image: url("/south_east_black_24dp.dark.svg");
-    mask-image: url("/south_east_black_24dp.dark.svg");
 }
 
 .theme-custom hr {
     border-color: hsl(calc(42.25 + var(--custom-hue-shift, 0)), 56.8%, 49.02%);
-    width: 95%;
 }

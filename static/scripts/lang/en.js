@@ -241,6 +241,7 @@ export default
 	gym: "Gym",
 	hell: "Hell",
 	pachinko: "Pachinko Parlor",
+	warroom: "War Room",
 	lounge: "McDonald's",
 	temple: "Temple",
 	library: "Library",

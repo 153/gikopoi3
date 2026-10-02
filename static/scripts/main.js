@@ -1,5 +1,5 @@
 //localStorage.debug = '*'; // socket.io debug
-let defaultroom = "nerd_office";
+let defaultroom = "bar";
 localStorage.removeItem("debug");
 
 import { characters, loadCharacters } from "./character.js";
@@ -177,6 +177,7 @@ window.vueApp = new Vue({
         isBubbleSectionVisible: localStorage.getItem("isBubbleSectionVisible") != "false",
         isLogoutButtonVisible: localStorage.getItem("isLogoutButtonVisible") != "false",
         uiTheme: localStorage.getItem("uiTheme") || (localStorage.getItem("isDarkMode") == "true" ? "shaddox" : "gikopoi"),
+	customHue: Number(localStorage.getItem("customHue")) || 0,
         showNotifications: localStorage.getItem("showNotifications") != "false",
         enableTextToSpeech: localStorage.getItem("enableTextToSpeech") == "true",
         ttsVoiceURI: localStorage.getItem("ttsVoiceURI") || "automatic",
@@ -3085,6 +3086,10 @@ window.vueApp = new Vue({
                 knobElement.refresh()
             }
         },
+	handleCustomHue: function ()
+	{
+	    this.storeSet("customHue");
+	},
         toggleCoinSound: function ()
         {
             this.storeSet('isCoinSoundEnabled');

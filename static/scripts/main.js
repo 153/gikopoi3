@@ -2652,17 +2652,43 @@ window.vueApp = new Vue({
                 const userMedia = promiseResults[0].value
                 const screenMedia = promiseResults[1].value
 
-                // Populate this.mediaStream
-                if (!withScreenCapture)
-                    this.mediaStream = userMedia
-                else
+                // Publish a separate stream so audio can pass through the processor.
+                this.mediaStream = new MediaStream()
+                if (withVideo)
                 {
-                    this.mediaStream = screenMedia
-                    if (withSound && !withScreenCaptureAudio)
-                    {
-                        const audioTrack = userMedia.getAudioTracks()[0]
-                        this.mediaStream.addTrack(audioTrack)
-                    }
+                    const videoSource = withScreenCapture ? screenMedia : userMedia
+                    const videoTrack = videoSource.getVideoTracks()[0]
+                    if (videoTrack)
+                        this.mediaStream.addTrack(videoTrack)
+                }
+
+                if (withSound)
+                {
+                    const audioSource = withScreenCapture && withScreenCaptureAudio ? screenMedia : userMedia
+                    if (!audioSource.getAudioTracks().length)
+                        throw new UserException("error_obtaining_audio");
+
+                    this.outboundAudioProcessor = new AudioProcessor(audioSource, 1, false, (level) => {
+                        const vuMeterBarPrimary = document.getElementById("vu-meter-bar-primary-" + this.streamSlotIdInWhichIWantToStream)
+                        const vuMeterBarSecondary = document.getElementById("vu-meter-bar-secondary-" + this.streamSlotIdInWhichIWantToStream)
+
+                        vuMeterBarSecondary.style.width = vuMeterBarPrimary.style.width
+                        vuMeterBarPrimary.style.width = level * 100 + "%"
+
+                        if (level > 0.2)
+                            Vue.set(this.streams[this.streamSlotIdInWhichIWantToStream], "isJumping", true)
+                        else
+                            setTimeout(() => {
+                                const stream = this.streams[this.streamSlotIdInWhichIWantToStream]
+                                if (stream)
+                                    Vue.set(stream, "isJumping", false)
+                            }, 100)
+                    });
+
+                    const processedAudioTrack = this.outboundAudioProcessor.destination.stream.getAudioTracks()[0]
+                    if (!processedAudioTrack)
+                        throw new UserException("error_obtaining_audio");
+                    this.mediaStream.addTrack(processedAudioTrack)
                 }
 
                 // Log supported codecs
@@ -2689,12 +2715,12 @@ window.vueApp = new Vue({
                         throw new UserException("error_obtaining_video");
                 }
 
-                if (withSound)
+                if (withSound && !this.outboundAudioProcessor)
                 {
                     if (!this.mediaStream.getAudioTracks().length)
                         throw new UserException("error_obtaining_audio");
 
-                    this.outboundAudioProcessor = new AudioProcessor(this.mediaStream, 0, (level) => {
+                    this.outboundAudioProcessor = new AudioProcessor(this.mediaStream, 0, false, (level) => {
                         const vuMeterBarPrimary = document.getElementById("vu-meter-bar-primary-" + this.streamSlotIdInWhichIWantToStream)
                         const vuMeterBarSecondary = document.getElementById("vu-meter-bar-secondary-" + this.streamSlotIdInWhichIWantToStream)
 
@@ -2862,7 +2888,7 @@ window.vueApp = new Vue({
                             // Disable sound from the video element so that we let sound be handled
                             // only by the AudioProcessor
                             videoElement.volume = 0
-                            this.inboundAudioProcessors[streamSlotId] = new AudioProcessor(stream, this.slotVolume[streamSlotId], (level) => {
+                            this.inboundAudioProcessors[streamSlotId] = new AudioProcessor(stream, this.slotVolume[streamSlotId], true, (level) => {
                                 const vuMeterBarPrimary = document.getElementById("vu-meter-bar-primary-" + streamSlotId)
                                 const vuMeterBarSecondary = document.getElementById("vu-meter-bar-secondary-" + streamSlotId)
         

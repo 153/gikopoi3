@@ -107,9 +107,10 @@ var AudioContext = window.AudioContext          // Default
 
 export class AudioProcessor
 {
-    constructor(stream, volume, vuMeterCallback)
+    constructor(stream, volume, isInbound, vuMeterCallback)
     {
         this.stream = stream
+        this.isInbound = isInbound
         this.isBoostEnabled = false
 	this.volume = 0
 	this.isMute = false
@@ -118,6 +119,7 @@ export class AudioProcessor
 
         this.context = new AudioContext();
         this.source = this.context.createMediaStreamSource(stream);
+        this.destination = this.context.createMediaStreamDestination();
         this.compressor = this.context.createDynamicsCompressor();
         this.compressor.threshold.value = -50;
         this.compressor.knee.value = 40;
@@ -179,6 +181,8 @@ export class AudioProcessor
 
     dispose()
     {
+        for (const track of this.stream.getTracks())
+            track.stop()
         clearInterval(this.vuMeterTimer)
         return this.context.close().catch(console.error)
     }
@@ -198,11 +202,10 @@ export class AudioProcessor
 	else {
 	    this.source.connect(this.gain)
 	}
-        this.gain.connect(this.pan)
+	this.gain.connect(this.pan)
 	if (this.isInbound)
-            this.pan.connect(this.context.destination)
-        
-            this.pan.connect(this.context.destination)
+	    this.pan.connect(this.context.destination)
+	this.pan.connect(this.destination)
     }
 
     setVolume(volume)

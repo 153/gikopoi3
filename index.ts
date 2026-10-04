@@ -462,11 +462,11 @@ io.on("connection", function (socket: Socket)
 			return;
 		}
 
-		if (msg == "#hello")
-		{
-			changeCharacter(user, "goatse", false)
-			return;
-		}
+//		if (msg == "#hello")
+//		{
+//			changeCharacter(user, "goatse", false)
+//			return;
+//		}
 
 		
 		if (msg == "#giko")

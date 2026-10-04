@@ -1,11 +1,42 @@
 import { RenderCache } from "./rendercache.js";
 import { annualEvents } from "./annualevents.js";
 
+// Some character SVGs contain a "gikopoipoi_eyes_open"/"gikopoipoi_eyes_closed" pair of
+// elements (ported over from gikopoi2's assets) that can be toggled to make the character blink.
+// This never modifies the SVG files themselves, only the in-memory copy used to render a frame.
+// Both groups are required: with only "eyes_open", blinking would just hide the eyes.
+function isBlinkCapable(svgString)
+{
+    return typeof svgString === "string"
+        && /\bid=["']gikopoipoi_eyes_open["']/.test(svgString)
+        && /\bid=["']gikopoipoi_eyes_closed["']/.test(svgString);
+}
+
+function setEyesDisplay(svgString, hasEyesClosed)
+{
+    const template = document.createElement("template");
+    template.innerHTML = svgString;
+    const svgRoot = template.content.firstElementChild;
+    if (!svgRoot) return svgString;
+
+    const setDisplay = (id, display) =>
+        svgRoot.querySelectorAll('[id="' + id + '"]').forEach(el => { el.style.display = display; });
+
+    setDisplay("gikopoipoi_eyes_open", hasEyesClosed ? "none" : "inline");
+    setDisplay("gikopoipoi_eyes_closed", hasEyesClosed ? "inline" : "none");
+
+    return svgRoot.outerHTML;
+}
+
+// Characters that never change their eyes (no blinking, and no eyes-closed image when spinning/inactive).
+const nonBlinkingCharacters = new Set(["crow"]);
+
 export class Character
 {
     constructor(name, format, isHidden, scale)
     {
         this.characterName = name;
+        this.canBlink = !nonBlinkingCharacters.has(name);
         this.format = format;
         this.isHidden = isHidden
         this.scale = scale || 0.5
@@ -22,51 +53,62 @@ export class Character
 
     async loadImages(dto)
     {
-        const stringToImage = (svgString) => new Promise((resolve) => {
+        const stringToImage = (svgString, hasEyesClosed) => new Promise((resolve) => {
             const img = new Image()
             if (dto.isBase64)
                 img.src = "data:image/png;base64," + svgString
             else
-                img.src = "data:image/svg+xml;base64," + btoa(svgString)
+                img.src = "data:image/svg+xml;base64," + btoa(hasEyesClosed ? setEyesDisplay(svgString, true) : svgString)
             img.addEventListener("load", () => resolve(img))
         })
 
-        this.frontSittingImage = RenderCache.Image(await stringToImage(dto.frontSitting), this.scale)
-        this.frontStandingImage = RenderCache.Image(await stringToImage(dto.frontStanding), this.scale)
-        this.frontWalking1Image = RenderCache.Image(await stringToImage(dto.frontWalking1), this.scale)
-        this.frontWalking2Image = RenderCache.Image(await stringToImage(dto.frontWalking2), this.scale)
-        this.backSittingImage = RenderCache.Image(await stringToImage(dto.backSitting), this.scale)
-        this.backStandingImage = RenderCache.Image(await stringToImage(dto.backStanding), this.scale)
-        this.backWalking1Image = RenderCache.Image(await stringToImage(dto.backWalking1), this.scale)
-        this.backWalking2Image = RenderCache.Image(await stringToImage(dto.backWalking2), this.scale)
-        
-        this.frontSittingFlippedImage = RenderCache.Image(await stringToImage(dto.frontSitting), this.scale, true)
-        this.frontStandingFlippedImage = RenderCache.Image(await stringToImage(dto.frontStanding), this.scale, true)
-        this.frontWalking1FlippedImage = RenderCache.Image(await stringToImage(dto.frontWalking1), this.scale, true)
-        this.frontWalking2FlippedImage = RenderCache.Image(await stringToImage(dto.frontWalking2), this.scale, true)
-        this.backSittingFlippedImage = RenderCache.Image(await stringToImage(dto.backSitting), this.scale, true)
-        this.backStandingFlippedImage = RenderCache.Image(await stringToImage(dto.backStanding), this.scale, true)
-        this.backWalking1FlippedImage = RenderCache.Image(await stringToImage(dto.backWalking1), this.scale, true)
-        this.backWalking2FlippedImage = RenderCache.Image(await stringToImage(dto.backWalking2), this.scale, true)
-        
+        // Loads an image and, if the source SVG is blink-capable, its eyes-closed counterpart too
+        // (falling back to the same image otherwise, so callers never need to special-case it).
+        const loadImageWithBlinkVariant = async (svgString, isFlipped) =>
+        {
+            const image = RenderCache.Image(await stringToImage(svgString, false), this.scale, isFlipped)
+            const eyesClosedImage = this.canBlink && isBlinkCapable(svgString)
+                ? RenderCache.Image(await stringToImage(svgString, true), this.scale, isFlipped)
+                : image
+            return [image, eyesClosedImage]
+        }
+
+        ;[this.frontSittingImage, this.frontSittingImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontSitting, false)
+        ;[this.frontStandingImage, this.frontStandingImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontStanding, false)
+        ;[this.frontWalking1Image, this.frontWalking1ImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking1, false)
+        ;[this.frontWalking2Image, this.frontWalking2ImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking2, false)
+        ;[this.backSittingImage, this.backSittingImageEyesClosed] = await loadImageWithBlinkVariant(dto.backSitting, false)
+        ;[this.backStandingImage, this.backStandingImageEyesClosed] = await loadImageWithBlinkVariant(dto.backStanding, false)
+        ;[this.backWalking1Image, this.backWalking1ImageEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking1, false)
+        ;[this.backWalking2Image, this.backWalking2ImageEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking2, false)
+
+        ;[this.frontSittingFlippedImage, this.frontSittingFlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontSitting, true)
+        ;[this.frontStandingFlippedImage, this.frontStandingFlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontStanding, true)
+        ;[this.frontWalking1FlippedImage, this.frontWalking1FlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking1, true)
+        ;[this.frontWalking2FlippedImage, this.frontWalking2FlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking2, true)
+        ;[this.backSittingFlippedImage, this.backSittingFlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.backSitting, true)
+        ;[this.backStandingFlippedImage, this.backStandingFlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.backStanding, true)
+        ;[this.backWalking1FlippedImage, this.backWalking1FlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking1, true)
+        ;[this.backWalking2FlippedImage, this.backWalking2FlippedImageEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking2, true)
+
         // Alternate images
-        this.frontSittingImageAlt = RenderCache.Image(await stringToImage(dto.frontSittingAlt || dto.frontSitting), this.scale)
-        this.frontStandingImageAlt = RenderCache.Image(await stringToImage(dto.frontStandingAlt || dto.frontStanding), this.scale)
-        this.frontWalking1ImageAlt = RenderCache.Image(await stringToImage(dto.frontWalking1Alt || dto.frontWalking1), this.scale)
-        this.frontWalking2ImageAlt = RenderCache.Image(await stringToImage(dto.frontWalking2Alt || dto.frontWalking2), this.scale)
-        this.backSittingImageAlt = RenderCache.Image(await stringToImage(dto.backSittingAlt || dto.backSitting), this.scale)
-        this.backStandingImageAlt = RenderCache.Image(await stringToImage(dto.backStandingAlt || dto.backStanding), this.scale)
-        this.backWalking1ImageAlt = RenderCache.Image(await stringToImage(dto.backWalking1Alt || dto.backWalking1), this.scale)
-        this.backWalking2ImageAlt = RenderCache.Image(await stringToImage(dto.backWalking2Alt || dto.backWalking2), this.scale)
-        
-        this.frontSittingFlippedImageAlt = RenderCache.Image(await stringToImage(dto.frontSittingAlt || dto.frontSitting ), this.scale, true)
-        this.frontStandingFlippedImageAlt = RenderCache.Image(await stringToImage(dto.frontStandingAlt || dto.frontStanding ), this.scale, true)
-        this.frontWalking1FlippedImageAlt = RenderCache.Image(await stringToImage(dto.frontWalking1Alt || dto.frontWalking1 ), this.scale, true)
-        this.frontWalking2FlippedImageAlt = RenderCache.Image(await stringToImage(dto.frontWalking2Alt || dto.frontWalking2 ), this.scale, true)
-        this.backSittingFlippedImageAlt = RenderCache.Image(await stringToImage(dto.backSittingAlt || dto.backSitting ), this.scale, true)
-        this.backStandingFlippedImageAlt = RenderCache.Image(await stringToImage(dto.backStandingAlt || dto.backStanding ), this.scale, true)
-        this.backWalking1FlippedImageAlt = RenderCache.Image(await stringToImage(dto.backWalking1Alt || dto.backWalking1 ), this.scale, true)
-        this.backWalking2FlippedImageAlt = RenderCache.Image(await stringToImage(dto.backWalking2Alt || dto.backWalking2 ), this.scale, true)
+        ;[this.frontSittingImageAlt, this.frontSittingImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontSittingAlt || dto.frontSitting, false)
+        ;[this.frontStandingImageAlt, this.frontStandingImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontStandingAlt || dto.frontStanding, false)
+        ;[this.frontWalking1ImageAlt, this.frontWalking1ImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking1Alt || dto.frontWalking1, false)
+        ;[this.frontWalking2ImageAlt, this.frontWalking2ImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking2Alt || dto.frontWalking2, false)
+        ;[this.backSittingImageAlt, this.backSittingImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backSittingAlt || dto.backSitting, false)
+        ;[this.backStandingImageAlt, this.backStandingImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backStandingAlt || dto.backStanding, false)
+        ;[this.backWalking1ImageAlt, this.backWalking1ImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking1Alt || dto.backWalking1, false)
+        ;[this.backWalking2ImageAlt, this.backWalking2ImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking2Alt || dto.backWalking2, false)
+
+        ;[this.frontSittingFlippedImageAlt, this.frontSittingFlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontSittingAlt || dto.frontSitting, true)
+        ;[this.frontStandingFlippedImageAlt, this.frontStandingFlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontStandingAlt || dto.frontStanding, true)
+        ;[this.frontWalking1FlippedImageAlt, this.frontWalking1FlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking1Alt || dto.frontWalking1, true)
+        ;[this.frontWalking2FlippedImageAlt, this.frontWalking2FlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.frontWalking2Alt || dto.frontWalking2, true)
+        ;[this.backSittingFlippedImageAlt, this.backSittingFlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backSittingAlt || dto.backSitting, true)
+        ;[this.backStandingFlippedImageAlt, this.backStandingFlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backStandingAlt || dto.backStanding, true)
+        ;[this.backWalking1FlippedImageAlt, this.backWalking1FlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking1Alt || dto.backWalking1, true)
+        ;[this.backWalking2FlippedImageAlt, this.backWalking2FlippedImageAltEyesClosed] = await loadImageWithBlinkVariant(dto.backWalking2Alt || dto.backWalking2, true)
     }
 }
 

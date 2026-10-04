@@ -25,6 +25,7 @@ import messages from "./lang.js";
 import { speak } from "./tts.js";
 import { RTCPeer, defaultIceConfig } from "./rtcpeer.js";
 import { RenderCache } from "./rendercache.js";
+import { animateObjects, animateJizou } from "./animations.js";
 
 // I define myUserID here outside of the vue.js component to make it
 // visible to console.error
@@ -564,19 +565,46 @@ window.vueApp = new Vue({
 
             const roomLoadId = this.roomLoadId;
 
-            await Promise.all(Object.values(this.currentRoom.objects).map(o =>
-                loadImage("rooms/" + this.currentRoom.id + "/" + o.url.replace(".svg", urlMode + ".svg"))
-                    .then((image) =>
-                    {
-                        const scale = o.scale ? o.scale : 1;
-                        if (this.roomLoadId != roomLoadId) return;
-                        o.image = RenderCache.Image(image, scale);
+            const loadRoomImage = url =>
+                loadImage("rooms/" + this.currentRoom.id + "/" + url.replace(".svg", urlMode + ".svg"));
 
-                        o.physicalPositionX = o.offset ? o.offset.x * scale : 0
-                        o.physicalPositionY = o.offset ? o.offset.y * scale : 0
-                        this.isRedrawRequired = true;
-                    })
-            ))
+            await Promise.all(Object.values(this.currentRoom.objects).map(async o =>
+            {
+                const scale = o.scale ? o.scale : 1;
+                o.physicalPositionX = o.offset ? o.offset.x * scale : 0;
+                o.physicalPositionY = o.offset ? o.offset.y * scale : 0;
+
+                // url can be either a single string or an array of strings for objects that can be animated
+                const urls = typeof o.url == "string" ? [o.url] : o.url;
+
+                const scenes = o.animation ? o.animation.scenes : [];
+
+                await Promise.all([
+                    Promise.all(urls.map(url => loadRoomImage(url).then(image => RenderCache.Image(image, scale))))
+                        .then(images =>
+                        {
+                            if (this.roomLoadId != roomLoadId) return;
+                            o.allImages = images;
+                            o.image = images[0];
+                        }),
+                    Object.values(scenes).map(s =>
+                    {
+                        if (s.framesUrlPattern)
+                            s.frames = Array.from({ length: s.framesUrlPattern.amount },
+                                (v, i) => ({ url: s.framesUrlPattern.prefix + (i + 1) + s.framesUrlPattern.suffix }));
+                        if (s.frames)
+                            return s.frames.map(f =>
+                                loadRoomImage(f.url).then(image =>
+                                {
+                                    if (this.roomLoadId != roomLoadId) return;
+                                    f.image = RenderCache.Image(image, scale);
+                                }));
+                    }).flat()
+                ]);
+
+                if (this.roomLoadId != roomLoadId) return;
+                this.isRedrawRequired = true;
+            }))
         },
         updateRoomState: async function (dto)
         {
@@ -1861,9 +1889,21 @@ window.vueApp = new Vue({
 
             this.detectCanvasResize();
 
+            if (animateObjects(this.canvasObjects, this.users))
+                this.isRedrawRequired = true;
+
+            // Make jizou turn around when a user stands in front of it, if this room has one
+            const furimukuJizou = this.canvasObjects.find(o => o.o.id == "moving_jizou");
+            if (furimukuJizou && animateJizou(furimukuJizou.o, this.users))
+                this.isRedrawRequired = true;
+
+            const now = Date.now();
             const usersRequiringRedraw = [];
             for (const [userId, user] of Object.entries(this.users))
+            {
+                if (user.animateBlinking(now)) usersRequiringRedraw.push(userId);
                 if (user.checkIfRedrawRequired()) usersRequiringRedraw.push(userId);
+            }
 
             if (this.isRedrawRequired
                 || this.isDraggingCanvas

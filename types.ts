@@ -12,6 +12,30 @@ export interface Coordinates
     y: number;
 }
 
+export interface AnimationFrame
+{
+    url: string;
+    frameDelay?: number;
+}
+
+export interface RoomObjectAnimation
+{
+    type: string;
+    scenes: {
+        [sceneId: string]: {
+            frames?: AnimationFrame[],
+            framesUrlPattern?: {
+                prefix: string;
+                suffix: string;
+                amount: number;
+            }
+            frameDelay?: number;
+        }
+    }
+    frameDelay?: number;
+    cycleShift?: number;
+}
+
 export interface Participant
 {
     user: Player;
@@ -63,11 +87,13 @@ export interface Room
     needsFixedCamera?: boolean;
     isBackgroundImageOffsetEdge?: boolean;
     objects: {
+        id?: string;
         x: number;
         y: number;
         width?: number;
         height?: number;
-        url: string;
+        url: string | string[];
+        animation?: RoomObjectAnimation;
         scale?: number;
         offset?: {
             x: number;

@@ -1,0 +1,78 @@
+import { Room, Coordinates } from "../../types";
+import { coordRange } from "../../utils";
+
+export const PachinkoRoom: Room = {
+    id: "pachinko",
+    group: "gikopoi3",
+    spawnPoint: "spawn",
+    streamSlotCount: 6,
+    forcedAnonymous: false,
+    size: {x: 11, y: 9},
+    scale: 1,
+    originCoordinates: {x: 3, y: 324},
+    backgroundImageUrl: "rooms/pachinko/background.svg",
+    sit: [
+        {x: 1, y: 0},
+            {x: 0, y: 2},
+            {x: 1, y: 2},
+            {x: 2, y: 2},
+            {x: 3, y: 2},
+            {x: 4, y: 2},
+            {x: 5, y: 2},
+            {x: 5, y: 5},
+            {x: 10, y: 5},
+            {x: 0, y: 7},
+            {x: 1, y: 7},
+            {x: 2, y: 7},
+            {x: 3, y: 7},
+            {x: 4, y: 7},
+            {x: 5, y: 7}
+    ],
+    blocked: [
+        {x: 0, y: 3},
+            {x: 1, y: 3},
+            {x: 2, y: 3},
+            {x: 3, y: 3},
+            {x: 4, y: 3},
+            {x: 5, y: 3},
+            {x: 8, y: 3},
+            {x: 9, y: 3},
+            {x: 10, y: 3},
+            {x: 0, y: 4},
+            {x: 1, y: 4},
+            {x: 2, y: 4},
+            {x: 3, y: 4},
+            {x: 4, y: 4},
+            {x: 5, y: 4},
+            {x: 8, y: 4},
+            {x: 9, y: 4},
+            {x: 0, y: 5},
+            {x: 1, y: 5},
+            {x: 2, y: 5},
+            {x: 3, y: 5},
+            {x: 4, y: 5},
+            {x: 8, y: 5},
+            {x: 9, y: 5},
+            {x: 8, y: 6},
+            {x: 9, y: 6},
+            {x: 10, y: 6},
+            {x: 8, y: 7},
+            {x: 9, y: 7},
+            {x: 10, y: 7},
+            {x: 0, y: 8},
+            {x: 1, y: 8},
+            {x: 2, y: 8},
+            {x: 3, y: 8},
+            {x: 4, y: 8},
+            {x: 5, y: 8}
+    ],
+    objects: [
+        {x: 10, y: -1, offset: {x: -3, y: -3}, url: "toplayer_light.svg", scale: 0.96},
+            {x: 10, y: -1, offset: {x: -45, y: -16}, url: "smoke_layer.svg", scale: 1}
+    ],
+    doors: {
+        spawn: {x: 7, y: 8, direction: "down", target: null},
+        teleport: {x: 10, y: 4, direction: "left", target: {roomId: "room_id", doorId: "door_id"}}
+    },
+    forbiddenMovements: []
+    };

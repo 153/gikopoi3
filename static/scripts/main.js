@@ -630,6 +630,8 @@ window.vueApp = new Vue({
             const previousRoomId = this.currentRoom && this.currentRoom.id
             this.currentRoom = roomDto;
 
+            if (previousRoomId != this.currentRoom.id && this.currentRoom.defaultZoom)
+                this.setCanvasScale(this.currentRoom.defaultZoom);
             if (this.currentRoom.id === 'jinja') {
                 this.currentRoom.specialObjects[1].value = dto.coinCounter;
             }
@@ -2330,7 +2332,7 @@ window.vueApp = new Vue({
         },
         resetZoom: function ()
         {
-            this.setCanvasScale(1);
+            this.setCanvasScale((this.currentRoom && this.currentRoom.defaultZoom) || 1);
         },
         zoomIn: function ()
         {

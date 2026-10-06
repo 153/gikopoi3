@@ -246,6 +246,7 @@ export default
 	temple: "Temple",
 	library: "Library",
 	gammon: "Gammon",
+	amber_room: "Amber Room",
 	hotaru_room: "Hotaru: Room",
         bar_giko_square_v2: "Fountain Plaza + Agora Mall",
         vapor_mall:"Agora Mall Entrance",

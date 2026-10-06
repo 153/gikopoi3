@@ -52,7 +52,7 @@ export const AmberRoom: Room = {
         {x: 0, y: 0, offset: {x: 53, y: 279}, url: "blanket_top.svg", scale: 1},
         {x: 0, y: 1, offset: {x: 109, y: 279}, url: "blanket_top2.svg", scale: 1},
         {x: 4, y: 7, offset: {x: 556.42, y: 231.22}, url: "chest1.svg", scale: 1},
-        {x: 0, y: 4, offset: {x: 559.42, y: 231.22}, url: "chest2.svg", scale: 1},
+        {x: 0, y: 4, offset: {x: 558.75, y: 231.27}, url: "chest2.svg", scale: 1},
         {x: 4, y: 8, offset: {x: 556.42, y: 231.22}, url: "chest3.svg", scale: 1},
         {x: 5, y: 9, offset: {x: 584.48, y: 233.89}, url: "chestback1.svg", scale: 1},
         {x: 0, y: -1, offset: {x: 0, y: 273}, url: "drawer.svg", scale: 1},

@@ -247,6 +247,7 @@ export default
 	library: "Library",
 	gammon: "Gammon",
 	hotaru_room: "Hotaru: Room",
+	matsuri: "Matsuri",
         bar_giko_square_v2: "Fountain Plaza + Agora Mall",
         vapor_mall:"Agora Mall Entrance",
     },

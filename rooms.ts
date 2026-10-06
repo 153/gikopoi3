@@ -2,6 +2,7 @@ import { Room, DynamicRoom } from "./types";
 import { getCurrentAnnualEvents } from "./annualevents";
 import { BarRoom } from "./static/roomcode/bar";
 import { WarroomRoom } from "./static/roomcode/warroom";
+import { matsuriRoom } from "./static/roomcode/matsuri";
 import { AdminStRoom } from "./static/roomcode/admin_st";
 import { BasementRoom } from "./static/roomcode/basement";
 import { AdminRoom } from "./static/roomcode/admin";
@@ -135,6 +136,7 @@ export const dynamicRooms: DynamicRoom[] = [
     MonachatRoom,
     YojouhanRoom,
     YaneRoom,
+    matsuriRoom,
 ];
 
 const currentAnnualEvents = getCurrentAnnualEvents();

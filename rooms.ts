@@ -4,6 +4,7 @@ import { BarRoom } from "./static/roomcode/bar";
 import { WarroomRoom } from "./static/roomcode/warroom";
 import { AdminStRoom } from "./static/roomcode/admin_st";
 import { BasementRoom } from "./static/roomcode/basement";
+import { AmberRoom } from "./static/roomcode/amber_room";
 import { AdminRoom } from "./static/roomcode/admin";
 import { AdminOldRoom } from "./static/roomcode/admin_old";
 import { RadioBackstageRoom } from "./static/roomcode/radio_backstage";
@@ -122,6 +123,7 @@ export const rooms: { [roomId: string]: Room } = {
     "karaoke_box": KaraokeBoxRoom,
     "hell": HellRoom,
     "hotaru_room": HotaruRoomRoom,
+    "amber_room": AmberRoom,
     "vapor_mall": VaporMallRoom,
     "bar_giko_square_v2": BarGikoSquareV2Room,
 };

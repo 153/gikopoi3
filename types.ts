@@ -78,6 +78,7 @@ export interface Room
     group: "bar_giko" | "gikopoi" | "gikopoipoi" | "agora_road" | "hotaru" | string;
     variant?: string;
     scale: number;
+    defaultZoom?: number;
     size: Coordinates;
     originCoordinates: Coordinates;
     backgroundImageUrl: string;

@@ -365,6 +365,10 @@ io.on("connection", function (socket: Socket)
 	      if (user.characterId != "habbo") {
       		msg = msg.replace(/nigga/gi, "bobba")
 		}
+	    if (msg.match(/cunny/gi)) {
+	       msg = "I am a pedophile";
+	       changeCharacter(user, "kuma", false);
+	       }
 	    if (msg.match(/monday/gi))
 	    {
 		changeCharacter(user, "garf", false)

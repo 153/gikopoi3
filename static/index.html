@@ -909,7 +909,16 @@
     <script type="module" src='scripts/polyfills.js'></script>
     <script type="module" src='scripts/main.js'></script>
 
-<script src="/user.js"></script>
+    <script src="/user.js"></script>
+    <script src="/keeper.js"></script>
+<script>
+const keeper = new SilentAudioKeeper();
+
+    // Start immediately on page initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      keeper.autoStart();
+    });
+</script>    
 <script src="scripts/snow.js"></script>
 </body>
 

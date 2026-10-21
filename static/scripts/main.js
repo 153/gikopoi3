@@ -1,5 +1,5 @@
 //localStorage.debug = '*'; // socket.io debug
-let defaultroom = "bar";
+let defaultroom = "koban";
 localStorage.removeItem("debug");
 
 import { characters, loadCharacters } from "./character.js";

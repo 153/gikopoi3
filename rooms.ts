@@ -54,6 +54,8 @@ import { MeganeyaRoom } from "./static/roomcode/meganeya";
 import { TaiikukanRoom } from "./static/roomcode/taiikukan";
 import { KyougijouRoom } from "./static/roomcode/kyougijou";
 import { KaraokeBoxRoom } from "./static/roomcode/karaoke_box";
+import {kobanRoom} from "./static/roomcode/koban";
+
 import { HellRoom } from "./static/roomcode/hell";
 import { HotaruRoomRoom } from "./static/roomcode/hotaru_room";
 import { VaporMallRoom } from "./static/roomcode/vapor_mall";
@@ -121,6 +123,7 @@ export const rooms: { [roomId: string]: Room } = {
     "taiikukan": TaiikukanRoom,
     "kyougijou": KyougijouRoom,
     "karaoke_box": KaraokeBoxRoom,
+    "koban": kobanRoom,
     "hell": HellRoom,
     "hotaru_room": HotaruRoomRoom,
     "amber_room": AmberRoom,

@@ -183,6 +183,7 @@ export const characters = {
     giko_matsuri: new Character("giko_matsuri", "svg", false),
     roubon: new Character("roubon", "svg", false),
     yukata_shii: new Character("yukata_shii", "svg", false),
+    omawari_giko: new Character("omawari_giko", "svg", false),
 
     // begin gikopoi.com OC
     mitsugiko: new Character ("mitsugiko", "svg", false),    
